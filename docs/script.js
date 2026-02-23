@@ -11,7 +11,6 @@ class ThemeManager {
             theme = 'light';
         }
         this.theme = localStorage.getItem('theme') || theme;
-        this.setTheme(this.theme);
         this.init();
     }
 
