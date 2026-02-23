@@ -1,7 +1,8 @@
 <div class="about-header">
   <img src="assets/profile.png" alt="Portrait of Cem Okulmus" class="about-avatar" width="160" height="160" loading="lazy" />
   <div class="about-header-content">
-    <h1 class="title">Hi I'm Cem!</h1>
+    <h1 class="title">Cem Okulmus</h1>    
+    <h3 class="subtitle">Some Text here</h3>
     <div class="about-socials" style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:0.5rem;">
   <a href="https://scholar.google.com/citations?user=YM0FnuYAAAAJ" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--color-accent-2);">
     <svg viewBox="0 0 24 24" role="img" aria-hidden="true" style="width:20px;height:20px;opacity:0.9;" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
