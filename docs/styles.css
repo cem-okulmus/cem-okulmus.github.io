@@ -513,8 +513,8 @@ body {
 }
 
 .about-avatar {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     border-radius: 9999px;
     object-fit: cover;
     flex-shrink: 0;
@@ -532,7 +532,7 @@ body {
 /* Reduce default heading top margin inside about header to better center with avatar */
 .about-header .title {
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 }
 
 @media (max-width: 640px) {
