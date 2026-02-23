@@ -1,7 +1,16 @@
 // Theme management
 class ThemeManager {
     constructor() {
-        this.theme = localStorage.getItem('theme') || 'light';
+        var theme = '';
+        var event = window.matchMedia('(prefers-color-scheme: dark)');
+        if (event.matches) {
+            console.log("Color scheme changed: Dark mode activated.");
+            theme = 'dark';
+        } else {
+            console.log("Color scheme changed: Light mode activated.");
+            theme = 'light';
+        }
+        this.theme = localStorage.getItem('theme') || theme;
         this.init();
     }
 
@@ -749,11 +758,4 @@ if (window.matchMedia) {
     console.warn("window.matchMedia is not supported on this browser.");
 }
 
-var event = window.matchMedia('(prefers-color-scheme: dark)');
-if (event.matches) {
-    console.log("Color scheme changed: Dark mode activated.");
-    document.documentElement.setAttribute('data-theme', 'dark');
-} else {
-    console.log("Color scheme changed: Light mode activated.");
-    document.documentElement.setAttribute('data-theme', 'light');
-}
+
