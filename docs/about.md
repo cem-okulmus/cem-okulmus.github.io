@@ -1,5 +1,5 @@
 <div class="about-header">
-  <img src="assets/profile.png" alt="Portrait of Cem Okulmus" class="about-avatar" width="160" height="160" loading="lazy" />
+  <img src="assets/profile.png" alt="Portrait of Cem Okulmus" class="about-avatar" width="200" height="200" loading="lazy" />
   <div class="about-header-content">
     <h1 class="title">Cem Okulmus</h1>    
     <h3 class="subtitle">Some Text here</h3>
