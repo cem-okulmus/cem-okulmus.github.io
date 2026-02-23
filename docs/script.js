@@ -726,3 +726,28 @@ prefersReducedMotion.addEventListener('change', () => {
         document.documentElement.style.setProperty('scroll-behavior', 'smooth');
     }
 });
+
+
+
+// Handle changes in the color scheme
+const handleColorSchemeChange = (event) => {
+    if (event.matches) {
+        console.log("Color scheme changed: Dark mode activated.");
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        console.log("Color scheme changed: Light mode activated.");
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+};
+
+// change system theme trigger this function
+// Add event listener for changes in the color scheme
+if (window.matchMedia) {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeMediaQuery.addEventListener('change', handleColorSchemeChange);
+} else {
+    console.warn("window.matchMedia is not supported on this browser.");
+}
+
+
+
