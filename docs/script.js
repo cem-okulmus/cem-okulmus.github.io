@@ -10,7 +10,7 @@ class ThemeManager {
             console.log("Color scheme changed: Light mode activated.");
             theme = 'light';
         }
-        this.theme = localStorage.getItem('theme') || theme;
+        this.theme = theme;
         this.init();
     }
 
