@@ -122,6 +122,25 @@
         </div>
     </div>
 </div>
+
+<div class="publication-card">
+    <div class="publication-image">
+        <img src="assets/eswc25_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+               Towards Practicable Algorithms for Rewriting Graph Queries Beyond DL-Lite (Extended Abstract)
+        </h3>
+        <div class="publication-venue">37th International Workshop on Description Logics (DL 2024)</div>
+        <div class="publication-authors">Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz</div>
+        <div class="publication-year">2024</div>
+        <div class="publication-tags">
+            <span class="tag tag-safety">Graph queries, Query rewriting</span>
+        </div>
+    </div>
+</div>
+
+
 <div class="publication-card">
     <div class="publication-image">
         <img src="assets/bpm24_screen.png">
