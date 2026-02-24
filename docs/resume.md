@@ -1,4 +1,4 @@
-# Curriculum Vitae
+# CV
 
 
 
@@ -54,6 +54,6 @@
       <span class="timeline-role">Bachelor of Computer Science</span>
       <span class="timeline-dates">Oct 2012 – Apr 2015</span>
     </div>
-    <div class="timeline-meta">First Class • Academic Scholarship</div>
+     <div class="timeline-meta">Innsbruck, AT</div>
   </div>
 </div>
