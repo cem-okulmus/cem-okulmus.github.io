@@ -38,7 +38,7 @@ html {
 
 /* Base typography */
 body {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-family: 'Fira Sans', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -92,7 +92,7 @@ body {
 .text-2xl { font-size: 1.5rem; }
 .font-normal { font-weight: 400; }
 .font-bold { font-weight: 700; }
-.font-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+.font-mono { font-family: 'Fira Sans', sans-serif; }
 .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .scroll-smooth { scroll-behavior: smooth; }
 .relative { position: relative; }
