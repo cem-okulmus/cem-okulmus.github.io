@@ -11,7 +11,7 @@
       <span class="timeline-role">PostDoc</span>
       <span class="timeline-dates">Feb 2025 – <strong class="text-accent">Present</strong></span>
     </div>
-    <div class="timeline-desc">In the Group of Knowledge Representation group of Anni-Yasmi Turhan</div>
+    <div class="timeline-desc">In the Group of Knowledge Representation group of Anni-Yasmin Turhan</div>
     <div class="timeline-meta">Paderborn, Germany</div>
   </div>
 
