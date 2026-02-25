@@ -17,6 +17,6 @@
         - Winter Term 2025
 
 * Thesis Supervision
-    + "Multimedia Processing: Real-Time Colour Grading with JIT using the MLT Framework", Pina Kolling,  Master Thesis, Umeå University, Supervised by Cem Okulmus and Urban Söderberg, 2024
+    + ["Multimedia Processing: Real-Time Colour Grading with JIT using the MLT Framework"](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1870057&dswid=-3645), Pina Kolling,  Master Thesis, Umeå University, Supervised by Cem Okulmus and Urban Söderberg, 2024
     + "Comparative Study of Solution-Conflict and Query-Conflict Hypergraphs under Tree Decomposition", Chen Cheng,  Bachelor Thesis, Paderborn University, Supervised by Yasir Mahmood and Cem Okulmus, 2026
     + "A Dynamic Programming-Based Implementation for Consistent Query Answering",  Wenghao Bi,  Bachelor Thesis, Paderborn University, Supervised by Yasir Mahmood and Cem Okulmus, 2026
