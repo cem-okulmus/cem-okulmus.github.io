@@ -180,7 +180,7 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-<a href="https://ceur-ws.org/Vol-3739/abstract-17.pdf" class="publication-link">
+<a href="https://doi.org/10.1007/978-3-031-82225-4_2" class="publication-link">
                One Language to Rule Them All: Behavioural Querying of Process Data Using SQL </a>
         </h3>
         <div class="publication-venue">International Conference on Process Mining (ICPM 2024)</div>
@@ -196,7 +196,7 @@
 
 <div class="publication-card">
     <div class="publication-image">
-        <img src="assets/amw23_screen.png">
+        <img src="assets/arxiv23_screen.png">
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
@@ -268,7 +268,7 @@
 
 <div class="publication-card">
     <div class="publication-image">
-        <img src="assets/amw23_temporal_screen.png">
+        <img src="assets/amw23_reaching_screen.png">
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
@@ -326,7 +326,7 @@
 
 <div class="publication-card">
     <div class="publication-image">
-        <img src="assets/tods24_screen.png">
+        <img src="assets/pods22_screen.png">
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
@@ -348,7 +348,7 @@
 
 <div class="publication-card">
     <div class="publication-image">
-        <img src="assets/constraints22_screen.png">
+        <img src="assets/ijcai20_screen.png">
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
@@ -396,7 +396,7 @@
     <div class="publication-content">
         <h3 class="publication-title">
 <a href="https://ceur-ws.org/Vol-2369/short03.pdf" class="publication-link">
-               Parallel Computation of Generalized Hypertree Decompositions (short paper)
+               Parallel Computation of Generalized Hypertree Decompositions (short paper)e
 </a>
         </h3>
         <div class="publication-venue">Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2019)</div>
