@@ -10,13 +10,13 @@
         <h3 class="publication-title">
                Selective Use of Yannakakis’ Algorithm for Consistent Performance Gains
         </h3>
-        <div class="publication-venue">Accepted for 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 26)</div>
+        <div class="publication-venue"><strong>To be published in</strong> 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 26)</div>
         <div class="publication-authors">Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Query optimisation, data management</span>
-            <a href="https://arxiv.org/pdf/2502.20233" class="tag tag-arxiv">ARXIV</a>
-            <a href="https://github.com/dbai-tuw/yannakakis-rewriting" class="tag tag-github">GITHUB</a>
+            <a href="https://doi.org/10.48550/arXiv.2502.20233" class="tag tag-arxiv">arXiv</a>
+            <a href="https://github.com/dbai-tuw/yannakakis-rewriting" class="tag tag-github">GitHub</a>
         </div>
     </div>
 </div>
@@ -36,6 +36,7 @@
         <div class="publication-year">2025</div>
         <div class="publication-tags">
             <span class="tag tag-safety">SHACL, ShEx, Graph Schemas</span>
+	<a href="https://doi.org/10.48550/arXiv.2502.01295" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -52,6 +53,7 @@
         <div class="publication-year">2025</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Hypertree width, Query optimization</span>
+	<a href="https://doi.org/10.48550/arXiv.2412.11669" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -68,6 +70,7 @@
         <div class="publication-year">2025</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Graph queries, Query rewriting</span>
+	<a href="https://doi.org/10.48550/arXiv.2405.18181" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -182,14 +185,14 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Structure-guided query evaluation: Towards bridging the gap from theory to practice
+               Structure-Guided Query Evaluation: Towards Bridging the Gap from Theory to Practice.
         </h3>
         <div class="publication-venue">Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2023)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
         <div class="publication-year">2023</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Query evaluation, Structural decomposition</span>
-            <a href="https://arxiv.org/abs/2303.02723" class="tag tag-arxiv">ARXIV</a>
+            <a href="https://arxiv.org/abs/2303.02723" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -206,6 +209,7 @@
         <div class="publication-year">2023</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Generalized hypertree decompositions, Incremental algorithms</span>
+	<a href="https://doi.org/10.48550/arXiv.2209.10375" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -215,7 +219,7 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Rewriting ontology-mediated navigational queries into cypher
+               Rewriting Ontology-Mediated Navigational Queries into Cypher
         </h3>
         <div class="publication-venue">36th International Workshop on Description Logics (DL 2023)</div>
         <div class="publication-authors">Nikola Dragovic, Cem Okulmus, Magdalena Ortiz</div>
@@ -231,13 +235,30 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               On the way to temporal OBDA systems
+               On the Way to Temporal OBDA Systems (short paper)
         </h3>
         <div class="publication-venue">15th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2023)</div>
         <div class="publication-authors">Diego Calvanese, Cem Okulmus, Magdalena Ortiz, Mantas Šimkus</div>
         <div class="publication-year">2023</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Temporal OBDA, Logic</span>
+        </div>
+    </div>
+</div>
+
+<div class="publication-card">
+    <div class="publication-image">
+        <img src="assets/amw23_temporal_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+              Reaching Back to Move Forward: Using Old Ideas to Achieve a New Level of Query Optimization (short paper)
+        </h3>
+        <div class="publication-venue">15th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2023)</div>
+        <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
+        <div class="publication-year">2023</div>
+        <div class="publication-tags">
+            <span class="tag tag-safety">Query optimisation</span>
         </div>
     </div>
 </div>
@@ -283,13 +304,14 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Fast parallel hypertree decompositions in logarithmic recursion depth
+               Fast Parallel Hypertree Decompositions in Logarithmic Recursion Depth.
         </h3>
         <div class="publication-venue">41st ACM SIGMOD-SIGACT-SIGAI Symposium on Principles of Database Systems (PODS 22)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2022</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Hypertree decompositions, Parallel algorithms</span>
+	<a href="https://arxiv.org/abs/2104.13793" class="tag tag-arxiv">arXiv</a>
         </div>
     </div>
 </div>
@@ -302,7 +324,7 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Fast and parallel decomposition of constraint satisfaction problems
+               Fast and Parallel Decomposition of Constraint Satisfaction Problems.
         </h3>
         <div class="publication-venue"> Twenty-Ninth International Joint Conference on Artificial Intelligence (IJCAI-20)</div>
         <div class="publication-authors">Georg Gottlob, Cem Okulmus, Reinhard Pichler</div>
@@ -321,7 +343,7 @@
         <h3 class="publication-title">
                The Hypertrac Project: Recent progress and future research directions on hypergraph decompositions
         </h3>
-        <div class="publication-venue">International Conference on Integration of Constraint Programming</div>
+        <div class="publication-venue">Integration of Constraint Programming, Artificial Intelligence, and Operations Research - 17th International Conference (CPAIOR 2020)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2020</div>
         <div class="publication-tags">
