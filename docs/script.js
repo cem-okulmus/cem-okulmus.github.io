@@ -333,49 +333,6 @@ class MarkdownLoader {
         }
     }
 
-    parseMarkdown(markdown) {
-        let html = markdown;
-
-        // Convert headers
-        html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
-        html = html.replace(/^## (.*$)/gim, '<h2 class="title">$1</h2>');
-        html = html.replace(/^# (.*$)/gim, '<h1 class="title">$1</h1>');
-
-        // Convert bold text
-        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-        // Convert italic text
-        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-        // Convert links
-        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="cactus-link">$1</a>');
-
-        // Convert unordered lists
-        html = html.replace(/^\s*- (.+)$/gm, '<li>$1</li>');
-        html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
-
-        // Convert paragraphs (split by double newlines)
-        const paragraphs = html.split(/\n\s*\n/);
-        html = paragraphs.map(p => {
-            p = p.trim();
-            if (!p) return '';
-            
-            // Skip if already wrapped in HTML tags
-            if (p.startsWith('<') && p.endsWith('>')) return p;
-            if (p.includes('<li>') || p.includes('<h') || p.includes('<ul>') || p.includes('<div')) return p;
-            
-            return `<p>${p}</p>`;
-        }).join('\n\n');
-
-        // Clean up nested tags
-        html = html.replace(/<ul>\s*(<li>.*?<\/li>)\s*<\/ul>/gs, '<ul>$1</ul>');
-        html = html.replace(/<li><\/li>/g, '');
-
-        // Convert horizontal rules
-        html = html.replace(/^---$/gm, '<hr>');
-
-        return html;
-    }
 }
 
 
@@ -392,22 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     new LazyImageLoader();
     new MarkdownLoader();
-    
-    // Apply hover effect to all 'b' letters on initial content
-    if (typeof window.applyBHoverEffect === 'function') {
-        window.applyBHoverEffect(document.body);
-    }
 
-    // Initialize party hat explosion feature
-    new PartyHatExplosion();
     
     // Add loading state management
     document.body.classList.add('loaded');
-    
-    // Console message for developers
-    console.log('🌵 Portfolio site loaded successfully!');
-    console.log('🎉 Click the logo for a party surprise!');
-    console.log('Built with inspiration from astro-theme-cactus');
 });
 
 // Handle page visibility changes (pause animations when not visible)
