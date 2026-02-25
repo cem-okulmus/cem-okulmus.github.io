@@ -29,7 +29,7 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
- <a href="https://doi.org/10.48550/arXiv.2502.01295" class="publication-link">
+ <a href="https://doi.org/10.1145/3696410.3714694" class="publication-link">
                Common Foundations for SHACL, ShEx, and PG-Schema
   </a>
         </h3>
