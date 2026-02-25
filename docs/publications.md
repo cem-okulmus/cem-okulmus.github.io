@@ -167,7 +167,7 @@
         </h3>
         <div class="publication-venue">International Conference on Business Process Management (BPM 2024) - Forum paper</div>
         <div class="publication-authors">Timotheus Kampik, Cem Okulmus</div>
-        <div class="publicationEx-year">2024</div>
+        <div class="publication-year">2024</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Process query language, Complexity</span> 
 	<a href="https://arxiv.org/abs/2310.14939" class="tag tag-arxiv">arXiv</a>
