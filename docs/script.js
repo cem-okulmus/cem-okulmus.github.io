@@ -299,7 +299,7 @@ class MarkdownLoader {
                 const response = await fetch(fullPath);
                 if (response.ok) {
                     const markdown = await response.text();
-                    const html = this.parseMarkdown(markdown);
+                    const html = marked.parse(markdown);
                     contentElement.innerHTML = html;
                     // Apply hover effect to new content
                     if (typeof window.applyBHoverEffect === 'function') {
