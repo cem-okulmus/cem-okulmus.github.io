@@ -2,7 +2,8 @@
   <img src="assets/profile.png" alt="Portrait of Cem Okulmus" class="about-avatar" width="200" height="200" loading="lazy" />
   <div class="about-header-content">
     <h1 class="title">Cem Okulmus</h1>    
-    <p>Postdoctoral fellow at Paderborn University</p>
+    <p>Postdoctoral fellow at <a href="https://www.uni-paderborn.de/en/person/114410">Paderborn University</a>
+ </p>
     <div class="about-socials" style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:0.5rem;">
   <a href="https://dblp.dagstuhl.de/pid/242/1925.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--color-accent-2);">
     <svg viewBox="0 0 32 32" role="img" aria-hidden="true" style="width:20px;height:20px;opacity:0.9;" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
