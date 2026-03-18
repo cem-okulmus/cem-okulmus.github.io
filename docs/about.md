@@ -2,7 +2,7 @@
   <img src="assets/profile.png" alt="Portrait of Cem Okulmus" class="about-avatar" width="200" height="200" loading="lazy" />
   <div class="about-header-content">
     <h1 class="title">Cem Okulmus</h1>    
-    <p>Postdoctoral fellow at <a href="https://www.uni-paderborn.de/en/person/114410">Paderborn University</a>
+    <p>Postdoctoral Researcher at <a href="https://www.uni-paderborn.de/en/person/114410">Paderborn University</a>
  </p>
     <div class="about-socials" style="display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:0.5rem;">
   <a href="https://dblp.dagstuhl.de/pid/242/1925.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--color-accent-2);">
@@ -38,7 +38,7 @@
   </div>
 </div>
 
-I currently work as a PostDoc in the Knowledge Represenatation group led by Anni-Yasmin Turhan.  My recent work has focused on exploring learnability of graph data constraints in the context of RDF and SHACL. 
+I currently work as a PostDoc in the Knowledge Representation group at Paderborn University led by Anni-Yasmin Turhan.  My recent work has focused on exploring learnability of constraints over graph-structured data in the context of RDF and SHACL. 
 
 Previously I was a postdoctoral fellow at Umeå University where I worked with (then) WASP guest professor Diego Calvanese on the topic of temporal ontology-based data-acess (OBDA). 
 
