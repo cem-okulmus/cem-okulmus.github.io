@@ -11,7 +11,7 @@
  <a href="https://ceur-ws.org/Vol-4186/paper2.pdf" class="publication-link">
                Selective Use of Yannakakis’ Algorithm for Consistent Performance Gains </a>
         </h3>
-        <div class="publication-venue"> 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 26)</div>
+        <div class="publication-venue">Proceedings of the 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 2026)</div>
         <div class="publication-authors">Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
  <div class="publication-description">Won the Best Paper Award for DOLAP 2026.</div>
         <div class="publication-year">2026</div>
