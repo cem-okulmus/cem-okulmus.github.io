@@ -1,6 +1,6 @@
 # Scientific Functions
 
-* Helped as a member of the Programme Committe of the following conferences    
+* Part of the Programme Committe for the following conferences    
     + [JELIA 2023](https://jelia2023.inf.tu-dresden.de/organization/#:~:text=Cem%20Okulmus)
     + [KR 2024](https://kr.org/KR2024/pc_main.php#:~:text=Cem%20Okulmus)
     + [JELIA 2025](https://viam.science.tsu.ge/jelia2025/organization#:~:text=Cem%20Okulmus)

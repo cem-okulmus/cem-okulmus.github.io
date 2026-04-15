@@ -1,7 +1,7 @@
 # Teaching
 
 * University Assistant at DBAI group at Faculty of Informatics, TU Wien.  
- Helped with organisation the following courses:
+ Helped with organising the following courses:
 	* Database Systems 
 		- Winter Terms 2018 - 2022
 	* Semi-structured Data
@@ -10,11 +10,13 @@
 		- Summer Terms 2020 - 2022
 
 * Teaching Duties as part of the Knowledge Representation group, Paderborn University.  
- Helped with organisation the following courses:
+ Helped with organising the following courses:
     + Programming 2
         - Summer Term 2025
     + Modelling
         - Winter Term 2025
+    + Proseminar: Gems of theoretical Computer Science
+    + Project Group: Ontology-mediated Validation of Knowledge Graphs
 
 * Thesis Supervision
     + ["Multimedia Processing: Real-Time Colour Grading with JIT using the MLT Framework"](https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1870057&dswid=-3645), Pina Kolling,  Master Thesis, Umeå University, Supervised by Cem Okulmus and Urban Söderberg, 2024
