@@ -15,7 +15,7 @@
         <div class="publication-authors">Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
-           <span class="tag tag-safety">SHACL, ShEx, PG-Schema, Graph Schemas</span>   
+           <span class="tag tag-safety">SHACL, ShEx, Graph Schemas</span>   
           </div>
     </div>
 </div>
