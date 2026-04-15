@@ -2,6 +2,28 @@
 
 ## 2026
 
+
+<div class="publication-card">
+    <div class="publication-image">
+        <img src="assets/kr26_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+               Common Foundations for Recursive Shape Languages (Accepted) 
+        </h3>
+        <div class="publication-venue"><strong>To be published in</strong> International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)</div>
+        <div class="publication-authors">Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk</div>
+        <div class="publication-year">2026</div>
+        <div class="publication-tags">
+           <span class="tag tag-safety">SHACL, ShEx, PG-Schema, Graph Schemas</span>   
+          </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="publication-card">
     <div class="publication-image">
         <img src="assets/dolap_screen.png">
