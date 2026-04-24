@@ -16,6 +16,7 @@
         <div class="publication-year">2026</div>
         <div class="publication-tags">
            <span class="tag tag-safety">SHACL, ShEx, Graph Schemas</span>   
+	<a href="https://doi.org/10.48550/arXiv.2604.20946" class="tag tag-arxiv">arXiv</a>
           </div>
     </div>
 </div>
