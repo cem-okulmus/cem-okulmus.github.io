@@ -337,6 +337,18 @@ class MarkdownLoader {
 
 
 
+// Configure marked to open external links in a new tab
+marked.use({
+    renderer: {
+        link({ href, title, text }) {
+            const isExternal = href && !href.startsWith('#');
+            const titleAttr = title ? ` title="${title}"` : '';
+            const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+            return `<a href="${href}"${titleAttr}${targetAttr}>${text}</a>`;
+        }
+    }
+});
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
