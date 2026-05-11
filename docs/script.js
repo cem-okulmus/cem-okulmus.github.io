@@ -301,6 +301,12 @@ class MarkdownLoader {
                     const markdown = await response.text();
                     const html = marked.parse(markdown);
                     contentElement.innerHTML = html;
+                    contentElement.querySelectorAll('a[href]').forEach(a => {
+                        if (!a.getAttribute('href').startsWith('#')) {
+                            a.setAttribute('target', '_blank');
+                            a.setAttribute('rel', 'noopener noreferrer');
+                        }
+                    });
                     // Apply hover effect to new content
                     if (typeof window.applyBHoverEffect === 'function') {
                         window.applyBHoverEffect(contentElement);
