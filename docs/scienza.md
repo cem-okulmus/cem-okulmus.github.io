@@ -9,5 +9,6 @@
 
 
 * Member of the Programme Committe for the following workshops    
-   + [XLoKR-25](https://sites.google.com/view/xlokr2025#h.h88xwlo4be9v:~:text=Cem%20Okulmus)
+   + [XLoKR-25](https://sites.google.com/view/xlokr2025#:~:text=Cem%20Okulmus)
    + [DL 2026](https://dl-2026.github.io/orga/#:~:text=Cem%20Okulmus)
+   + [XLoKR-26](https://sites.google.com/view/xlokrexcos2026/#:~:text=Cem%20Okulmus)
