@@ -5,6 +5,27 @@
 
 <div class="publication-card">
     <div class="publication-image">
+        <img src="assets/time26_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+               Querying Interval-Based Temporal Data with1
+SPARQL (Accepted) 
+        </h3>
+        <div class="publication-venue"><strong>To be published in</strong> International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
+        <div class="publication-authors">Julien Corman, Roman Kontchakov and Cem Okulmus</div>
+        <div class="publication-year">2026</div>
+        <div class="publication-tags">
+           <span class="tag tag-safety">SPARQL, Temporal Data, Query Languages</span>   
+          </div>
+    </div>
+</div>
+
+
+
+
+<div class="publication-card">
+    <div class="publication-image">
         <img src="assets/kr26_screen.png">
     </div>
     <div class="publication-content">
