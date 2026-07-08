@@ -9,7 +9,7 @@
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Querying Interval-Based Temporal Data with1
+               Querying Interval-Based Temporal Data with
 SPARQL (Accepted) 
         </h3>
         <div class="publication-venue"><strong>To be published in</strong> International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
