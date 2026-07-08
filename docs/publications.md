@@ -12,7 +12,7 @@
                Querying Interval-Based Temporal Data with
 SPARQL (Accepted) 
         </h3>
-        <div class="publication-venue"><strong>To be published in</strong> International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
+        <div class="publication-venue"><strong>To be presented at the</strong> 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
         <div class="publication-authors">Julien Corman, Roman Kontchakov and Cem Okulmus</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
@@ -47,7 +47,7 @@ SPARQL (Accepted)
         <h3 class="publication-title">
                Common Foundations for Recursive Shape Languages (Accepted) 
         </h3>
-        <div class="publication-venue"><strong>To be published in</strong> International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)</div>
+        <div class="publication-venue"><strong>To be presented at the</strong> 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)</div>
         <div class="publication-authors">Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
@@ -70,7 +70,7 @@ SPARQL (Accepted)
  <a href="https://ceur-ws.org/Vol-4186/paper2.pdf" class="publication-link">
                Selective Use of Yannakakis’ Algorithm for Consistent Performance Gains </a>
         </h3>
-        <div class="publication-venue">Proceedings of the 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 2026)</div>
+        <div class="publication-venue">28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 2026)</div>
         <div class="publication-authors">Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
  <div class="publication-description">Won the  <a href="assets/dolap_award.jpg"  style="color:#000; text-decoration:none; font-weight:normal;"  > <strong>Best Paper Award</strong></a> for DOLAP 2026.</div>
         <div class="publication-year">2026</div>
@@ -94,7 +94,7 @@ SPARQL (Accepted)
                Common Foundations for SHACL, ShEx, and PG-Schema
   </a>
         </h3>
-        <div class="publication-venue">Proceedings of the ACM on Web Conference 2025 (WWW '25)</div>
+        <div class="publication-venue">The Web Conference 2025 (WWW '25)</div>
         <div class="publication-authors">Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Katja Hose, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Axel Polleres, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk</div>
         <div class="publication-year">2025</div>
         <div class="publication-tags">
@@ -113,7 +113,7 @@ SPARQL (Accepted)
                Soft and Constrained Hypertree Width
         </a> 
 </h3>
-        <div class="publication-venue">Symposium on Principles of Database Systems (PODS 25) </div>
+        <div class="publication-venue">44th Symposium on Principles of Database Systems (PODS 25) </div>
         <div class="publication-authors">Matthias Lanzinger, Cem Okulmus, Reinhard Pichler, Alexander Selzer, Georg Gottlob</div>
         <div class="publication-year">2025</div>
         <div class="publication-tags">
@@ -133,7 +133,7 @@ SPARQL (Accepted)
                Towards Practicable Algorithms for Rewriting Graph Queries Beyond DL-Lite
 </a>
         </h3>
-        <div class="publication-venue">European Semantic Web Conference (ESWC 2025)</div>
+        <div class="publication-venue">22nd European Semantic Web Conference (ESWC 2025)</div>
         <div class="publication-authors">Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz</div>
         <div class="publication-year">2025</div>
         <div class="publication-tags">
@@ -172,7 +172,7 @@ SPARQL (Accepted)
         <h3 class="publication-title">
 <a href="https://doi.org/10.1145/3638758" class="publication-link"> Fast Parallel Hypertree Decompositions in Logarithmic Recursion Depth (Journal article) </a>
         </h3>
-        <div class="publication-venue">ACM Transactions on Database Systems (TODS)</div>
+        <div class="publication-venue">Volume 49, ACM Transactions on Database Systems (TODS)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2024</div>
         <div class="publication-tags">
@@ -190,7 +190,7 @@ SPARQL (Accepted)
                SHACL Validation under the Well-founded Semantics 
 </a>
         </h3>
-        <div class="publication-venue">International Conference on Principles of Knowledge Representation and Reasoning (KR 2024)</div>
+        <div class="publication-venue">21st International Conference on Principles of Knowledge Representation and Reasoning (KR 2024)</div>
         <div class="publication-authors">Cem Okulmus, Mantas Šimkus</div>
         <div class="publication-year">2024</div>
         <div class="publication-tags">
@@ -228,7 +228,7 @@ SPARQL (Accepted)
                Expressive Power and Complexity Results for SIGNAL, an Industry-scale Process Query Language
 </a>
         </h3>
-        <div class="publication-venue">International Conference on Business Process Management (BPM 2024) - Forum paper</div>
+        <div class="publication-venue">22nd International Conference on Business Process Management (BPM 2024) - Forum paper</div>
         <div class="publication-authors">Timotheus Kampik, Cem Okulmus</div>
         <div class="publication-year">2024</div>
         <div class="publication-tags">
@@ -246,7 +246,7 @@ SPARQL (Accepted)
 <a href="https://doi.org/10.1007/978-3-031-82225-4_2" class="publication-link">
                One Language to Rule Them All: Behavioural Querying of Process Data Using SQL </a>
         </h3>
-        <div class="publication-venue">International Conference on Process Mining (ICPM 2024)</div>
+        <div class="publication-venue">6th International Conference on Process Mining (ICPM 2024)</div>
         <div class="publication-authors">Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich</div>
         <div class="publication-year">2024</div>
         <div class="publication-tags">
@@ -284,7 +284,7 @@ SPARQL (Accepted)
                Incremental Updates of Generalized Hypertree Decompositions
 </a>
         </h3>
-        <div class="publication-venue">ACM Journal of Experimental Algorithmics (JEA)</div>
+        <div class="publication-venue">Volume 27, ACM Journal of Experimental Algorithmics (JEA)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus</div>
         <div class="publication-year">2023</div>
         <div class="publication-tags">
@@ -360,7 +360,7 @@ SPARQL (Accepted)
                Fast and parallel decomposition of constraint satisfaction problems (Journal article)
 </a>
         </h3>
-        <div class="publication-venue">Constraints - An International Journal</div>
+        <div class="publication-venue">Volume 27, Constraints - An International Journal</div>
         <div class="publication-authors">Georg Gottlob, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2022</div>
         <div class="publication-tags">
@@ -397,7 +397,7 @@ SPARQL (Accepted)
                Fast Parallel Hypertree Decompositions in Logarithmic Recursion Depth.
 </a>
         </h3>
-        <div class="publication-venue">41st ACM SIGMOD-SIGACT-SIGAI Symposium on Principles of Database Systems (PODS 22)</div>
+        <div class="publication-venue">41st Symposium on Principles of Database Systems (PODS 22)</div>
         <div class="publication-authors">Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2022</div>
         <div class="publication-tags">
@@ -419,7 +419,7 @@ SPARQL (Accepted)
                Fast and Parallel Decomposition of Constraint Satisfaction Problems.
 </a>
         </h3>
-        <div class="publication-venue"> Twenty-Ninth International Joint Conference on Artificial Intelligence (IJCAI-20)</div>
+        <div class="publication-venue"> 29th International Joint Conference on Artificial Intelligence (IJCAI-20)</div>
         <div class="publication-authors">Georg Gottlob, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2020</div>
         <div class="publication-tags">
@@ -462,7 +462,7 @@ SPARQL (Accepted)
                Parallel Computation of Generalized Hypertree Decompositions (short paper)e
 </a>
         </h3>
-        <div class="publication-venue">Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2019)</div>
+        <div class="publication-venue">13th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2019)</div>
         <div class="publication-authors">Georg Gottlob, Cem Okulmus, Reinhard Pichler</div>
         <div class="publication-year">2019</div>
         <div class="publication-tags">
