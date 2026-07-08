@@ -27,9 +27,9 @@ SPARQL (Accepted)
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Reaching for the Stars in ℰℒ Concept Learning
+               Reaching for the Stars in ℰℒ Concept Learning  (Accepted) 
         </h3>
-        <div class="publication-venue">39th International Workshop on Description Logics (DL 2029)</div>
+        <div class="publication-venue"> <strong>To be presented at the</strong> 39th International Workshop on Description Logics (DL 2029)</div>
         <div class="publication-authors">Bente Gortworst, Cem Okulmus, Magdalena Ortiz, Anni-Yasmin Turhan</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
