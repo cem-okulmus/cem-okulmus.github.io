@@ -72,7 +72,7 @@ SPARQL (Accepted)
         </h3>
         <div class="publication-venue">Proceedings of the 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 2026)</div>
         <div class="publication-authors">Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer</div>
- <div class="publication-description">Won the Best Paper Award for DOLAP 2026.</div>
+ <div class="publication-description">Won the <strong>Best Paper Award</strong> for DOLAP 2026.</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Query optimisation, data management</span>
