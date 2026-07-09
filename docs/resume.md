@@ -32,8 +32,8 @@
       <span class="timeline-org">TU Wien</span>
       <span class="timeline-role">PhD in Computer Science</span>
       <span class="timeline-dates">Sep 2018 – Nov 2022</span>
-    </div>
  <span class="timeline-desc">PhD Thesis: <a href="https://doi.org/10.34726/hss.2023.108704">"Parallel Computation of Structural Decompositions"</a></span>
+    </div>
     <div class="timeline-desc">Supervised by Reinhard Pichler.</div>
   </div>
 
@@ -43,8 +43,7 @@
       <span class="timeline-org">TU Wien</span>
       <span class="timeline-role">Master Programme - Logic and Computation</span>
       <span class="timeline-dates">Oct 2015 – Jun 2018</span>
-    </div>
- <span class="timeline-desc">Master Thesis: <a href="https://doi.org/10.34726/hss.2018.52030">"Implementing and Comparing Quantifier Fuzzification Mechanisms"</a></span>
+   <span class="timeline-desc">Master Thesis: <a href="https://doi.org/10.34726/hss.2018.52030">"Implementing and Comparing Quantifier Fuzzification Mechanisms"</a></span>
     </div>
     <div class="timeline-meta">Vienna, AT</div>
   </div>
