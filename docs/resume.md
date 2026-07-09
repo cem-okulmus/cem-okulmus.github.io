@@ -33,6 +33,7 @@
       <span class="timeline-role">PhD in Computer Science</span>
       <span class="timeline-dates">Sep 2018 – Nov 2022</span>
     </div>
+ <span class="timeline-desc">PhD Thesis: <a href="https://doi.org/10.34726/hss.2023.108704">"Parallel Computation of Structural Decompositions"</a></span>
     <div class="timeline-desc">Supervised by Reinhard Pichler.</div>
   </div>
 
