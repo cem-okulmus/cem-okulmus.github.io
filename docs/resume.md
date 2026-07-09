@@ -43,6 +43,8 @@
       <span class="timeline-role">Master Programme - Logic and Computation</span>
       <span class="timeline-dates">Oct 2015 – Jun 2018</span>
     </div>
+ <span class="timeline-desc"><a href="https://doi.org/10.34726/hss.2018.52030">Master Thesis: "Implementing and Comparing Quantifier FuzzificationMechanisms"</a></span>
+    </div>
     <div class="timeline-meta">Vienna, AT</div>
   </div>
 
