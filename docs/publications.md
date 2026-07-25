@@ -27,9 +27,12 @@ SPARQL (Accepted)
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Reaching for the Stars in ℰℒ Concept Learning  (Accepted) 
+
+ <a href="https://ceur-ws.org/Vol-4230/dl-paper19.pdf">
+               Reaching for the Stars in ℰℒ Concept Learning
+</a>
         </h3>
-        <div class="publication-venue"> <strong>To be presented at the</strong> 39th International Workshop on Description Logics (DL 2026)</div>
+        <div class="publication-venue"> 39th International Workshop on Description Logics (DL 2026)</div>
         <div class="publication-authors">Bente Gortworst, Cem Okulmus, Magdalena Ortiz, Anni-Yasmin Turhan</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
@@ -45,9 +48,11 @@ SPARQL (Accepted)
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
-               Common Foundations for Recursive Shape Languages (Accepted) 
+ <a href="https://doi.org/10.24963/kr.2026/1" class="publication-link">
+               Common Foundations for Recursive Shape Languages 
+</a>
         </h3>
-        <div class="publication-venue"><strong>To be presented at the</strong> 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)</div>
+        <div class="publication-venue"> 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)</div>
         <div class="publication-authors">Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
