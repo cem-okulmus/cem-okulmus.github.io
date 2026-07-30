@@ -2,6 +2,23 @@
 
 ## 2026
 
+<div class="publication-card">
+    <div class="publication-image">
+        <img src="assets/iswc26_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+               Shapes from Examples: Foundations of Shape Learning in Recursive SHACL (Accepted) 
+        </h3>
+        <div class="publication-venue"><strong>To be presented at the</strong> 25th International Semantic Web Conference (ISWC 2026)</div>
+        <div class="publication-authors">Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan</div>
+        <div class="publication-year">2026</div>
+        <div class="publication-tags">
+            <span class="tag tag-safety">Learnability, Description logics</span>
+          </div>
+    </div>
+</div>
+
 
 <div class="publication-card">
     <div class="publication-image">
