@@ -2,6 +2,26 @@
 
 ## 2026
 
+
+<div class="publication-card">
+    <div class="publication-image">
+        <img src="assets/iswc26_screen.png">
+    </div>
+    <div class="publication-content">
+        <h3 class="publication-title">
+               Rewriting Ontology-Mediated Property Graph Queries into GQL (Accepted) 
+        </h3>
+        <div class="publication-venue"><strong>To be presented at the</strong> 35th International ACM Conference on Knowledge and Information Management (CIKM 2026)</div>
+        <div class="publication-authors">Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz</div>
+        <div class="publication-year">2026</div>
+        <div class="publication-tags">
+            <span class="tag tag-safety">Graph Queries, Ontology-Mediated Querying</span>
+	<a href="https://doi.org/10.48550/arXiv.2607.27934" class="tag tag-arxiv">arXiv</a>
+          </div>
+    </div>
+</div>
+
+
 <div class="publication-card">
     <div class="publication-image">
         <img src="assets/iswc26_screen.png">
@@ -15,6 +35,7 @@
         <div class="publication-year">2026</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Learnability, Description logics</span>
+	<a href="https://doi.org/10.48550/arXiv.2607.27934" class="tag tag-arxiv">arXiv</a>
           </div>
     </div>
 </div>
