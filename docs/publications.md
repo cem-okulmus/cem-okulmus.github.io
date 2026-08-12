@@ -5,7 +5,7 @@
 
 <div class="publication-card">
     <div class="publication-image">
-        <img src="assets/iswc26_screen.png">
+        <img src="assets/cikm26_screen.png">
     </div>
     <div class="publication-content">
         <h3 class="publication-title">
@@ -16,7 +16,6 @@
         <div class="publication-year">2026</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Graph Queries, Ontology-Mediated Querying</span>
-	<a href="https://doi.org/10.48550/arXiv.2607.27934" class="tag tag-arxiv">arXiv</a>
           </div>
     </div>
 </div>
