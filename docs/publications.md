@@ -102,8 +102,6 @@ SPARQL (Accepted)
 
 
 
-
-
 <div class="publication-card">
     <div class="publication-image">
         <img src="assets/dolap_screen.png">
@@ -239,6 +237,7 @@ SPARQL (Accepted)
         <div class="publication-year">2024</div>
         <div class="publication-tags">
             <span class="tag tag-safety">SHACL, Well-founded semantics</span>
+<a href="https://https://github.com/cem-okulmus/shawell" class="tag tag-github">GitHub</a>
 	<a href="assets/talk/CemOkulmus_SHACLValidationUnderWFS.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
@@ -450,6 +449,7 @@ SPARQL (Accepted)
         <div class="publication-tags">
             <span class="tag tag-safety">Hypertree decompositions, Parallel algorithms</span>
 	<a href="https://arxiv.org/abs/2104.13793" class="tag tag-arxiv">arXiv</a>
+<a href="https://https://github.com/cem-okulmus/log-k-decomp" class="tag tag-github">GitHub</a>
 	<a href="assets/talk/talk.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
@@ -472,6 +472,7 @@ SPARQL (Accepted)
         <div class="publication-year">2020</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Constraint satisfaction, Parallel decomposition</span>
+            <a href="https://https://github.com/cem-okulmus/BalancedGo" class="tag tag-github">GitHub</a>
 	<a href="assets/talk/talk_15min.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
