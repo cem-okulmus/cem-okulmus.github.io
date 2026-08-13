@@ -95,7 +95,7 @@ SPARQL (Accepted)
         <div class="publication-tags">
            <span class="tag tag-safety">SHACL, ShEx, Graph Schemas</span>   
 	<a href="https://doi.org/10.48550/arXiv.2604.20946" class="tag tag-arxiv">arXiv</a>
-	<a href="assets/talk/RecFound_Shape_Lang_kr_talk.pdf">Talk Slides</a>
+	<a href="assets/talk/RecFound_Shape_Lang_kr_talk.pdf" class="tag tag-workshop">Talk Slides</a>
           </div>
     </div>
 </div>
