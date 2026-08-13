@@ -16,6 +16,7 @@
         <div class="publication-year">2026</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Graph Queries, Ontology-Mediated Querying</span>
+            <a href="https://https://gitlab.com/austrian-neurocloud/software/owl2cypher" class="tag tag-github">GitLab</a>
           </div>
     </div>
 </div>
