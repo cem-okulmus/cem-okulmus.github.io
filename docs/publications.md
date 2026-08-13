@@ -143,6 +143,7 @@ SPARQL (Accepted)
         <div class="publication-tags">
             <span class="tag tag-safety">SHACL, ShEx, PG-Schema, Graph Schemas</span>
 	<a href="https://doi.org/10.48550/arXiv.2502.01295" class="tag tag-arxiv">arXiv</a>
+	<a href="assets/talk/Common_Foundations_for_SHACL__ShEx__and_PG_Schema__OLD_.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -238,6 +239,7 @@ SPARQL (Accepted)
         <div class="publication-year">2024</div>
         <div class="publication-tags">
             <span class="tag tag-safety">SHACL, Well-founded semantics</span>
+	<a href="assets/talk/CemOkulmus_SHACLValidationUnderWFS.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -350,6 +352,7 @@ SPARQL (Accepted)
         <div class="publication-year">2023</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Ontology-mediated queries, Cypher</span>
+	<a href="assets/talk/talk_DL23.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -368,6 +371,7 @@ SPARQL (Accepted)
         <div class="publication-year">2023</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Temporal OBDA, Logic</span>
+	<a href="assets/talk/talk_amw23.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -446,6 +450,7 @@ SPARQL (Accepted)
         <div class="publication-tags">
             <span class="tag tag-safety">Hypertree decompositions, Parallel algorithms</span>
 	<a href="https://arxiv.org/abs/2104.13793" class="tag tag-arxiv">arXiv</a>
+	<a href="assets/talk/talk.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -467,6 +472,7 @@ SPARQL (Accepted)
         <div class="publication-year">2020</div>
         <div class="publication-tags">
             <span class="tag tag-safety">Constraint satisfaction, Parallel decomposition</span>
+	<a href="assets/talk/talk_15min.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
 </div>
@@ -502,7 +508,7 @@ SPARQL (Accepted)
     <div class="publication-content">
         <h3 class="publication-title">
 <a href="https://ceur-ws.org/Vol-2369/short03.pdf" class="publication-link">
-               Parallel Computation of Generalized Hypertree Decompositions (short paper)e
+               Parallel Computation of Generalized Hypertree Decompositions (short paper)
 </a>
         </h3>
         <div class="publication-venue">13th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2019)</div>
