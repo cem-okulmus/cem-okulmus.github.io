@@ -55,7 +55,7 @@ SPARQL
         <div class="publication-year">2026</div>
         <div class="publication-tags">
            <span class="tag tag-safety">SPARQL, Temporal Data, Query Languages</span>   
-<a href="assets/talk/time26_talk_slides.pdf.pdf" class="tag tag-workshop">Talk Slides</a>
+<a href="assets/talk/time26_talk_slides.pdf" class="tag tag-workshop">Talk Slides</a>
           </div>
     </div>
 </div>
