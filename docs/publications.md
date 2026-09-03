@@ -48,13 +48,14 @@
     <div class="publication-content">
         <h3 class="publication-title">
                Querying Interval-Based Temporal Data with
-SPARQL (Accepted) 
+SPARQL
         </h3>
-        <div class="publication-venue"><strong>To be presented at the</strong> 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
+        <div class="publication-venue">33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)</div>
         <div class="publication-authors">Julien Corman, Roman Kontchakov and Cem Okulmus</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
            <span class="tag tag-safety">SPARQL, Temporal Data, Query Languages</span>   
+<a href="assets/talk/time26_talk_slides.pdf.pdf" class="tag tag-workshop">Talk Slides</a>
           </div>
     </div>
 </div>
