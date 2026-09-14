@@ -451,7 +451,7 @@ SPARQL
         <div class="publication-tags">
             <span class="tag tag-safety">Hypertree decompositions, Parallel algorithms</span>
 	<a href="https://arxiv.org/abs/2104.13793" class="tag tag-arxiv">arXiv</a>
-<a href="https://https://github.com/cem-okulmus/log-k-decomp" class="tag tag-github">GitHub</a>
+<a href="https://github.com/cem-okulmus/log-k-decomp" class="tag tag-github">GitHub</a>
 	<a href="assets/talk/talk.pdf" class="tag tag-workshop">Talk Slides</a>
         </div>
     </div>
