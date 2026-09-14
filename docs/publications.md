@@ -11,7 +11,7 @@
         <h3 class="publication-title">
                Rewriting Ontology-Mediated Property Graph Queries into GQL (Accepted) 
         </h3>
-        <div class="publication-venue"><strong>To be presented at the</strong> 35th International ACM Conference on Knowledge and Information Management (CIKM 2026)</div>
+        <div class="publication-venue"><strong>To be presented at the</strong> 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)</div>
         <div class="publication-authors">Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz</div>
         <div class="publication-year">2026</div>
         <div class="publication-tags">
