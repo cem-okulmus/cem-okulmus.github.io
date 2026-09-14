@@ -2,7 +2,6 @@
 
 ## 2026
 
-
 <div class="publication-card">
     <div class="publication-image">
         <img src="assets/cikm26_screen.png">
