@@ -40,13 +40,13 @@
 
 I currently work as a PostDoc in the Knowledge Representation group at Paderborn University led by Anni-Yasmin Turhan.  My recent work has focused on exploring learnability of constraints over graph-structured data in the context of RDF and SHACL. 
 
-Previously I was a postdoctoral fellow at Umeå University where I worked with (then) WASP guest professor Diego Calvanese on the topic of temporal ontology-based data-acess (OBDA). 
+Previously I was a postdoctoral fellow at Umeå University where I worked with (then) WASP guest professor Diego Calvanese on the topic of temporal ontology-based data-access (OBDA). 
 
 I completed my PhD at TU Wien, where my thesis focussed on exploring the practical computation of structural decomposition methods for relational queries. 
 
 Topics I am interested in include 
-* Learnability/Seperability in various languages over graph-structured data
+* Learnability/Separability in various languages over graph-structured data
 * Temporal Ontology-Based Data Access
 * Ontology-Mediated Query Answering for Graph Queries
-* Shape Constraint Langauges
+* Shape Constraint Languages
 * Structural Width Measures over Hypergraphs
