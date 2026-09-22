@@ -291,7 +291,7 @@ SPARQL
 <a href="https://doi.org/10.1007/978-3-031-82225-4_2" class="publication-link">
                One Language to Rule Them All: Behavioural Querying of Process Data Using SQL </a>
         </h3>
-        <div class="publication-venue">6th International Conference on Process Mining (ICPM 2024)</div>
+        <div class="publication-venue">9th International Workshop on Process Querying, Manipulation, and Intelligence (PQMI 2024)</div>
         <div class="publication-authors">Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich</div>
         <div class="publication-year">2024</div>
         <div class="publication-tags">
