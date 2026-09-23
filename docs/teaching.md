@@ -15,7 +15,7 @@
         - Summer Term 2025
     + Modelling
         - Winter Term 2025
-    + Proseminar: Gems of theoretical Computer Science
+    + Proseminar: Gems of Theoretical Computer Science
     + Project Group: Ontology-mediated Validation of Knowledge Graphs
 
 * Thesis Supervision
