@@ -16,6 +16,8 @@ authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 image: assets/iswc26_screen.png
 tags: Learnability, Description logics
 arxiv: https://doi.org/10.48550/arXiv.2607.27934
+tldr: Shape Learning refers to the process of generating parts of a SHACL schema (the so-called shapes), in this case from labelled examples. The goal is to find a _fitting_ shape, in the sense that it includes all positive examples and none of the negative ones.    
+	In this work, we provide the first algorithm for learning such SHACL shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*. 
 
 ### Querying Interval-Based Temporal Data with SPARQL
 venue: 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)

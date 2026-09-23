@@ -279,14 +279,41 @@ function renderPublicationTitle(rawTitle) {
     return marked.parseInline(rawTitle);
 }
 
+// A field's value is its "key:" line plus any following indented lines (blank
+// lines in between allowed), with their common indentation removed, so a value
+// can hold several paragraphs or a nested list.
 function parsePublicationBlock(blockLines) {
     const fields = { title: blockLines[0].replace(/^###\s*/, '').trim() };
+    let key = null;
+    let continuation = [];
+
+    const finishField = () => {
+        if (!key) return;
+        const indents = continuation
+            .filter(line => line.trim())
+            .map(line => line.match(/^\s*/)[0].length);
+        const common = indents.length ? Math.min(...indents) : 0;
+        const rest = continuation.map(line => line.slice(common)).join('\n');
+        fields[key] = `${fields[key]}\n${rest}`.trim();
+        key = null;
+        continuation = [];
+    };
+
     for (const line of blockLines.slice(1)) {
         const match = line.match(/^([a-zA-Z]+):\s*(.*)$/);
         if (match) {
-            fields[match[1].toLowerCase()] = match[2].trim();
+            finishField();
+            key = match[1].toLowerCase();
+            // Not trimmed here: trailing spaces before a continuation line are
+            // a Markdown hard line break. finishField() trims the whole value.
+            fields[key] = match[2];
+        } else if (key && (line.trim() === '' || /^\s/.test(line))) {
+            continuation.push(line);
+        } else {
+            finishField();
         }
     }
+    finishField();
     return fields;
 }
 
@@ -308,11 +335,14 @@ function renderPublicationCard(fields, year, tldrId) {
         ? `<div class="publication-description">${marked.parseInline(fields.description)}</div>\n            `
         : '';
 
+    // Line breaks in the rendered HTML are encoded as &#10; so it all sits on
+    // one line: a blank line inside it (e.g. from a code block) would end this
+    // raw HTML block when the page source goes through marked() again.
     const panelHtml = fields.tldr
         ? `
     <div class="publication-tldr-panel" id="${tldrId}">
         <div class="publication-tldr-inner">
-            <p class="publication-tldr-content">${marked.parseInline(fields.tldr)}</p>
+            <div class="publication-tldr-content">${marked.parse(fields.tldr).trim().replace(/\n/g, '&#10;')}</div>
         </div>
     </div>`
         : '';

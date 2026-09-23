@@ -1167,6 +1167,19 @@ html {
     transform: none;
 }
 
+.prose .publication-tldr-content > * {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.prose .publication-tldr-content > :last-child {
+    margin-bottom: 0;
+}
+
+.prose .publication-tldr-content li {
+    margin-bottom: 0.25rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .publication-tldr-panel,
     .publication-tldr-content,
