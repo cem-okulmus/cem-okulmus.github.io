@@ -8,7 +8,7 @@ authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
 image: assets/cikm26_screen.png
 tags: Graph Queries, Ontology-Mediated Querying
 code: https://gitlab.com/austrian-neurocloud/software/owl2cypher
-tldr: This paper is our latest published paper on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
+tldr: This is our latest published work on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
 
 ### Shapes from Examples: Foundations of Shape Learning in Recursive SHACL (Accepted)
 venue: **To be presented at the** 25th International Semantic Web Conference (ISWC 2026)
@@ -16,8 +16,9 @@ authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 image: assets/iswc26_screen.png
 tags: Learnability, Description logics
 arxiv: https://doi.org/10.48550/arXiv.2607.27934
-tldr: Shape Learning refers to the process of generating parts of a SHACL schema (the so-called shapes), in this case from labelled examples. The goal is to find a _fitting_ shape, in the sense that it includes all positive examples and none of the negative ones.    
-	In this work, we provide the first algorithm for learning such SHACL shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*. 
+tldr: Shape Learning refers to the process of generating parts of a SHACL schema (the so-called shapes), in this case from labelled examples. The goal is to find a _fitting_ shape, in the sense that it includes all positively-labelled examples and none of the negatively-labelled ones.    
+	In this work, we provide the first algorithm for learning such fitting shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*.  
+	This is the start of a larger project, where the ultimate aim is to have systems that can _automatically generate entire SHACL schemas, with formal guarantees_ on its correctness w.r.t. the examples the shapes were learned from.
 
 ### Querying Interval-Based Temporal Data with SPARQL
 venue: 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)
@@ -25,6 +26,12 @@ authors: Julien Corman, Roman Kontchakov and Cem Okulmus
 image: assets/time26_screen.png
 tags: SPARQL, Temporal Data, Query Languages
 slides: assets/talk/time26_talk_slides.pdf
+tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2&mdash;that has 
+	1) interval temporal variables as first-class objects,
+	2) allows simple joining over these temporal variables, and
+	3) can easily describe user-defined predicate over temporal variables.  
+	
+	This language will serve as the front-end language of a temporal extension of the Ontology-Based Data-Access system ONTOP, which is part of our on-going work.
 
 ### [Reaching for the Stars in ℰℒ Concept Learning](https://ceur-ws.org/Vol-4230/dl-paper19.pdf)
 venue: 39th International Workshop on Description Logics (DL 2026)
