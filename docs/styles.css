@@ -546,8 +546,8 @@ body {
         margin-top: 1.5rem; /* Add padding above the header on mobile */
     }
     .about-avatar {
-        width: 110px;
-        height: 110px;
+        width: 130px;
+        height: 130px;
         grid-row: 1 / span 2;
     }
     .about-header-content {
