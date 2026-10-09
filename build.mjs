@@ -120,6 +120,7 @@ function renderPublicationCard(fields, year, tldrId) {
     // separate rows, so the links aren't mistaken for more topics.
     const topicTags = renderTopicTags(fields.tags);
     const links = [
+        fields.pdf && `<a href="${fields.pdf}" class="tag tag-pdf">PDF</a>`,
         fields.arxiv && `<a href="${fields.arxiv}" class="tag tag-arxiv">arXiv</a>`,
         fields.code && `<a href="${fields.code}" class="tag tag-code">Source Code</a>`,
         fields.slides && `<a href="${fields.slides}" class="tag tag-workshop">Talk Slides</a>`,
