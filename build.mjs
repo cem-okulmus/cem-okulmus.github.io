@@ -7,7 +7,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { marked } from 'marked';
-import { structuredDataScript } from './structured-data.mjs';
+import { PERSON, structuredDataScript } from './structured-data.mjs';
 
 const SRC = 'docs';
 const OUT = '_site';
@@ -133,6 +133,26 @@ function renderVenueTags(type) {
         .map(label => `<button type="button" class="tag tag-topic tag-venue" data-tag="${escapeHtml(label)}" data-kind="venue" aria-pressed="false">${escapeHtml(label)}</button>`);
 }
 
+// "A, B and C" keeps its text exactly, but each co-author's name becomes a
+// button that script.js uses to filter by that co-author (styled to look like
+// plain text). The site owner's own name stays plain text: they are on every
+// paper, so filtering by them would select everything.
+function renderAuthors(authors) {
+    return (authors || '')
+        .split(/(,\s*|\s+and\s+)/)
+        .map((part, i) => {
+            if (i % 2 === 1) return part;
+            const name = part.trim();
+            if (!name) return part;
+            const plain = name.replace(/<[^>]+>|[*_]/g, '');
+            if (plain === PERSON.name) {
+                return `<span class="publication-author">${marked.parseInline(name)}</span>`;
+            }
+            return `<button type="button" class="publication-author" data-author="${escapeHtml(plain)}" aria-pressed="false">${marked.parseInline(name)}</button>`;
+        })
+        .join('');
+}
+
 function renderPublicationCard(fields, year, tldrId) {
     // Built as an array and joined, rather than interpolated with blank
     // lines for absent fields: a whitespace-only line here would read to
@@ -200,7 +220,7 @@ function renderPublicationCard(fields, year, tldrId) {
         <div class="publication-content">
             <h3 class="publication-title">${renderPublicationTitle(fields.title)}${statusHtml}</h3>
             ${venuesHtml}
-            <div class="publication-authors">${marked.parseInline(fields.authors || '')}</div>
+            <div class="publication-authors">${renderAuthors(fields.authors)}</div>
             ${descriptionHtml}<div class="publication-year">${year}</div>${rowsHtml}
         </div>
     </div>${panelHtml}

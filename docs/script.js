@@ -327,15 +327,17 @@ class PublicationFilter {
 
         this.items = cards.map((card, index) => {
             const title = card.querySelector('.publication-title');
-            const tagButtons = [...card.querySelectorAll('.tag-topic')];
+            // Tags and co-author names both work as filters (see keyFor).
+            const tagButtons = [...card.querySelectorAll('.tag-topic, .publication-author[data-author]')];
+            const authors = card.querySelector('.publication-authors');
             const tldr = card.querySelector('.publication-tldr-content');
-            const searchFields = [title, ...tagButtons, tldr].filter(Boolean);
+            const searchFields = [title, authors, ...card.querySelectorAll('.tag-topic'), tldr].filter(Boolean);
             return {
                 card,
                 index,
                 year: card.dataset.year,
                 title: title ? title.textContent.trim() : '',
-                tagKeys: new Set(tagButtons.map(b => this.tagKey(b.dataset.tag))),
+                tagKeys: new Set(tagButtons.map(b => this.keyFor(b))),
                 tagButtons,
                 searchFields,
                 haystack: searchFields.map(el => foldText(el.textContent)).join('\n'),
@@ -344,13 +346,16 @@ class PublicationFilter {
             };
         });
 
-        // Tags differing only in case count as one; the first spelling seen
-        // labels it in the tag list.
+        // Every filter (tag or co-author), by key. Tags differing only in case
+        // count as one; the first spelling seen labels it in the filter list.
         this.tags = new Map();
         this.items.forEach(item => item.tagButtons.forEach(button => {
-            const key = this.tagKey(button.dataset.tag);
-            const entry = this.tags.get(key)
-                || { label: button.dataset.tag, kind: button.dataset.kind || 'topic', count: 0 };
+            const key = this.keyFor(button);
+            const entry = this.tags.get(key) || {
+                label: button.dataset.tag || button.dataset.author,
+                kind: button.dataset.author ? 'author' : (button.dataset.kind || 'topic'),
+                count: 0,
+            };
             entry.count++;
             this.tags.set(key, entry);
         }));
@@ -377,7 +382,17 @@ class PublicationFilter {
         return tag.trim().toLowerCase();
     }
 
+    // Co-author keys get a prefix so a name can never collide with a tag.
+    keyFor(button) {
+        if (button.dataset.key) return button.dataset.key;
+        return button.dataset.author
+            ? `author:${this.tagKey(button.dataset.author)}`
+            : this.tagKey(button.dataset.tag);
+    }
+
+    // Co-authors are listed as plain text rather than tag boxes.
     tagClass(kind) {
+        if (kind === 'author') return 'filter-author';
         return kind === 'venue' ? 'tag tag-topic tag-venue' : 'tag tag-topic';
     }
 
@@ -390,7 +405,7 @@ class PublicationFilter {
                 <label class="publication-search">
                     <span class="sr-only">Search publications</span>
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="M13 13l4.5 4.5" stroke-linecap="round"></path></svg>
-                    <input type="search" placeholder="Search titles, tags and details…" autocomplete="off" spellcheck="false">
+                    <input type="search" placeholder="Search titles, authors, tags and details…" autocomplete="off" spellcheck="false">
                 </label>
                 <label class="publication-sort">
                     <span>Sort</span>
@@ -402,21 +417,24 @@ class PublicationFilter {
                 </label>
             </div>
             <div class="publication-controls-row publication-status-row">
-                <button type="button" class="publication-tag-toggle" aria-expanded="false" aria-controls="publication-tag-list">Filter by tag</button>
+                <button type="button" class="publication-tag-toggle" aria-expanded="false" aria-controls="publication-tag-list">Filter by tag and co-author</button>
                 <div class="publication-active-tags"></div>
                 <span class="publication-count" aria-live="polite"></span>
                 <button type="button" class="publication-reset" hidden>Clear filters</button>
             </div>
             <div class="publication-tag-list" id="publication-tag-list" hidden></div>`;
 
-        // Venue tags (Conference, Journal, ...) and topic tags are listed in
-        // separate groups, each sorted alphabetically.
+        // Venue tags (Conference, Journal, ...), topic tags and co-authors are
+        // listed in separate groups. Tags are sorted alphabetically, co-authors
+        // by number of joint papers (then alphabetically).
         const tagList = this.controls.querySelector('.publication-tag-list');
-        const groups = [['venue', 'Type'], ['topic', 'Topic']];
+        const byLabel = (a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+        const groups = [['venue', 'Type'], ['topic', 'Topic'], ['author', 'Co-authors']];
         groups.forEach(([kind, heading]) => {
-            const entries = [...this.tags.values()]
+            const entries = [...this.tags.entries()]
+                .map(([key, entry]) => ({ key, ...entry }))
                 .filter(entry => entry.kind === kind)
-                .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
+                .sort(kind === 'author' ? (a, b) => b.count - a.count || byLabel(a, b) : byLabel);
             if (entries.length === 0) return;
 
             const group = document.createElement('div');
@@ -428,11 +446,11 @@ class PublicationFilter {
             label.textContent = heading;
             group.append(label);
 
-            entries.forEach(({ label, count }) => {
+            entries.forEach(({ key, label, count }) => {
                 const button = document.createElement('button');
                 button.type = 'button';
                 button.className = this.tagClass(kind);
-                button.dataset.tag = label;
+                button.dataset.key = key;
                 button.setAttribute('aria-pressed', 'false');
                 button.textContent = label;
                 const countEl = document.createElement('span');
@@ -483,9 +501,9 @@ class PublicationFilter {
                 this.reset();
                 return;
             }
-            const tagButton = e.target.closest('.tag-topic[data-tag]');
+            const tagButton = e.target.closest('.tag-topic[data-tag], .publication-author[data-author], [data-key]');
             if (!tagButton) return;
-            this.toggleTag(this.tagKey(tagButton.dataset.tag));
+            this.toggleTag(this.keyFor(tagButton));
             // Picking a tag from a card far down the list would otherwise
             // leave the controls (and what is now being filtered) off-screen.
             if (tagButton.closest('.publication-card')) this.scrollToControls();
@@ -568,7 +586,7 @@ class PublicationFilter {
                 visibleItems.push(item);
             }
             item.tagButtons.forEach(button => {
-                button.setAttribute('aria-pressed', String(this.selectedTags.has(this.tagKey(button.dataset.tag))));
+                button.setAttribute('aria-pressed', String(this.selectedTags.has(this.keyFor(button))));
             });
             // A match inside the collapsed "More Info" text is otherwise
             // invisible, so point at the toggle.
@@ -586,8 +604,8 @@ class PublicationFilter {
         // the current filters (search included). Tags that would leave none
         // are disabled; selected tags always stay clickable so they can be
         // removed again.
-        this.tagList.querySelectorAll('.tag-topic').forEach(button => {
-            const key = this.tagKey(button.dataset.tag);
+        this.tagList.querySelectorAll('[data-key]').forEach(button => {
+            const key = button.dataset.key;
             const selected = this.selectedTags.has(key);
             const count = selected
                 ? shown
@@ -600,11 +618,12 @@ class PublicationFilter {
         this.activeTags.replaceChildren(...[...this.selectedTags].map(key => {
             const button = document.createElement('button');
             button.type = 'button';
-            button.className = this.tagClass(this.tags.get(key).kind);
-            button.dataset.tag = this.tags.get(key).label;
+            const { kind, label } = this.tags.get(key);
+            button.className = this.tagClass(kind);
+            button.dataset.key = key;
             button.setAttribute('aria-pressed', 'true');
-            button.setAttribute('aria-label', `Remove tag filter ${this.tags.get(key).label}`);
-            button.textContent = this.tags.get(key).label;
+            button.setAttribute('aria-label', `Remove ${kind === 'author' ? 'co-author' : 'tag'} filter ${label}`);
+            button.textContent = label;
             return button;
         }));
 
@@ -614,8 +633,8 @@ class PublicationFilter {
             ? `Showing ${shown} of ${total}`
             : `${total} publications`;
         this.tagToggle.textContent = this.selectedTags.size
-            ? `Filter by tag (${this.selectedTags.size})`
-            : 'Filter by tag';
+            ? `Filter by tag and co-author (${this.selectedTags.size})`
+            : 'Filter by tag and co-author';
         this.resetButton.hidden = !filtered;
         this.empty.hidden = shown > 0;
 
