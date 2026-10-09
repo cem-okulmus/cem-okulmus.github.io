@@ -425,16 +425,17 @@ class PublicationFilter {
             <div class="publication-tag-list" id="publication-tag-list" hidden></div>`;
 
         // Venue tags (Conference, Journal, ...), topic tags and co-authors are
-        // listed in separate groups. Tags are sorted alphabetically, co-authors
-        // by number of joint papers (then alphabetically).
+        // listed in separate groups, each sorted by its total number of papers
+        // (ties alphabetically). The order stays fixed while filtering.
         const tagList = this.controls.querySelector('.publication-tag-list');
-        const byLabel = (a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
+        const byCount = (a, b) => b.count - a.count
+            || a.label.localeCompare(b.label, undefined, { sensitivity: 'base' });
         const groups = [['venue', 'Type'], ['topic', 'Topic'], ['author', 'Co-authors']];
         groups.forEach(([kind, heading]) => {
             const entries = [...this.tags.entries()]
                 .map(([key, entry]) => ({ key, ...entry }))
                 .filter(entry => entry.kind === kind)
-                .sort(kind === 'author' ? (a, b) => b.count - a.count || byLabel(a, b) : byLabel);
+                .sort(byCount);
             if (entries.length === 0) return;
 
             const group = document.createElement('div');
