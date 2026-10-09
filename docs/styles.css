@@ -1053,10 +1053,34 @@ html {
     transition: opacity 0.2s ease;
 }
 
-.tag-safety {
+/* Topic tags are buttons (they filter the list, see script.js), so the
+   browser's button styling is reset to look like the other tags. */
+.tag-topic {
+    font-family: inherit;
+    line-height: inherit;
     background-color: color-mix(in srgb, #ef4444 15%, transparent);
     border-color: #ef4444;
     color: #ef4444;
+}
+
+.publication-filter-ready .tag-topic {
+    cursor: pointer;
+}
+
+.tag-topic[aria-pressed="true"] {
+    background-color: #ef4444;
+    color: var(--color-global-bg);
+}
+
+.tag-topic:focus-visible {
+    outline: 2px solid #ef4444;
+    outline-offset: 2px;
+}
+
+.tag-count {
+    margin-left: 0.35em;
+    font-weight: 400;
+    opacity: 0.75;
 }
 
 .tag-interpretability {
@@ -1136,6 +1160,11 @@ html {
     transform: rotate(90deg);
 }
 
+/* The current search also matches text inside this card's "More Info". */
+.publication-tldr-toggle.has-search-match {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 60%, transparent);
+}
+
 /* Animating grid-template-rows from 0fr to 1fr lets the panel grow to its
    content's natural height without hard-coding one. */
 .publication-tldr-panel {
@@ -1197,6 +1226,145 @@ html {
     .publication-tldr-content,
     .publication-tldr-toggle::after {
         transition: none;
+    }
+}
+
+/* Search, sort and tag filter above the publication list (added by script.js) */
+.publication-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+}
+
+.publication-controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.publication-search {
+    position: relative;
+    flex: 1 1 16rem;
+    min-width: 0;
+}
+
+.publication-search svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.publication-search input,
+.publication-sort select {
+    font: inherit;
+    color: var(--color-global-text);
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.publication-search input {
+    width: 100%;
+    padding-left: 2.25rem;
+}
+
+.publication-search input:focus,
+.publication-sort select:focus {
+    outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+    outline-offset: 1px;
+    border-color: var(--color-accent);
+}
+
+.publication-sort {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.publication-sort span {
+    opacity: 0.7;
+}
+
+.publication-sort select {
+    cursor: pointer;
+}
+
+.publication-tag-toggle,
+.publication-reset,
+.publication-reset-inline {
+    font: inherit;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.25rem 0;
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.publication-tag-toggle::after {
+    content: "\25B8";
+    display: inline-block;
+    margin-left: 0.3em;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.publication-tag-toggle[aria-expanded="true"]::after {
+    transform: rotate(90deg);
+}
+
+.publication-active-tags {
+    display: contents;
+}
+
+.publication-count {
+    margin-left: auto;
+    opacity: 0.7;
+}
+
+.publication-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-card-bg);
+}
+
+.publication-tag-list[hidden],
+.publication-card[hidden],
+.publication-empty[hidden] {
+    display: none;
+}
+
+.publication-empty {
+    text-align: center;
+    opacity: 0.8;
+}
+
+::highlight(publication-search) {
+    background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    color: inherit;
+}
+
+@media (max-width: 640px) {
+    .publication-sort {
+        flex: 1 1 100%;
+    }
+
+    .publication-sort select {
+        flex: 1;
     }
 }
 

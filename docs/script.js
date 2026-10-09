@@ -146,6 +146,8 @@ class SmoothScroll {
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
+                    window.publicationFilterInstance?.reveal(targetElement);
+
                     // Compute dynamic offset based on actual header height
                     const header = document.getElementById('main-header');
                     const headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
@@ -279,6 +281,343 @@ document.addEventListener('click', (e) => {
     panel.classList.toggle('is-open', !isOpen);
 });
 
+// Search text is compared after folding: lowercase, accents dropped and
+// compatibility forms unified (so "el" also finds "ℰℒ"). Folding is done per
+// character and keeps where each folded character came from, so matches can be
+// mapped back onto the original text for highlighting.
+function foldWithMap(text) {
+    let folded = '';
+    const starts = [];
+    const ends = [];
+    let offset = 0;
+    for (const ch of text) {
+        const f = ch.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
+        for (let k = 0; k < f.length; k++) {
+            starts.push(offset);
+            ends.push(offset + ch.length);
+        }
+        folded += f;
+        offset += ch.length;
+    }
+    return { folded, starts, ends };
+}
+
+function foldText(text) {
+    return foldWithMap(text).folded;
+}
+
+// Search, tag filter and sorting for the publication list. The list itself is
+// prerendered by build.mjs (year headings, each followed by its cards); this
+// only adds the controls and shows, hides and reorders what is already there,
+// so the section still reads fine without JavaScript.
+class PublicationFilter {
+    constructor(container) {
+        this.container = container;
+        this.query = '';
+        this.selectedTags = new Set();
+        this.sort = 'newest';
+        this.init();
+    }
+
+    init() {
+        const cards = [...this.container.querySelectorAll(':scope > .publication-card')];
+        if (cards.length === 0) return;
+
+        this.headings = [...this.container.querySelectorAll(':scope > h2')];
+
+        this.items = cards.map((card, index) => {
+            const title = card.querySelector('.publication-title');
+            const tagButtons = [...card.querySelectorAll('.tag-topic')];
+            const tldr = card.querySelector('.publication-tldr-content');
+            const searchFields = [title, ...tagButtons, tldr].filter(Boolean);
+            return {
+                card,
+                index,
+                year: card.dataset.year,
+                title: title ? title.textContent.trim() : '',
+                tagKeys: new Set(tagButtons.map(b => this.tagKey(b.dataset.tag))),
+                tagButtons,
+                searchFields,
+                haystack: searchFields.map(el => foldText(el.textContent)).join('\n'),
+                tldrHaystack: tldr ? foldText(tldr.textContent) : '',
+                tldrToggle: card.querySelector('.publication-tldr-toggle'),
+            };
+        });
+
+        // Tags differing only in case count as one; the first spelling seen
+        // labels it in the tag list.
+        this.tags = new Map();
+        this.items.forEach(item => item.tagButtons.forEach(button => {
+            const key = this.tagKey(button.dataset.tag);
+            const entry = this.tags.get(key) || { label: button.dataset.tag, count: 0 };
+            entry.count++;
+            this.tags.set(key, entry);
+        }));
+
+        this.buildControls();
+
+        this.list = document.createElement('div');
+        this.list.className = 'publication-list';
+        this.controls.after(this.list);
+        this.list.append(...this.container.querySelectorAll(':scope > h2, :scope > .publication-card'));
+
+        this.empty = document.createElement('p');
+        this.empty.className = 'publication-empty';
+        this.empty.hidden = true;
+        this.empty.innerHTML = 'No publications match. <button type="button" class="publication-reset-inline">Clear filters</button>';
+        this.list.after(this.empty);
+
+        this.container.classList.add('publication-filter-ready');
+        this.bindEvents();
+        this.update();
+    }
+
+    tagKey(tag) {
+        return tag.trim().toLowerCase();
+    }
+
+    buildControls() {
+        this.controls = document.createElement('div');
+        this.controls.className = 'publication-controls';
+        this.controls.setAttribute('role', 'search');
+        this.controls.innerHTML = `
+            <div class="publication-controls-row">
+                <label class="publication-search">
+                    <span class="sr-only">Search publications</span>
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="M13 13l4.5 4.5" stroke-linecap="round"></path></svg>
+                    <input type="search" placeholder="Search titles, tags and details…" autocomplete="off" spellcheck="false">
+                </label>
+                <label class="publication-sort">
+                    <span>Sort</span>
+                    <select>
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="title">Title (A–Z)</option>
+                    </select>
+                </label>
+            </div>
+            <div class="publication-controls-row publication-status-row">
+                <button type="button" class="publication-tag-toggle" aria-expanded="false" aria-controls="publication-tag-list">Filter by tag</button>
+                <div class="publication-active-tags"></div>
+                <span class="publication-count" aria-live="polite"></span>
+                <button type="button" class="publication-reset" hidden>Clear filters</button>
+            </div>
+            <div class="publication-tag-list" id="publication-tag-list" hidden></div>`;
+
+        const tagList = this.controls.querySelector('.publication-tag-list');
+        [...this.tags.entries()]
+            .sort((a, b) => a[1].label.localeCompare(b[1].label, undefined, { sensitivity: 'base' }))
+            .forEach(([key, { label, count }]) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'tag tag-topic';
+                button.dataset.tag = label;
+                button.setAttribute('aria-pressed', 'false');
+                button.textContent = label;
+                const countEl = document.createElement('span');
+                countEl.className = 'tag-count';
+                countEl.textContent = count;
+                button.append(countEl);
+                tagList.append(button);
+            });
+
+        const sectionTitle = this.container.querySelector(':scope > h1');
+        if (sectionTitle) {
+            sectionTitle.after(this.controls);
+        } else {
+            this.container.prepend(this.controls);
+        }
+
+        this.searchInput = this.controls.querySelector('input[type="search"]');
+        this.sortSelect = this.controls.querySelector('select');
+        this.tagToggle = this.controls.querySelector('.publication-tag-toggle');
+        this.tagList = tagList;
+        this.activeTags = this.controls.querySelector('.publication-active-tags');
+        this.count = this.controls.querySelector('.publication-count');
+        this.resetButton = this.controls.querySelector('.publication-reset');
+    }
+
+    bindEvents() {
+        this.searchInput.addEventListener('input', () => {
+            this.query = this.searchInput.value;
+            this.update();
+        });
+
+        this.sortSelect.addEventListener('change', () => {
+            this.sort = this.sortSelect.value;
+            this.reorder();
+            this.update();
+        });
+
+        this.tagToggle.addEventListener('click', () => {
+            const open = this.tagToggle.getAttribute('aria-expanded') !== 'true';
+            this.tagToggle.setAttribute('aria-expanded', String(open));
+            this.tagList.hidden = !open;
+        });
+
+        this.container.addEventListener('click', (e) => {
+            if (e.target.closest('.publication-reset, .publication-reset-inline')) {
+                this.reset();
+                return;
+            }
+            const tagButton = e.target.closest('.tag-topic[data-tag]');
+            if (!tagButton) return;
+            this.toggleTag(this.tagKey(tagButton.dataset.tag));
+            // Picking a tag from a card far down the list would otherwise
+            // leave the controls (and what is now being filtered) off-screen.
+            if (tagButton.closest('.publication-card')) this.scrollToControls();
+        });
+    }
+
+    toggleTag(key) {
+        if (this.selectedTags.has(key)) {
+            this.selectedTags.delete(key);
+        } else {
+            this.selectedTags.add(key);
+        }
+        this.update();
+    }
+
+    reset() {
+        this.query = '';
+        this.searchInput.value = '';
+        this.selectedTags.clear();
+        this.update();
+    }
+
+    // Called before jumping to an in-page link: if the target card is
+    // currently filtered out, clear the filters so it can be shown.
+    reveal(target) {
+        const card = target.closest('.publication-card');
+        if (card && card.hidden) this.reset();
+    }
+
+    scrollToControls() {
+        const header = document.getElementById('main-header');
+        const offset = (header ? header.getBoundingClientRect().height : 0) + 8;
+        const top = this.controls.getBoundingClientRect().top;
+        if (top < offset) {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: window.scrollY + top - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+    }
+
+    // Only a sort change moves nodes; filtering just hides them, so focus and
+    // the open/closed state of each card are left alone.
+    reorder() {
+        const items = [...this.items];
+        if (this.sort === 'oldest') {
+            items.reverse();
+        } else if (this.sort === 'title') {
+            items.sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base', numeric: true }));
+        }
+
+        const nodes = [];
+        let year = null;
+        items.forEach(item => {
+            if (this.sort !== 'title' && item.year !== year) {
+                year = item.year;
+                const heading = this.headings.find(h => h.textContent.trim() === year);
+                if (heading) nodes.push(heading);
+            }
+            nodes.push(item.card);
+        });
+        this.list.append(...nodes);
+    }
+
+    update() {
+        const terms = foldText(this.query).split(/\s+/).filter(Boolean);
+        const visibleYears = new Set();
+        let shown = 0;
+
+        this.items.forEach(item => {
+            const matchesTags = this.selectedTags.size === 0
+                || [...this.selectedTags].some(key => item.tagKeys.has(key));
+            const matchesSearch = terms.every(term => item.haystack.includes(term));
+            const visible = matchesTags && matchesSearch;
+
+            item.card.hidden = !visible;
+            if (visible) {
+                shown++;
+                visibleYears.add(item.year);
+            }
+            item.tagButtons.forEach(button => {
+                button.setAttribute('aria-pressed', String(this.selectedTags.has(this.tagKey(button.dataset.tag))));
+            });
+            // A match inside the collapsed "More Info" text is otherwise
+            // invisible, so point at the toggle.
+            if (item.tldrToggle) {
+                item.tldrToggle.classList.toggle('has-search-match',
+                    visible && terms.some(term => item.tldrHaystack.includes(term)));
+            }
+        });
+
+        this.headings.forEach(heading => {
+            heading.hidden = this.sort === 'title' || !visibleYears.has(heading.textContent.trim());
+        });
+
+        this.tagList.querySelectorAll('.tag-topic').forEach(button => {
+            button.setAttribute('aria-pressed', String(this.selectedTags.has(this.tagKey(button.dataset.tag))));
+        });
+
+        this.activeTags.replaceChildren(...[...this.selectedTags].map(key => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'tag tag-topic';
+            button.dataset.tag = this.tags.get(key).label;
+            button.setAttribute('aria-pressed', 'true');
+            button.setAttribute('aria-label', `Remove tag filter ${this.tags.get(key).label}`);
+            button.textContent = this.tags.get(key).label;
+            return button;
+        }));
+
+        const filtered = terms.length > 0 || this.selectedTags.size > 0;
+        const total = this.items.length;
+        this.count.textContent = filtered
+            ? `Showing ${shown} of ${total}`
+            : `${total} publications`;
+        this.tagToggle.textContent = this.selectedTags.size
+            ? `Filter by tag (${this.selectedTags.size})`
+            : 'Filter by tag';
+        this.resetButton.hidden = !filtered;
+        this.empty.hidden = shown > 0;
+
+        this.highlight(terms);
+    }
+
+    // Marks the search terms in visible cards using the CSS Custom Highlight
+    // API, which styles text ranges without changing the DOM. Browsers without
+    // it simply get no highlighting.
+    highlight(terms) {
+        if (!(window.CSS && CSS.highlights && window.Highlight)) return;
+        CSS.highlights.delete('publication-search');
+        if (terms.length === 0) return;
+
+        const ranges = [];
+        this.items.forEach(item => {
+            if (item.card.hidden) return;
+            item.searchFields.forEach(field => {
+                const walker = document.createTreeWalker(field, NodeFilter.SHOW_TEXT);
+                let node;
+                while ((node = walker.nextNode())) {
+                    const { folded, starts, ends } = foldWithMap(node.data);
+                    terms.forEach(term => {
+                        let i = folded.indexOf(term);
+                        while (i !== -1) {
+                            const range = document.createRange();
+                            range.setStart(node, starts[i]);
+                            range.setEnd(node, ends[i + term.length - 1]);
+                            ranges.push(range);
+                            i = folded.indexOf(term, i + term.length);
+                        }
+                    });
+                }
+            });
+        });
+        CSS.highlights.set('publication-search', new Highlight(...ranges));
+    }
+}
+
 // Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
@@ -291,7 +630,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     new LazyImageLoader();
 
-    
+    const publications = document.getElementById('publications-content');
+    if (publications) {
+        window.publicationFilterInstance = new PublicationFilter(publications);
+    }
+
     // Add loading state management
     document.body.classList.add('loaded');
 });

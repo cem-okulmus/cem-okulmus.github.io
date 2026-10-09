@@ -92,6 +92,24 @@ function parsePublicationBlock(blockLines) {
     return fields;
 }
 
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+// "tags: A, B, C" becomes one chip per tag. They are buttons because script.js
+// uses them to filter the list by that tag.
+function renderTopicTags(tags) {
+    return (tags || '')
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(Boolean)
+        .map(tag => `<button type="button" class="tag tag-topic" data-tag="${escapeHtml(tag)}" aria-pressed="false">${escapeHtml(tag)}</button>`);
+}
+
 function renderPublicationCard(fields, year, tldrId) {
     // Built as an array and joined, rather than interpolated with blank
     // lines for absent fields: a whitespace-only line here would read to
@@ -99,7 +117,7 @@ function renderPublicationCard(fields, year, tldrId) {
     // causing everything after it to render as escaped text instead of
     // markup.
     const tagsInner = [
-        `<span class="tag tag-safety">${fields.tags || ''}</span>`,
+        ...renderTopicTags(fields.tags),
         fields.arxiv && `<a href="${fields.arxiv}" class="tag tag-arxiv">arXiv</a>`,
         fields.code && `<a href="${fields.code}" class="tag tag-code">Source Code</a>`,
         fields.slides && `<a href="${fields.slides}" class="tag tag-workshop">Talk Slides</a>`,
@@ -124,7 +142,7 @@ function renderPublicationCard(fields, year, tldrId) {
 
     const idAttr = fields.id ? ` id="${fields.id}"` : '';
 
-    return `<div class="publication-card"${idAttr}>
+    return `<div class="publication-card"${idAttr} data-year="${escapeHtml(year)}">
     <div class="publication-main">
         <div class="publication-image">
             <img src="${fields.image}">
