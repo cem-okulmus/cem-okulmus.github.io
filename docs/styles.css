@@ -494,12 +494,18 @@ body {
 
 .prose a {
     color: var(--color-link);
-    text-decoration: underline;
+    text-decoration: none;
     text-underline-offset: 2px;
 }
 
 .prose a:hover {
-    text-decoration-thickness: 2px;
+    text-decoration: underline;
+}
+
+/* Link chips (PDF, arXiv, ...) are already set apart by their box. */
+.prose a.tag,
+.prose a.tag:hover {
+    text-decoration: none;
 }
 
 /* About section layout */
