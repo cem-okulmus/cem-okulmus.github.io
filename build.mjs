@@ -110,6 +110,18 @@ function renderTopicTags(tags) {
         .map(tag => `<button type="button" class="tag tag-topic" data-tag="${escapeHtml(tag)}" aria-pressed="false">${escapeHtml(tag)}</button>`);
 }
 
+// "type: Journal" (or Conference, Workshop, ...; several comma-separated for
+// papers that are both) becomes venue tags. They work like topic tags for
+// filtering (data-kind tells script.js to list them in their own group) but
+// are styled differently.
+function renderVenueTags(type) {
+    return (type || '')
+        .split(',')
+        .map(label => label.trim())
+        .filter(Boolean)
+        .map(label => `<button type="button" class="tag tag-topic tag-venue" data-tag="${escapeHtml(label)}" data-kind="venue" aria-pressed="false">${escapeHtml(label)}</button>`);
+}
+
 function renderPublicationCard(fields, year, tldrId) {
     // Built as an array and joined, rather than interpolated with blank
     // lines for absent fields: a whitespace-only line here would read to
@@ -118,7 +130,7 @@ function renderPublicationCard(fields, year, tldrId) {
     // markup.
     // Topic tags and the links/actions (arXiv, code, slides, "More Info") go in
     // separate rows, so the links aren't mistaken for more topics.
-    const topicTags = renderTopicTags(fields.tags);
+    const topicTags = [...renderVenueTags(fields.type), ...renderTopicTags(fields.tags)];
     const links = [
         fields.pdf && `<a href="${fields.pdf}" class="tag tag-pdf">PDF</a>`,
         fields.arxiv && `<a href="${fields.arxiv}" class="tag tag-arxiv">arXiv</a>`,
@@ -136,6 +148,14 @@ function renderPublicationCard(fields, year, tldrId) {
     // Each row brings its own leading line break, so a card with neither row
     // leaves no whitespace-only line behind (see the comment above).
     const rowsHtml = [tagsHtml, linksHtml].filter(Boolean).map(row => `\n            ${row}`).join('');
+
+    // A paper that appeared in two places (e.g. a PODS paper also published
+    // in PACMMOD) lists each on its own indented line under "venue:"; each
+    // line gets its own badge.
+    const venueLines = (fields.venue || '').split('\n').map(line => line.trim()).filter(Boolean);
+    const venuesHtml = venueLines.length > 1
+        ? `<div class="publication-venues">${venueLines.map(line => `<div class="publication-venue">${marked.parseInline(line)}</div>`).join('')}</div>`
+        : `<div class="publication-venue">${marked.parseInline(venueLines[0] || '')}</div>`;
 
     const descriptionHtml = fields.description
         ? `<div class="publication-description">${marked.parseInline(fields.description)}</div>\n            `
@@ -162,7 +182,7 @@ function renderPublicationCard(fields, year, tldrId) {
         </div>
         <div class="publication-content">
             <h3 class="publication-title">${renderPublicationTitle(fields.title)}</h3>
-            <div class="publication-venue">${marked.parseInline(fields.venue || '')}</div>
+            ${venuesHtml}
             <div class="publication-authors">${marked.parseInline(fields.authors || '')}</div>
             ${descriptionHtml}<div class="publication-year">${year}</div>${rowsHtml}
         </div>

@@ -349,7 +349,8 @@ class PublicationFilter {
         this.tags = new Map();
         this.items.forEach(item => item.tagButtons.forEach(button => {
             const key = this.tagKey(button.dataset.tag);
-            const entry = this.tags.get(key) || { label: button.dataset.tag, count: 0 };
+            const entry = this.tags.get(key)
+                || { label: button.dataset.tag, kind: button.dataset.kind || 'topic', count: 0 };
             entry.count++;
             this.tags.set(key, entry);
         }));
@@ -374,6 +375,10 @@ class PublicationFilter {
 
     tagKey(tag) {
         return tag.trim().toLowerCase();
+    }
+
+    tagClass(kind) {
+        return kind === 'venue' ? 'tag tag-topic tag-venue' : 'tag tag-topic';
     }
 
     buildControls() {
@@ -404,13 +409,29 @@ class PublicationFilter {
             </div>
             <div class="publication-tag-list" id="publication-tag-list" hidden></div>`;
 
+        // Venue tags (Conference, Journal, ...) and topic tags are listed in
+        // separate groups, each sorted alphabetically.
         const tagList = this.controls.querySelector('.publication-tag-list');
-        [...this.tags.entries()]
-            .sort((a, b) => a[1].label.localeCompare(b[1].label, undefined, { sensitivity: 'base' }))
-            .forEach(([key, { label, count }]) => {
+        const groups = [['venue', 'Type'], ['topic', 'Topic']];
+        groups.forEach(([kind, heading]) => {
+            const entries = [...this.tags.values()]
+                .filter(entry => entry.kind === kind)
+                .sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
+            if (entries.length === 0) return;
+
+            const group = document.createElement('div');
+            group.className = 'publication-tag-group';
+            group.setAttribute('role', 'group');
+            group.setAttribute('aria-label', heading);
+            const label = document.createElement('span');
+            label.className = 'publication-tag-group-label';
+            label.textContent = heading;
+            group.append(label);
+
+            entries.forEach(({ label, count }) => {
                 const button = document.createElement('button');
                 button.type = 'button';
-                button.className = 'tag tag-topic';
+                button.className = this.tagClass(kind);
                 button.dataset.tag = label;
                 button.setAttribute('aria-pressed', 'false');
                 button.textContent = label;
@@ -418,8 +439,10 @@ class PublicationFilter {
                 countEl.className = 'tag-count';
                 countEl.textContent = count;
                 button.append(countEl);
-                tagList.append(button);
+                group.append(button);
             });
+            tagList.append(group);
+        });
 
         const sectionTitle = this.container.querySelector(':scope > h1');
         if (sectionTitle) {
@@ -528,11 +551,13 @@ class PublicationFilter {
     update() {
         const terms = foldText(this.query).split(/\s+/).filter(Boolean);
         const visibleYears = new Set();
+        const visibleItems = [];
         let shown = 0;
 
         this.items.forEach(item => {
-            const matchesTags = this.selectedTags.size === 0
-                || [...this.selectedTags].some(key => item.tagKeys.has(key));
+            // A card must carry every selected tag, so each added tag narrows
+            // the list further.
+            const matchesTags = [...this.selectedTags].every(key => item.tagKeys.has(key));
             const matchesSearch = terms.every(term => item.haystack.includes(term));
             const visible = matchesTags && matchesSearch;
 
@@ -540,6 +565,7 @@ class PublicationFilter {
             if (visible) {
                 shown++;
                 visibleYears.add(item.year);
+                visibleItems.push(item);
             }
             item.tagButtons.forEach(button => {
                 button.setAttribute('aria-pressed', String(this.selectedTags.has(this.tagKey(button.dataset.tag))));
@@ -556,14 +582,25 @@ class PublicationFilter {
             heading.hidden = this.sort === 'title' || !visibleYears.has(heading.textContent.trim());
         });
 
+        // Each tag's count is how many papers would remain if it were added to
+        // the current filters (search included). Tags that would leave none
+        // are disabled; selected tags always stay clickable so they can be
+        // removed again.
         this.tagList.querySelectorAll('.tag-topic').forEach(button => {
-            button.setAttribute('aria-pressed', String(this.selectedTags.has(this.tagKey(button.dataset.tag))));
+            const key = this.tagKey(button.dataset.tag);
+            const selected = this.selectedTags.has(key);
+            const count = selected
+                ? shown
+                : visibleItems.filter(item => item.tagKeys.has(key)).length;
+            button.setAttribute('aria-pressed', String(selected));
+            button.querySelector('.tag-count').textContent = count;
+            button.disabled = !selected && count === 0;
         });
 
         this.activeTags.replaceChildren(...[...this.selectedTags].map(key => {
             const button = document.createElement('button');
             button.type = 'button';
-            button.className = 'tag tag-topic';
+            button.className = this.tagClass(this.tags.get(key).kind);
             button.dataset.tag = this.tags.get(key).label;
             button.setAttribute('aria-pressed', 'true');
             button.setAttribute('aria-label', `Remove tag filter ${this.tags.get(key).label}`);

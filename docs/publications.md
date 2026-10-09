@@ -4,6 +4,7 @@
 
 ### Rewriting Ontology-Mediated Property Graph Queries into GQL (Accepted)
 venue: **To be presented at the** 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)
+type: Conference
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
 image: assets/cikm26_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
@@ -14,6 +15,7 @@ tldr: This is our latest published work on the topic of bringing Ontology-Based 
 
 ### Shapes from Examples: Foundations of Shape Learning in Recursive SHACL (Accepted)
 venue: **To be presented at the** 25th International Semantic Web Conference (ISWC 2026)
+type: Conference
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 image: assets/iswc26_screen.png
 tags: SHACL, Graph schemas, Learnability, Description logics
@@ -25,6 +27,7 @@ tldr: Shape Learning refers to the process of generating parts of a SHACL schema
 
 ### Querying Interval-Based Temporal Data with SPARQL
 venue: 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)
+type: Conference
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
 image: assets/time26_screen.png
 pdf: assets/TIME26__OBDA_over_Interval_based_Temporal_Data.pdf
@@ -39,6 +42,7 @@ tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2
 
 ### [Reaching for the Stars in ℰℒ Concept Learning](https://ceur-ws.org/Vol-4230/dl-paper19.pdf)
 venue: 39th International Workshop on Description Logics (DL 2026)
+type: Workshop
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz, Anni-Yasmin Turhan
 image: assets/dl26_screen.png
 tags: Learnability, Description logics
@@ -46,6 +50,7 @@ pdf: https://ceur-ws.org/Vol-4230/dl-paper19.pdf
 
 ### [Common Foundations for Recursive Shape Languages](https://doi.org/10.24963/kr.2026/1)
 venue: 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)
+type: Conference
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
 image: assets/kr26_screen.png
 tags: SHACL, ShEx, Graph schemas
@@ -55,6 +60,7 @@ slides: assets/talk/RecFound_Shape_Lang_kr_talk.pdf
 
 ### [Selective Use of Yannakakis’ Algorithm for Consistent Performance Gains](https://ceur-ws.org/Vol-4186/paper2.pdf)
 venue: 28th International Workshop on Design, Optimization, Languages and Analytical Processing of Big Data (DOLAP 2026)
+type: Workshop
 authors: Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 image: assets/dolap_screen.png
 tags: Query optimisation
@@ -67,6 +73,7 @@ code: https://github.com/dbai-tuw/yannakakis-rewriting
 
 ### [Common Foundations for SHACL, ShEx, and PG-Schema](https://doi.org/10.1145/3696410.3714694)
 venue: The Web Conference 2025 (WWW '25)
+type: Conference
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Katja Hose, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Axel Polleres, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
 image: assets/www25_screen.png
 tags: SHACL, ShEx, Graph schemas
@@ -76,6 +83,8 @@ slides: assets/talk/Common_Foundations_for_SHACL__ShEx__and_PG_Schema__OLD_.pdf
 
 ### [Soft and Constrained Hypertree Width](https://doi.org/10.1145/3725251)
 venue: 44th Symposium on Principles of Database Systems (PODS 25)
+	Volume 3, Proceedings of the ACM on Management of Data
+type: Conference, Journal
 authors: Matthias Lanzinger, Cem Okulmus, Reinhard Pichler, Alexander Selzer, Georg Gottlob
 image: assets/sigmod25_screen.png
 tags: Hypergraph decompositions, Query optimisation
@@ -85,6 +94,7 @@ arxiv: https://doi.org/10.48550/arXiv.2412.11669
 ### [Towards Practicable Algorithms for Rewriting Graph Queries Beyond DL-Lite](https://doi.org/10.1007/978-3-031-94575-5_19)
 id: eswc25
 venue: 22nd European Semantic Web Conference (ESWC 2025)
+type: Conference
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
 image: assets/eswc25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
@@ -93,6 +103,7 @@ arxiv: https://doi.org/10.48550/arXiv.2405.18181
 
 ### [Query Rewriting for Nested Navigational Queries over Property Graphs](https://ceur-ws.org/Vol-4091/paper40.pdf)
 venue: 38th International Workshop on Description Logics (DL 2025)
+type: Workshop
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
 image: assets/dl25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
@@ -102,6 +113,7 @@ pdf: https://ceur-ws.org/Vol-4091/paper40.pdf
 
 ### [Fast Parallel Hypertree Decompositions in Logarithmic Recursion Depth (Journal article)](https://doi.org/10.1145/3638758)
 venue: Volume 49, ACM Transactions on Database Systems (TODS)
+type: Journal
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
 image: assets/tods24_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
@@ -109,6 +121,7 @@ pdf: https://dl.acm.org/doi/pdf/10.1145/3638758
 
 ### [SHACL Validation under the Well-founded Semantics](https://doi.org/10.24963/kr.2024/52)
 venue: 21st International Conference on Principles of Knowledge Representation and Reasoning (KR 2024)
+type: Conference
 authors: Cem Okulmus, Mantas Šimkus
 image: assets/kr24_screen.png
 tags: SHACL, Graph schemas, Well-founded semantics
@@ -118,6 +131,7 @@ slides: assets/talk/CemOkulmus_SHACLValidationUnderWFS.pdf
 
 ### [Towards Practicable Algorithms for Rewriting Graph Queries Beyond DL-Lite (Extended Abstract)](https://ceur-ws.org/Vol-3739/abstract-17.pdf)
 venue: 37th International Workshop on Description Logics (DL 2024)
+type: Workshop
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
 image: assets/eswc25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
@@ -125,6 +139,7 @@ pdf: https://ceur-ws.org/Vol-3739/abstract-17.pdf
 
 ### [Expressive Power and Complexity Results for SIGNAL, an Industry-scale Process Query Language](https://doi.org/10.1007/978-3-031-70418-5_1)
 venue: 22nd International Conference on Business Process Management (BPM 2024) - Forum paper
+type: Conference
 authors: Timotheus Kampik, Cem Okulmus
 image: assets/bpm24_screen.png
 tags: Process querying, Query languages, Complexity
@@ -133,6 +148,7 @@ arxiv: https://arxiv.org/abs/2310.14939
 
 ### [One Language to Rule Them All: Behavioural Querying of Process Data Using SQL](https://doi.org/10.1007/978-3-031-82225-4_2)
 venue: 9th International Workshop on Process Querying, Manipulation, and Intelligence (PQMI 2024)
+type: Workshop
 authors: Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich
 image: assets/icpm24_screen.png
 tags: Process querying, Query languages
@@ -142,6 +158,7 @@ pdf: https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf
 
 ### [Structure-Guided Query Evaluation: Towards Bridging the Gap from Theory to Practice.](https://arxiv.org/abs/2303.02723)
 venue: Preprint
+type: Preprint
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 image: assets/arxiv23_screen.png
 tags: Hypergraph decompositions, Query optimisation
@@ -149,6 +166,7 @@ pdf: https://arxiv.org/pdf/2303.02723
 
 ### [Incremental Updates of Generalized Hypertree Decompositions](https://dl.acm.org/doi/10.1145/3578266)
 venue: Volume 27, ACM Journal of Experimental Algorithmics (JEA)
+type: Journal
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus
 image: assets/jea23_screen.png
 tags: Hypergraph decompositions, Incremental algorithms
@@ -157,6 +175,7 @@ arxiv: https://doi.org/10.48550/arXiv.2209.10375
 
 ### [Rewriting Ontology-Mediated Navigational Queries into Cypher](https://ceur-ws.org/Vol-3515/paper-9.pdf)
 venue: 36th International Workshop on Description Logics (DL 2023)
+type: Workshop
 authors: Nikola Dragovic, Cem Okulmus, Magdalena Ortiz
 image: assets/dl23_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
@@ -165,6 +184,7 @@ slides: assets/talk/talk_DL23.pdf
 
 ### [On the Way to Temporal OBDA Systems (short paper)](https://ceur-ws.org/Vol-3409/paper4.pdf)
 venue: 15th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2023)
+type: Workshop
 authors: Diego Calvanese, Cem Okulmus, Magdalena Ortiz, Mantas Šimkus
 image: assets/amw23_temporal_screen.png
 tags: Temporal OBDA
@@ -173,6 +193,7 @@ slides: assets/talk/talk_amw23.pdf
 
 ### [Reaching Back to Move Forward: Using Old Ideas to Achieve a New Level of Query Optimization (short paper)](https://ceur-ws.org/Vol-3409/paper6.pdf)
 venue: 15th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2023)
+type: Workshop
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 image: assets/amw23_reaching_screen.png
 tags: Query optimisation
@@ -182,6 +203,7 @@ pdf: https://ceur-ws.org/Vol-3409/paper6.pdf
 
 ### [Fast and parallel decomposition of constraint satisfaction problems (Journal article)](https://doi.org/10.1007/s10601-022-09332-1)
 venue: Volume 27, Constraints - An International Journal
+type: Journal
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
 image: assets/constraints22_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction, Parallel algorithms
@@ -189,13 +211,15 @@ pdf: https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf
 
 ### [Parallel Computation of Structural Decompositions](https://doi.org/10.34726/hss.2023.108704)
 venue: PhD Thesis, Technische Universität Wien
+type: Thesis
 authors: Cem Okulmus
 image: assets/thesis22_screen.png
-tags: Hypergraph decompositions, Parallel algorithms, Thesis
+tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://repositum.tuwien.at/bitstream/20.500.12708/139977/1/Okulmus%20Cem%20-%202023%20-%20Parallel%20Computation%20of%20Structural%20Decompositions.pdf
 
 ### [Fast Parallel Hypertree Decompositions in Logarithmic Recursion Depth.](https://doi.org/10.1145/3517804.3524153)
 venue: 41st Symposium on Principles of Database Systems (PODS 22)
+type: Conference
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
 image: assets/pods22_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
@@ -208,6 +232,7 @@ slides: assets/talk/talk.pdf
 
 ### [Fast and Parallel Decomposition of Constraint Satisfaction Problems.](https://doi.org/10.24963/ijcai.2020/161)
 venue: 29th International Joint Conference on Artificial Intelligence (IJCAI-20)
+type: Conference
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
 image: assets/ijcai20_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction, Parallel algorithms
@@ -217,6 +242,7 @@ slides: assets/talk/talk_15min.pdf
 
 ### [The Hypertrac Project: Recent progress and future research directions on hypergraph decompositions](https://doi.org/10.1007/978-3-030-58942-4_1)
 venue: Integration of Constraint Programming, Artificial Intelligence, and Operations Research - 17th International Conference (CPAIOR 2020)
+type: Conference
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler
 image: assets/cp20_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction
@@ -227,6 +253,7 @@ arxiv: https://arxiv.org/abs/2012.14762
 
 ### [Parallel Computation of Generalized Hypertree Decompositions (short paper)](https://ceur-ws.org/Vol-2369/short03.pdf)
 venue: 13th Alberto Mendelzon International Workshop on Foundations of Data Management (AMW 2019)
+type: Workshop
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
 image: assets/amw19_screen.png
 tags: Hypergraph decompositions, Parallel algorithms

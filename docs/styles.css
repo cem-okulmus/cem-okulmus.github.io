@@ -998,6 +998,13 @@ html {
     text-decoration: underline;
 }
 
+/* Several venues for one paper, stacked closer than the card's other rows. */
+.publication-venues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
 .publication-venue {
     font-size: 0.875rem;
     color: var(--color-accent);
@@ -1098,6 +1105,39 @@ html {
     margin-left: 0.35em;
     font-weight: 400;
     opacity: 0.75;
+}
+
+/* Venue tags (Conference, Journal, Workshop, ...) say what kind of
+   publication it is rather than its topic: neutral colours and a pill shape
+   set them apart from the topic tags. */
+.tag-topic.tag-venue {
+    border-radius: 999px;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    background-color: color-mix(in srgb, var(--color-accent-2) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-accent-2) 55%, transparent);
+    color: var(--color-accent-2);
+}
+
+.tag-topic.tag-venue[aria-pressed="true"] {
+    background-color: var(--color-accent-2);
+    border-color: var(--color-accent-2);
+    color: var(--color-global-bg);
+}
+
+.tag-topic.tag-venue:focus-visible {
+    outline-color: var(--color-accent-2);
+}
+
+/* A tag in the filter list that would leave no publications if added. */
+.publication-filter-ready .tag-topic:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+.tag-topic:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .tag-interpretability {
@@ -1357,12 +1397,28 @@ html {
 
 .publication-tag-list {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
     padding: 1rem;
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
     background-color: var(--color-card-bg);
+}
+
+.publication-tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.publication-tag-group-label {
+    flex: 0 0 3.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.6;
 }
 
 .publication-tag-list[hidden],
