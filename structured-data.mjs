@@ -98,7 +98,7 @@ function publicationNode(pub, marked) {
     const { fields, year } = pub;
     const linkMatch = fields.title.match(/^\[(.+)\]\((.+)\)$/);
     const rawTitle = linkMatch ? linkMatch[1] : fields.title;
-    const accepted = /\(Accepted\)\s*$/i.test(rawTitle);
+    const accepted = /^(true|yes)$/i.test((fields.accepted || '').trim());
     const name = plainText(rawTitle, marked).replace(TITLE_REMARK, '').replace(/\.$/, '');
     const link = linkMatch ? linkMatch[2] : null;
     const doi = doiFrom(link);

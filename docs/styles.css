@@ -998,6 +998,25 @@ html {
     text-decoration: underline;
 }
 
+/* "Accepted" badge after the title of a paper that isn't out yet (set with
+   "accepted: true" in publications.md). Sized like the tags, so it reads as
+   a label rather than part of the title. */
+.publication-status {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.45rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 0.25rem;
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    vertical-align: 0.2em;
+    white-space: nowrap;
+}
+
 /* Several venues for one paper, stacked closer than the card's other rows. */
 .publication-venues {
     display: flex;

@@ -2,8 +2,9 @@
 
 ## 2026
 
-### Rewriting Ontology-Mediated Property Graph Queries into GQL (Accepted)
-venue: **To be presented at the** 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)
+### Rewriting Ontology-Mediated Property Graph Queries into GQL
+accepted: true
+venue: 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)
 type: Conference
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
 image: assets/cikm26_screen.png
@@ -13,8 +14,9 @@ arxiv: https://doi.org/10.48550/arXiv.2608.20092
 code: https://gitlab.com/austrian-neurocloud/software/owl2cypher
 tldr: This is our latest published work on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
 
-### Shapes from Examples: Foundations of Shape Learning in Recursive SHACL (Accepted)
-venue: **To be presented at the** 25th International Semantic Web Conference (ISWC 2026)
+### Shapes from Examples: Foundations of Shape Learning in Recursive SHACL
+accepted: true
+venue: 25th International Semantic Web Conference (ISWC 2026)
 type: Conference
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 image: assets/iswc26_screen.png

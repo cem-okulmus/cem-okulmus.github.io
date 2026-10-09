@@ -97,6 +97,12 @@ function parsePublicationBlock(blockLines) {
     return fields;
 }
 
+// "accepted: true" marks a paper that is accepted but not yet presented or
+// published. Absent (or anything other than true/yes) means false.
+function isAccepted(fields) {
+    return /^(true|yes)$/i.test((fields.accepted || '').trim());
+}
+
 function escapeHtml(text) {
     return text
         .replace(/&/g, '&amp;')
@@ -157,10 +163,16 @@ function renderPublicationCard(fields, year, tldrId) {
     // A paper that appeared in two places (e.g. a PODS paper also published
     // in PACMMOD) lists each on its own indented line under "venue:"; each
     // line gets its own badge.
+    const accepted = isAccepted(fields);
     const venueLines = (fields.venue || '').split('\n').map(line => line.trim()).filter(Boolean);
+    const venueHtml = (line, index) => {
+        const prefix = accepted && index === 0 ? '<strong>To be presented at the</strong> ' : '';
+        return `<div class="publication-venue">${prefix}${marked.parseInline(line)}</div>`;
+    };
     const venuesHtml = venueLines.length > 1
-        ? `<div class="publication-venues">${venueLines.map(line => `<div class="publication-venue">${marked.parseInline(line)}</div>`).join('')}</div>`
-        : `<div class="publication-venue">${marked.parseInline(venueLines[0] || '')}</div>`;
+        ? `<div class="publication-venues">${venueLines.map(venueHtml).join('')}</div>`
+        : venueHtml(venueLines[0] || '', 0);
+    const statusHtml = accepted ? ' <span class="publication-status">Accepted</span>' : '';
 
     const descriptionHtml = fields.description
         ? `<div class="publication-description">${marked.parseInline(fields.description)}</div>\n            `
@@ -186,7 +198,7 @@ function renderPublicationCard(fields, year, tldrId) {
             <img src="${fields.image}">
         </div>
         <div class="publication-content">
-            <h3 class="publication-title">${renderPublicationTitle(fields.title)}</h3>
+            <h3 class="publication-title">${renderPublicationTitle(fields.title)}${statusHtml}</h3>
             ${venuesHtml}
             <div class="publication-authors">${marked.parseInline(fields.authors || '')}</div>
             ${descriptionHtml}<div class="publication-year">${year}</div>${rowsHtml}
