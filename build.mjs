@@ -7,9 +7,14 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { marked } from 'marked';
+import { structuredDataScript } from './structured-data.mjs';
 
 const SRC = 'docs';
 const OUT = '_site';
+
+// Every parsed publication entry, collected while rendering for the JSON-LD
+// metadata (see structured-data.mjs).
+const publications = [];
 
 // Open external links in a new tab
 marked.use({
@@ -199,7 +204,9 @@ function transformPublicationsSource(source) {
 
     const flush = () => {
         if (block) {
-            output.push(renderPublicationCard(parsePublicationBlock(block), currentYear, `pub-tldr-${cardIndex++}`));
+            const fields = parsePublicationBlock(block);
+            publications.push({ fields, year: currentYear });
+            output.push(renderPublicationCard(fields, currentYear, `pub-tldr-${cardIndex++}`));
             block = null;
         }
     };
@@ -250,7 +257,8 @@ const index = readFileSync(join(SRC, 'index.html'), 'utf8')
     .replace(/<!--\s*build:([\w-]+)\s*-->/g, (_, section) => {
         rendered.push(section);
         return renderSection(section);
-    });
+    })
+    .replace('</head>', () => `    ${structuredDataScript(publications, marked)}\n</head>`);
 writeFileSync(join(OUT, 'index.html'), index);
 
 console.log(`Built ${OUT}/ with sections: ${rendered.join(', ')}`);
