@@ -14,4 +14,5 @@ To preview locally:
     npm ci
     npm run build
 
-then open `_site/index.html` in a browser.
+then open `_site/index.html` in a browser. `npm run watch` instead rebuilds
+whenever a file in `docs/` changes (reload the browser tab to see it).

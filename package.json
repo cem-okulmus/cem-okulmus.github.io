@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "watch": "node --watch-path=docs build.mjs"
   },
   "engines": {
     "node": ">=18"
