@@ -27,6 +27,7 @@ tldr: Shape Learning refers to the process of generating parts of a SHACL schema
 venue: 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
 image: assets/time26_screen.png
+pdf: assets/TIME26__OBDA_over_Interval_based_Temporal_Data.pdf
 tags: Temporal OBDA, Query languages
 slides: assets/talk/time26_talk_slides.pdf
 tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2&mdash;that has 
