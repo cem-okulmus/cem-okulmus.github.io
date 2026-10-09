@@ -116,13 +116,25 @@ function renderPublicationCard(fields, year, tldrId) {
     // marked() as a paragraph break, splitting this raw HTML in two and
     // causing everything after it to render as escaped text instead of
     // markup.
-    const tagsInner = [
-        ...renderTopicTags(fields.tags),
+    // Topic tags and the links/actions (arXiv, code, slides, "More Info") go in
+    // separate rows, so the links aren't mistaken for more topics.
+    const topicTags = renderTopicTags(fields.tags);
+    const links = [
         fields.arxiv && `<a href="${fields.arxiv}" class="tag tag-arxiv">arXiv</a>`,
         fields.code && `<a href="${fields.code}" class="tag tag-code">Source Code</a>`,
         fields.slides && `<a href="${fields.slides}" class="tag tag-workshop">Talk Slides</a>`,
         fields.tldr && `<button class="publication-tldr-toggle" type="button" aria-expanded="false" aria-controls="${tldrId}">More Info</button>`,
-    ].filter(Boolean).join('\n                ');
+    ].filter(Boolean);
+
+    const tagsHtml = topicTags.length
+        ? `<div class="publication-tags">\n                ${topicTags.join('\n                ')}\n            </div>`
+        : '';
+    const linksHtml = links.length
+        ? `<div class="publication-links">\n                ${links.join('\n                ')}\n            </div>`
+        : '';
+    // Each row brings its own leading line break, so a card with neither row
+    // leaves no whitespace-only line behind (see the comment above).
+    const rowsHtml = [tagsHtml, linksHtml].filter(Boolean).map(row => `\n            ${row}`).join('');
 
     const descriptionHtml = fields.description
         ? `<div class="publication-description">${marked.parseInline(fields.description)}</div>\n            `
@@ -151,10 +163,7 @@ function renderPublicationCard(fields, year, tldrId) {
             <h3 class="publication-title">${renderPublicationTitle(fields.title)}</h3>
             <div class="publication-venue">${marked.parseInline(fields.venue || '')}</div>
             <div class="publication-authors">${marked.parseInline(fields.authors || '')}</div>
-            ${descriptionHtml}<div class="publication-year">${year}</div>
-            <div class="publication-tags">
-                ${tagsInner}
-            </div>
+            ${descriptionHtml}<div class="publication-year">${year}</div>${rowsHtml}
         </div>
     </div>${panelHtml}
 </div>`;

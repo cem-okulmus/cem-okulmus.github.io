@@ -1043,6 +1043,17 @@ html {
     margin-top: 0.5rem;
 }
 
+/* arXiv / code / slides links and "More Info", set apart from the topic tags
+   above by a rule so they don't read as more topics. */
+.publication-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--color-border);
+}
+
 .tag {
     font-size: 0.75rem;
     font-weight: 600;
@@ -1388,7 +1399,8 @@ html {
         height: 120px;
     }
     
-    .publication-tags {
+    .publication-tags,
+    .publication-links {
         justify-content: center;
     }
 }
