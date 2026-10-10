@@ -73,7 +73,7 @@ dates: 2026-03-24
 authors: Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 tags: Query optimisation
 pdf: https://ceur-ws.org/Vol-4186/paper2.pdf
-description: Won the <a href="assets/dolap_award.jpg"><strong>Best Paper Award</strong></a> for DOLAP 2026.
+description: Won the <a href="assets/dolap_award.jpg"><strong>🖼Best Paper Award</strong></a> for DOLAP 2026.
 arxiv: https://doi.org/10.48550/arXiv.2502.20233
 code: https://github.com/dbai-tuw/yannakakis-rewriting
 
