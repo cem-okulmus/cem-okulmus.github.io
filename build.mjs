@@ -7,6 +7,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { marked } from 'marked';
+import { PREVIEW_WIDTHS, finishPreviews, preparePreview } from './previews.mjs';
 import { PERSON, structuredDataScript } from './structured-data.mjs';
 
 const SRC = 'docs';
@@ -217,7 +218,34 @@ function publicationSortDate(fields) {
     return dates.sort()[0] || '';
 }
 
-function renderPublicationCard(fields, year, tldrId) {
+// The first page of the paper (see previews.mjs), linking to its PDF. With
+// JavaScript, clicking it opens the in-page viewer instead (script.js), which
+// reads what to show from the data attributes: the PDF to show in a frame, if
+// it can be, the largest image, and a note when the viewer's PDF is not the
+// one the card links to (e.g. the arXiv version of an ACM paper).
+function renderPreview(fields, preview) {
+    const href = fields.pdf || preview?.source;
+    if (!preview) {
+        const label = href ? `<a href="${href}" class="publication-preview-missing">PDF</a>` : '';
+        return `<div class="publication-image publication-image-missing">${label}</div>`;
+    }
+    const srcset = PREVIEW_WIDTHS.map(width => `${preview.src(width)} ${width}w`).join(', ');
+    const largest = preview.src(PREVIEW_WIDTHS.at(-1));
+    const viewerAttr = preview.viewer ? ` data-viewer="${preview.viewer}"` : '';
+    const note = preview.viewer && preview.viewer !== fields.pdf
+        ? (/arxiv\.org/.test(preview.viewer) ? 'arXiv version'
+            : /^https?:/.test(preview.viewer) ? `Version from ${new URL(preview.viewer).hostname}`
+            : 'Copy on this site')
+        : '';
+    const noteAttr = note ? ` data-note="${escapeHtml(note)}"` : '';
+    return `<div class="publication-image">
+            <a href="${href}" class="publication-preview"${viewerAttr} data-full="${largest}"${noteAttr} aria-label="Preview the PDF">
+                <img src="${preview.src(PREVIEW_WIDTHS[0])}" srcset="${srcset}" sizes="130px" width="${preview.width}" height="${preview.height}" alt="First page of the paper" loading="lazy" decoding="async">
+            </a>
+        </div>`;
+}
+
+function renderPublicationCard(fields, year, tldrId, preview) {
     // Built as an array and joined, rather than interpolated with blank
     // lines for absent fields: a whitespace-only line here would read to
     // marked() as a paragraph break, splitting this raw HTML in two and
@@ -278,9 +306,7 @@ function renderPublicationCard(fields, year, tldrId) {
 
     return `<div class="publication-card"${idAttr} data-year="${escapeHtml(year)}">
     <div class="publication-main">
-        <div class="publication-image">
-            <img src="${fields.image}">
-        </div>
+        ${renderPreview(fields, preview)}
         <div class="publication-content">
             <h3 class="publication-title">${renderPublicationTitle(fields.title)}${statusHtml}</h3>
             ${venuesHtml}
@@ -291,64 +317,78 @@ function renderPublicationCard(fields, year, tldrId) {
 </div>`;
 }
 
-function transformPublicationsSource(source) {
-    const lines = source.split('\n');
-    const output = [];
-    let currentYear = '';
+async function transformPublicationsSource(source) {
+    // Split into the lines outside entries and the entries of each year
+    // section, then render, since the previews have to be awaited.
+    const parts = [];
+    let section = null;
     let block = null;
-    let cardIndex = 0;
-    // The cards of the current year section, output newest first once the
-    // section ends, whatever their order in publications.md. (The page's
-    // "oldest first" sort just reverses this order.)
-    let sectionCards = [];
+    let currentYear = '';
 
     const flush = () => {
         if (block) {
-            const fields = parsePublicationBlock(block);
-            publications.push({ fields, year: currentYear });
-            sectionCards.push({
-                date: publicationSortDate(fields),
-                html: renderPublicationCard(fields, currentYear, `pub-tldr-${cardIndex++}`),
-            });
+            section.push({ fields: parsePublicationBlock(block), year: currentYear });
             block = null;
         }
     };
 
-    const flushSection = () => {
-        flush();
-        // Array.sort is stable, so cards with the same date keep their order.
-        sectionCards.sort((a, b) => (a.date < b.date) - (a.date > b.date));
-        output.push(...sectionCards.map(card => card.html));
-        sectionCards = [];
-    };
-
-    for (const line of lines) {
+    for (const line of source.split('\n')) {
         const yearMatch = line.match(/^##\s+(.+)$/);
         const titleMatch = line.match(/^###\s+/);
 
         if (yearMatch) {
-            flushSection();
+            flush();
             currentYear = yearMatch[1].trim();
-            output.push(line);
+            parts.push(line);
+            section = [];
+            parts.push(section);
         } else if (titleMatch) {
             flush();
             block = [line];
         } else if (block) {
             block.push(line);
         } else {
-            output.push(line);
+            parts.push(line);
         }
     }
-    flushSection();
+    flush();
+
+    const output = [];
+    let cardIndex = 0;
+    for (const part of parts) {
+        if (typeof part === 'string') {
+            output.push(part);
+            continue;
+        }
+        // Each year section's cards are output newest first, whatever their
+        // order in publications.md. (The page's "oldest first" sort just
+        // reverses this order.) Array.sort is stable, so cards with the same
+        // date keep their order.
+        const cards = [];
+        for (const { fields, year } of part) {
+            publications.push({ fields, year });
+            const preview = await preparePreview(fields);
+            cards.push({
+                date: publicationSortDate(fields),
+                html: renderPublicationCard(fields, year, `pub-tldr-${cardIndex++}`, preview),
+            });
+        }
+        cards.sort((a, b) => (a.date < b.date) - (a.date > b.date));
+        output.push(...cards.map(card => card.html));
+    }
+    finishPreviews();
 
     return output.join('\n\n');
 }
 
+// Previews are rendered into docs/ before it is copied to _site/.
+const publicationsSource = await transformPublicationsSource(
+    readFileSync(join(SRC, 'publications.md'), 'utf8'));
+
 function renderSection(section) {
-    const markdown = readFileSync(join(SRC, `${section}.md`), 'utf8');
     const source = section === 'publications'
-        ? transformPublicationsSource(markdown)
-        : markdown;
+        ? publicationsSource
+        : readFileSync(join(SRC, `${section}.md`), 'utf8');
     return openExternalLinksInNewTab(marked.parse(source));
 }
 
@@ -359,7 +399,8 @@ cpSync(SRC, OUT, {
     // not published on their own. Markdown under assets/ is kept.
     filter: src => {
         const rel = relative(SRC, src);
-        return !(dirname(rel) === '.' && rel.endsWith('.md'));
+        return !(dirname(rel) === '.' && rel.endsWith('.md'))
+            && rel !== join('assets', 'previews', 'previews.json');
     },
 });
 

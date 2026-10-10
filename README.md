@@ -16,3 +16,15 @@ To preview locally:
 
 then open `_site/index.html` in a browser. `npm run watch` instead rebuilds
 whenever a file in `docs/` changes (reload the browser tab to see it).
+
+## Publication previews
+
+Each publication card shows the first page of the paper, rendered by
+`previews.mjs` into `docs/assets/previews/` (see the comment at its top). The
+build only renders previews that are missing, which needs `pdftoppm`
+(poppler-utils) and ImageMagick's `magick`; commit the new images together
+with the `publications.md` entry, so the deploy workflow never has to.
+
+If a paper's `pdf:` link can't be downloaded (ACM serves scripts a bot check),
+the arXiv version from `arxiv:` is used instead. Otherwise, download the PDF
+yourself and point `preview:` at it (a path relative to `docs/`, or a URL).

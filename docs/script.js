@@ -306,6 +306,184 @@ function foldText(text) {
     return foldWithMap(text).folded;
 }
 
+// In-page PDF viewer for the publication cards. Clicking a card's first page
+// (rendered by previews.mjs, a link to the PDF) grows that page from the card
+// until it fills the window, then shows the PDF itself over it, in the
+// browser's own PDF viewer in a frame. Where that can't work (the browser
+// can't show a PDF inside a page, as on most phones, or the PDF's host
+// forbids it), the enlarged first page stays, with a button to open the PDF.
+// Modified clicks (e.g. Ctrl+click for a new tab), and visitors without
+// JavaScript, just follow the link.
+class PdfViewer {
+    constructor() {
+        this.reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        // pdfViewerEnabled is also true on iPhones and iPads, which show just
+        // the first page of a PDF in a frame, so this also asks for a mouse.
+        this.canFrame = navigator.pdfViewerEnabled === true
+            && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        this.build();
+
+        document.addEventListener('click', event => {
+            const link = event.target.closest('a.publication-preview');
+            if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            this.open(link);
+        });
+        window.addEventListener('resize', () => {
+            if (this.dialog.open) this.layout();
+        });
+    }
+
+    build() {
+        this.dialog = document.createElement('dialog');
+        this.dialog.className = 'pdf-viewer';
+        this.dialog.innerHTML = `
+            <div class="pdf-viewer-shade"></div>
+            <div class="pdf-viewer-bar">
+                <div class="pdf-viewer-heading">
+                    <span class="pdf-viewer-title"></span>
+                    <span class="pdf-viewer-note"></span>
+                </div>
+                <a class="pdf-viewer-open" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                <button type="button" class="pdf-viewer-close" aria-label="Close" autofocus>&times;</button>
+            </div>
+            <div class="pdf-viewer-stage">
+                <img class="pdf-viewer-page" alt="">
+            </div>`;
+        const part = name => this.dialog.querySelector(`.pdf-viewer-${name}`);
+        this.shade = part('shade');
+        this.bar = part('bar');
+        this.title = part('title');
+        this.note = part('note');
+        this.openLink = part('open');
+        this.stage = part('stage');
+        this.page = part('page');
+
+        part('close').addEventListener('click', () => this.close());
+        // Escape
+        this.dialog.addEventListener('cancel', event => {
+            event.preventDefault();
+            this.close();
+        });
+        // A click beside the page closes it, as in an image lightbox.
+        this.stage.addEventListener('click', event => {
+            if (event.target === this.stage) this.close();
+        });
+        document.body.append(this.dialog);
+    }
+
+    open(link) {
+        if (this.dialog.open) return;
+        this.card = link.closest('.publication-card');
+        // The viewer takes the mouse off the card, which would undo its hover
+        // effects (and move it) while the page grows out of it.
+        this.card.classList.toggle('is-previewing', this.card.matches(':hover'));
+        const heading = this.card.querySelector('.publication-title').cloneNode(true);
+        heading.querySelectorAll('.publication-status').forEach(status => status.remove());
+        const title = heading.textContent.trim();
+
+        this.link = link;
+        this.thumb = link.querySelector('img');
+        this.ratio = this.thumb.getAttribute('width') / this.thumb.getAttribute('height');
+        this.title.textContent = title;
+        this.dialog.setAttribute('aria-label', title);
+        this.note.textContent = link.dataset.note || '';
+        this.openLink.href = link.href;
+
+        // Starts as the image the card already shows, so there is something to
+        // grow straight away; the largest one replaces it once loaded.
+        this.page.src = this.thumb.currentSrc || this.thumb.src;
+        const full = new Image();
+        full.src = link.dataset.full;
+        full.decode().then(() => {
+            if (this.link === link) this.page.src = full.src;
+        }, () => {});
+
+        const from = this.thumb.getBoundingClientRect();
+        this.dialog.showModal();
+        document.documentElement.classList.add('has-pdf-viewer');
+        this.layout();
+        // The page leaves the card while it is enlarged.
+        this.thumb.style.visibility = 'hidden';
+        const grown = this.animate(from, false);
+
+        if (this.canFrame && link.dataset.viewer) {
+            const frame = document.createElement('iframe');
+            frame.className = 'pdf-viewer-frame';
+            frame.title = title;
+            const loaded = new Promise(resolve => frame.addEventListener('load', resolve, { once: true }));
+            frame.src = link.dataset.viewer;
+            this.stage.append(frame);
+            this.frame = frame;
+            Promise.all([grown, loaded]).then(() => frame.classList.add('is-loaded'));
+        }
+    }
+
+    async close() {
+        if (!this.dialog.open || this.closing) return;
+        this.closing = true;
+        if (this.frame) {
+            this.frame.remove();
+            this.frame = null;
+        }
+        // Lets an unfinished opening jump to its end before shrinking back.
+        this.dialog.getAnimations({ subtree: true }).forEach(animation => animation.finish());
+
+        const to = this.thumb.getBoundingClientRect();
+        const onScreen = to.width > 0 && to.bottom > 0 && to.top < window.innerHeight;
+        await this.animate(onScreen ? to : null, true);
+
+        this.thumb.style.visibility = '';
+        this.card.classList.remove('is-previewing');
+        this.dialog.close();
+        document.documentElement.classList.remove('has-pdf-viewer');
+        this.dialog.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
+        this.page.removeAttribute('src');
+        this.link = null;
+        this.closing = false;
+    }
+
+    // Fits the page into the stage, with a margin around it.
+    layout() {
+        const stage = this.stage.getBoundingClientRect();
+        const margin = Math.min(24, stage.width * 0.04);
+        let width = stage.width - 2 * margin;
+        let height = width / this.ratio;
+        if (height > stage.height - 2 * margin) {
+            height = stage.height - 2 * margin;
+            width = height * this.ratio;
+        }
+        Object.assign(this.page.style, {
+            left: `${(stage.width - width) / 2}px`,
+            top: `${(stage.height - height) / 2}px`,
+            width: `${width}px`,
+            height: `${height}px`,
+        });
+    }
+
+    // Moves the page between the card (`card`, a rect) and its place in the
+    // viewer while the rest fades in or out. Without a rect (the card is off
+    // screen) or with reduced motion, everything just fades.
+    animate(card, closing) {
+        const timing = { duration: 380, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'both' };
+        const order = frames => (closing ? [...frames].reverse() : frames);
+        const fade = order([{ opacity: 0 }, { opacity: 1 }]);
+        const animations = [this.shade.animate(fade, timing), this.bar.animate(fade, timing)];
+
+        if (card && !this.reduceMotion.matches) {
+            const page = this.page.getBoundingClientRect();
+            const scale = card.width / page.width;
+            animations.push(this.page.animate(order([
+                { transform: `translate(${card.left - page.left}px, ${card.top - page.top}px) scale(${scale})` },
+                { transform: 'none' },
+            ]), timing));
+        } else {
+            animations.push(this.page.animate(fade, { ...timing, duration: 200 }));
+        }
+        return Promise.all(animations.map(animation => animation.finished)).catch(() => {});
+    }
+}
+
 // Search, tag filter and sorting for the publication list. The list itself is
 // prerendered by build.mjs (year headings, each followed by its cards); this
 // only adds the controls and shows, hides and reorders what is already there,
@@ -690,6 +868,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const publications = document.getElementById('publications-content');
     if (publications) {
         window.publicationFilterInstance = new PublicationFilter(publications);
+    }
+
+    if (document.querySelector('.publication-preview') && 'showModal' in HTMLDialogElement.prototype) {
+        new PdfViewer();
     }
 
     // Add loading state management

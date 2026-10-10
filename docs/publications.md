@@ -9,7 +9,6 @@ type: Conference
 location: Rome, Italy
 dates: 2026-11-07 to 2026-11-11
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
-image: assets/cikm26_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://arxiv.org/pdf/2608.20092
 arxiv: https://doi.org/10.48550/arXiv.2608.20092
@@ -23,7 +22,6 @@ type: Conference
 location: Bari, Italy
 dates: 2026-10-25 to 2026-10-29
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
-image: assets/iswc26_screen.png
 tags: SHACL, Graph schemas, Learnability, Description logics
 pdf: https://arxiv.org/pdf/2607.27934
 arxiv: https://doi.org/10.48550/arXiv.2607.27934
@@ -37,7 +35,6 @@ type: Conference
 location: Cork, Ireland
 dates: 2026-09-01 to 2026-09-03
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
-image: assets/time26_screen.png
 pdf: assets/TIME26__OBDA_over_Interval_based_Temporal_Data.pdf
 tags: Temporal OBDA, Query languages
 slides: assets/talk/time26_talk_slides.pdf
@@ -54,7 +51,6 @@ type: Workshop
 location: Lisbon, Portugal
 dates: 2026-07-17 to 2026-07-19
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz, Anni-Yasmin Turhan
-image: assets/dl26_screen.png
 tags: Learnability, Description logics
 pdf: https://ceur-ws.org/Vol-4230/dl-paper19.pdf
 
@@ -64,7 +60,6 @@ type: Conference
 location: Lisbon, Portugal
 dates: 2026-07-20 to 2026-07-23
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
-image: assets/kr26_screen.png
 tags: SHACL, ShEx, Graph schemas
 pdf: https://proceedings.kr.org/2026/1/kr2026-0001-ahmetaj-et-al.pdf
 arxiv: https://doi.org/10.48550/arXiv.2604.20946
@@ -76,7 +71,6 @@ type: Workshop
 location: Tampere, Finland
 dates: 2026-03-24
 authors: Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
-image: assets/dolap_screen.png
 tags: Query optimisation
 pdf: https://ceur-ws.org/Vol-4186/paper2.pdf
 description: Won the <a href="assets/dolap_award.jpg"><strong>Best Paper Award</strong></a> for DOLAP 2026.
@@ -91,7 +85,6 @@ type: Conference
 location: Sydney, Australia
 dates: 2025-04-28 to 2025-05-02
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Katja Hose, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Axel Polleres, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
-image: assets/www25_screen.png
 tags: SHACL, ShEx, Graph schemas
 pdf: https://dl.acm.org/doi/pdf/10.1145/3696410.3714694
 arxiv: https://doi.org/10.48550/arXiv.2502.01295
@@ -105,7 +98,6 @@ location: Berlin, Germany
 dates: 2025-06-22 to 2025-06-27
 published: 2025-06-09
 authors: Matthias Lanzinger, Cem Okulmus, Reinhard Pichler, Alexander Selzer, Georg Gottlob
-image: assets/sigmod25_screen.png
 tags: Hypergraph decompositions, Query optimisation
 pdf: https://dl.acm.org/doi/pdf/10.1145/3725251
 arxiv: https://doi.org/10.48550/arXiv.2412.11669
@@ -117,7 +109,6 @@ type: Conference
 location: Portorož, Slovenia
 dates: 2025-06-01 to 2025-06-05
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
-image: assets/eswc25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://arxiv.org/pdf/2405.18181
 arxiv: https://doi.org/10.48550/arXiv.2405.18181
@@ -128,7 +119,6 @@ type: Workshop
 location: Opole, Poland
 dates: 2025-09-03 to 2025-09-06
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
-image: assets/dl25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://ceur-ws.org/Vol-4091/paper40.pdf
 
@@ -139,7 +129,6 @@ venue: Volume 49, ACM Transactions on Database Systems (TODS)
 type: Journal
 published: 2024-02-28
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
-image: assets/tods24_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://dl.acm.org/doi/pdf/10.1145/3638758
 
@@ -149,7 +138,6 @@ type: Conference
 location: Hanoi, Vietnam
 dates: 2024-11-02 to 2024-11-08
 authors: Cem Okulmus, Mantas Šimkus
-image: assets/kr24_screen.png
 tags: SHACL, Graph schemas, Well-founded semantics
 pdf: https://proceedings.kr.org/2024/52/kr2024-0052-okulmus-et-al.pdf
 code: https://github.com/cem-okulmus/shawell
@@ -161,7 +149,6 @@ type: Workshop
 location: Bergen, Norway
 dates: 2024-06-18 to 2024-06-21
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
-image: assets/eswc25_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://ceur-ws.org/Vol-3739/abstract-17.pdf
 
@@ -171,7 +158,6 @@ type: Conference
 location: Kraków, Poland
 dates: 2024-09-01 to 2024-09-06
 authors: Timotheus Kampik, Cem Okulmus
-image: assets/bpm24_screen.png
 tags: Process querying, Query languages, Complexity
 pdf: https://arxiv.org/pdf/2310.14939
 arxiv: https://arxiv.org/abs/2310.14939
@@ -182,7 +168,6 @@ type: Workshop
 location: Kongens Lyngby, Denmark
 dates: 2024-10-14
 authors: Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich
-image: assets/icpm24_screen.png
 tags: Process querying, Query languages
 pdf: https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf
 
@@ -193,7 +178,6 @@ venue: Preprint
 type: Preprint
 published: 2023-03-05
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
-image: assets/arxiv23_screen.png
 tags: Hypergraph decompositions, Query optimisation
 pdf: https://arxiv.org/pdf/2303.02723
 
@@ -202,7 +186,6 @@ venue: Volume 27, ACM Journal of Experimental Algorithmics (JEA)
 type: Journal
 published: 2023-03-03
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus
-image: assets/jea23_screen.png
 tags: Hypergraph decompositions, Incremental algorithms
 pdf: https://dl.acm.org/doi/pdf/10.1145/3578266
 arxiv: https://doi.org/10.48550/arXiv.2209.10375
@@ -213,7 +196,6 @@ type: Workshop
 location: Rhodes, Greece
 dates: 2023-09-02 to 2023-09-04
 authors: Nikola Dragovic, Cem Okulmus, Magdalena Ortiz
-image: assets/dl23_screen.png
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://ceur-ws.org/Vol-3515/paper-9.pdf
 slides: assets/talk/talk_DL23.pdf
@@ -224,7 +206,6 @@ type: Workshop
 location: Santiago, Chile
 dates: 2023-05-22 to 2023-05-26
 authors: Diego Calvanese, Cem Okulmus, Magdalena Ortiz, Mantas Šimkus
-image: assets/amw23_temporal_screen.png
 tags: Temporal OBDA
 pdf: https://ceur-ws.org/Vol-3409/paper4.pdf
 slides: assets/talk/talk_amw23.pdf
@@ -235,7 +216,6 @@ type: Workshop
 location: Santiago, Chile
 dates: 2023-05-22 to 2023-05-26
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
-image: assets/amw23_reaching_screen.png
 tags: Query optimisation
 pdf: https://ceur-ws.org/Vol-3409/paper6.pdf
 
@@ -246,7 +226,6 @@ venue: Volume 27, Constraints - An International Journal
 type: Journal
 published: 2022-06-03
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
-image: assets/constraints22_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction, Parallel algorithms
 pdf: https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf
 
@@ -256,7 +235,6 @@ type: Thesis
 dateline: Submitted on 19 October 2022. Defended on 29 November 2022.
 sortdate: 2022-10-19
 authors: Cem Okulmus
-image: assets/thesis22_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://repositum.tuwien.at/bitstream/20.500.12708/139977/1/Okulmus%20Cem%20-%202023%20-%20Parallel%20Computation%20of%20Structural%20Decompositions.pdf
 
@@ -266,7 +244,6 @@ type: Conference
 location: Philadelphia, USA
 dates: 2022-06-12 to 2022-06-17
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
-image: assets/pods22_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://dl.acm.org/doi/pdf/10.1145/3517804.3524153
 arxiv: https://arxiv.org/abs/2104.13793
@@ -281,7 +258,6 @@ type: Conference
 location: Online
 dates: 2021-01-07 to 2021-01-15
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
-image: assets/ijcai20_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction, Parallel algorithms
 pdf: https://www.ijcai.org/proceedings/2020/0161.pdf
 code: https://github.com/cem-okulmus/BalancedGo
@@ -293,7 +269,6 @@ type: Conference
 location: Online
 dates: 2020-09-21 to 2020-09-24
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler
-image: assets/cp20_screen.png
 tags: Hypergraph decompositions, Constraint satisfaction
 pdf: https://arxiv.org/pdf/2012.14762
 arxiv: https://arxiv.org/abs/2012.14762
@@ -306,7 +281,6 @@ type: Workshop
 location: Asunción, Paraguay
 dates: 2019-06-03 to 2019-06-07
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
-image: assets/amw19_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://ceur-ws.org/Vol-2369/short03.pdf
 slides: assets/talk/amw19.pdf
