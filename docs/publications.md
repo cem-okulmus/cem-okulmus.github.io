@@ -309,3 +309,4 @@ authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
 image: assets/amw19_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://ceur-ws.org/Vol-2369/short03.pdf
+slides: assets/talk/amw19.pdf
