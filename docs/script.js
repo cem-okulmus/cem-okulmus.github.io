@@ -344,7 +344,7 @@ class PdfViewer {
                     <span class="pdf-viewer-title"></span>
                     <span class="pdf-viewer-note"></span>
                 </div>
-                <a class="pdf-viewer-open" target="_blank" rel="noopener noreferrer">Open PDF</a>
+                <a class="pdf-viewer-open" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a>
                 <button type="button" class="pdf-viewer-close" aria-label="Close" autofocus>&times;</button>
             </div>
             <div class="pdf-viewer-stage">
