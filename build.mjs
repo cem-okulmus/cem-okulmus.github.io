@@ -179,11 +179,13 @@ function formatDateRange(text) {
 
 // The line between the authors and the tags: where and when a conference or
 // workshop paper was presented ("location:" and "dates:"), and when a journal
-// article was published ("published:"). A paper that is both gets both
-// sentences. Entries with none of these (preprints, the thesis) show their
-// year instead, which matters when the list is sorted by title and the year
-// headings are hidden.
+// article was published ("published:"; for a preprint, when its first
+// version went online). A paper that is both gets both sentences. A one-off
+// entry like the thesis can instead give the whole line as "dateline:".
+// Entries with none of these show their year instead, which matters when the
+// list is sorted by title and the year headings are hidden.
 function renderPublicationDate(fields, year) {
+    if (fields.dateline) return marked.parseInline(fields.dateline);
     const sentences = [];
     if (fields.location || fields.dates) {
         const accepted = isAccepted(fields);
@@ -195,9 +197,24 @@ function renderPublicationDate(fields, year) {
         sentences.push(`${verb}${where}${where && when ? ',' : ''}${when}.`);
     }
     if (fields.published) {
-        sentences.push(`Published on ${formatDateRange(fields.published)}.`);
+        const preprint = /\bPreprint\b/i.test(fields.type || '');
+        const verb = preprint ? 'First published online on' : 'Published on';
+        sentences.push(`${verb} ${formatDateRange(fields.published)}.`);
     }
     return sentences.length ? sentences.join(' ') : escapeHtml(year);
+}
+
+// The date a card is sorted by within its year section: the earliest of the
+// first day it was presented, its publication date and "sortdate:" (for
+// entries like the thesis, whose "dateline:" is free text). As YYYY-MM-DD,
+// these compare correctly as strings. Entries with none give '', which sorts
+// them last.
+function publicationSortDate(fields) {
+    const dates = [fields.dates, fields.published, fields.sortdate]
+        .filter(Boolean)
+        .map(text => text.split(/\s+to\s+/)[0].trim());
+    dates.forEach(parseDate);
+    return dates.sort()[0] || '';
 }
 
 function renderPublicationCard(fields, year, tldrId) {
@@ -280,14 +297,29 @@ function transformPublicationsSource(source) {
     let currentYear = '';
     let block = null;
     let cardIndex = 0;
+    // The cards of the current year section, output newest first once the
+    // section ends, whatever their order in publications.md. (The page's
+    // "oldest first" sort just reverses this order.)
+    let sectionCards = [];
 
     const flush = () => {
         if (block) {
             const fields = parsePublicationBlock(block);
             publications.push({ fields, year: currentYear });
-            output.push(renderPublicationCard(fields, currentYear, `pub-tldr-${cardIndex++}`));
+            sectionCards.push({
+                date: publicationSortDate(fields),
+                html: renderPublicationCard(fields, currentYear, `pub-tldr-${cardIndex++}`),
+            });
             block = null;
         }
+    };
+
+    const flushSection = () => {
+        flush();
+        // Array.sort is stable, so cards with the same date keep their order.
+        sectionCards.sort((a, b) => (a.date < b.date) - (a.date > b.date));
+        output.push(...sectionCards.map(card => card.html));
+        sectionCards = [];
     };
 
     for (const line of lines) {
@@ -295,7 +327,7 @@ function transformPublicationsSource(source) {
         const titleMatch = line.match(/^###\s+/);
 
         if (yearMatch) {
-            flush();
+            flushSection();
             currentYear = yearMatch[1].trim();
             output.push(line);
         } else if (titleMatch) {
@@ -307,7 +339,7 @@ function transformPublicationsSource(source) {
             output.push(line);
         }
     }
-    flush();
+    flushSection();
 
     return output.join('\n\n');
 }

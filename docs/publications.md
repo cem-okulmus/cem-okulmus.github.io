@@ -191,6 +191,7 @@ pdf: https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf
 ### [Structure-Guided Query Evaluation: Towards Bridging the Gap from Theory to Practice.](https://arxiv.org/abs/2303.02723)
 venue: Preprint
 type: Preprint
+published: 2023-03-05
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 image: assets/arxiv23_screen.png
 tags: Hypergraph decompositions, Query optimisation
@@ -252,6 +253,8 @@ pdf: https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf
 ### [Parallel Computation of Structural Decompositions](https://doi.org/10.34726/hss.2023.108704)
 venue: PhD Thesis, Technische Universität Wien
 type: Thesis
+dateline: Submitted on 19 October 2022. Defended on 29 November 2022.
+sortdate: 2022-10-19
 authors: Cem Okulmus
 image: assets/thesis22_screen.png
 tags: Hypergraph decompositions, Parallel algorithms
