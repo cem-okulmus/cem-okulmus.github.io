@@ -133,24 +133,26 @@ function renderVenueTags(type) {
         .map(label => `<button type="button" class="tag tag-topic tag-venue" data-tag="${escapeHtml(label)}" data-kind="venue" aria-pressed="false">${escapeHtml(label)}</button>`);
 }
 
-// "A, B and C" keeps its text exactly, but each co-author's name becomes a
-// button that script.js uses to filter by that co-author (styled to look like
-// plain text). The site owner's own name stays plain text: they are on every
-// paper, so filtering by them would select everything.
+// "A, B, C" and "A, B and C" both render as "A, B and C", so every list has
+// "and" before the last author however it was written. Each co-author's name
+// becomes a button that script.js uses to filter by that co-author (styled to
+// look like plain text). The site owner's own name stays plain text: they are
+// on every paper, so filtering by them would select everything.
 function renderAuthors(authors) {
-    return (authors || '')
-        .split(/(,\s*|\s+and\s+)/)
-        .map((part, i) => {
-            if (i % 2 === 1) return part;
-            const name = part.trim();
-            if (!name) return part;
+    const names = (authors || '')
+        .split(/,\s*|\s+and\s+/)
+        .map(name => name.trim())
+        .filter(Boolean)
+        .map(name => {
             const plain = name.replace(/<[^>]+>|[*_]/g, '');
             if (plain === PERSON.name) {
                 return `<span class="publication-author">${marked.parseInline(name)}</span>`;
             }
             return `<button type="button" class="publication-author" data-author="${escapeHtml(plain)}" aria-pressed="false">${marked.parseInline(name)}</button>`;
-        })
-        .join('');
+        });
+    return names.length > 1
+        ? `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`
+        : names.join('');
 }
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
