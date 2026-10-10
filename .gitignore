@@ -1,2 +1,4 @@
 node_modules/
 _site/
+# PDFs only used to render previews (see "preview:" in README.md)
+pdfs/

@@ -131,6 +131,7 @@ published: 2024-02-28
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://dl.acm.org/doi/pdf/10.1145/3638758
+preview: ../pdfs/tods24.pdf
 
 ### [SHACL Validation under the Well-founded Semantics](https://doi.org/10.24963/kr.2024/52)
 venue: 21st International Conference on Principles of Knowledge Representation and Reasoning (KR 2024)
