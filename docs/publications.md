@@ -29,7 +29,7 @@ tldr: Shape Learning refers to the process of generating parts of a SHACL schema
 	In this work, we provide the first algorithm for learning such fitting shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*.  
 	This is the start of a larger project, where the ultimate aim is to have systems that can _automatically generate entire SHACL schemas, with formal guarantees_ on its correctness w.r.t. the examples the shapes were learned from.
 
-### Querying Interval-Based Temporal Data with SPARQL
+### [Querying Interval-Based Temporal Data with SPARQL](https://drops.dagstuhl.de/entities/document/10.4230/OASIcs.TIME.2026.6)
 venue: 33rd International Symposium on Temporal Representation and Reasoning (TIME 2026)
 type: Conference
 location: Cork, Ireland
