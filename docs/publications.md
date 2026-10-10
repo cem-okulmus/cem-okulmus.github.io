@@ -35,7 +35,7 @@ type: Conference
 location: Cork, Ireland
 dates: 2026-09-01 to 2026-09-03
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
-pdf: assets/papers/time26.pdf
+pdf: https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf
 tags: Temporal OBDA, Query languages
 slides: assets/talk/time26_talk_slides.pdf
 tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2&mdash;that has 

@@ -71,12 +71,6 @@
     "width": 1600,
     "height": 2071
   },
-  "9777ca41df1f": {
-    "source": "assets/papers/time26.pdf",
-    "viewer": "assets/papers/time26.pdf",
-    "width": 1600,
-    "height": 2263
-  },
   "9d54cdec6863": {
     "source": "https://proceedings.kr.org/2026/1/kr2026-0001-ahmetaj-et-al.pdf",
     "viewer": "https://proceedings.kr.org/2026/1/kr2026-0001-ahmetaj-et-al.pdf",
@@ -106,6 +100,12 @@
     "viewer": "https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf",
     "width": 1600,
     "height": 2426
+  },
+  "bb35736371e6": {
+    "source": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
+    "viewer": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
+    "width": 1600,
+    "height": 2263
   },
   "bda9062bfc53": {
     "source": "assets/papers/tods24.pdf",
