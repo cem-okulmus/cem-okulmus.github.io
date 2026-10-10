@@ -29,12 +29,6 @@
     "width": 1600,
     "height": 2071
   },
-  "29b6081b409d": {
-    "source": "../pdfs/tods24.pdf",
-    "viewer": null,
-    "width": 1600,
-    "height": 2371
-  },
   "2ecb6ecaec6e": {
     "source": "https://ceur-ws.org/Vol-3739/abstract-17.pdf",
     "viewer": "https://ceur-ws.org/Vol-3739/abstract-17.pdf",
@@ -112,6 +106,12 @@
     "viewer": "https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf",
     "width": 1600,
     "height": 2426
+  },
+  "bda9062bfc53": {
+    "source": "assets/papers/tods24.pdf",
+    "viewer": "assets/papers/tods24.pdf",
+    "width": 1600,
+    "height": 2371
   },
   "c91bcbf17868": {
     "source": "https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf",
