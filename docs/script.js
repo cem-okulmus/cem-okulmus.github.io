@@ -312,6 +312,8 @@ function foldText(text) {
 // browser's own PDF viewer in a frame. Where that can't work (the browser
 // can't show a PDF inside a page, as on most phones, or the PDF's host
 // forbids it), the enlarged first page stays, with a button to open the PDF.
+// Links to images on this site (e.g. the award photo in a card's
+// description) open the same way, the image growing out of the link.
 // Modified clicks (e.g. Ctrl+click for a new tab), and visitors without
 // JavaScript, just follow the link.
 class PdfViewer {
@@ -324,14 +326,32 @@ class PdfViewer {
         this.build();
 
         document.addEventListener('click', event => {
-            const link = event.target.closest('a.publication-preview');
-            if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-            event.preventDefault();
-            this.open(link);
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            const link = event.target.closest('a[href]');
+            if (!link || this.dialog.contains(link)) return;
+            if (link.matches('.publication-preview')) {
+                event.preventDefault();
+                this.openPdf(link);
+            } else if (PdfViewer.isImage(link)) {
+                event.preventDefault();
+                this.openImage(link);
+            }
         });
         window.addEventListener('resize', () => {
             if (this.dialog.open) this.layout();
         });
+    }
+
+    static isImage(link) {
+        return link.origin === window.location.origin
+            && /\.(avif|gif|jpe?g|png|svg|webp)$/i.test(link.pathname);
+    }
+
+    // A card's title, without the "Accepted" badge.
+    static cardTitle(card) {
+        const heading = card.querySelector('.publication-title').cloneNode(true);
+        heading.querySelectorAll('.publication-status').forEach(status => status.remove());
+        return heading.textContent.trim();
     }
 
     build() {
@@ -344,7 +364,7 @@ class PdfViewer {
                     <span class="pdf-viewer-title"></span>
                     <span class="pdf-viewer-note"></span>
                 </div>
-                <a class="pdf-viewer-open" target="_blank" rel="noopener noreferrer">Open PDF in new tab</a>
+                <a class="pdf-viewer-open" target="_blank" rel="noopener noreferrer"></a>
                 <button type="button" class="pdf-viewer-close" aria-label="Close" autofocus>&times;</button>
             </div>
             <div class="pdf-viewer-stage">
@@ -376,40 +396,25 @@ class PdfViewer {
         document.body.append(this.dialog);
     }
 
-    open(link) {
+    openPdf(link) {
         if (this.dialog.open) return;
-        this.card = link.closest('.publication-card');
-        // The viewer takes the mouse off the card, which would undo its hover
-        // effects (and move it) while the page grows out of it.
-        this.card.classList.toggle('is-previewing', this.card.matches(':hover'));
-        const heading = this.card.querySelector('.publication-title').cloneNode(true);
-        heading.querySelectorAll('.publication-status').forEach(status => status.remove());
-        const title = heading.textContent.trim();
-
-        this.link = link;
-        this.thumb = link.querySelector('img');
-        this.ratio = this.thumb.getAttribute('width') / this.thumb.getAttribute('height');
-        this.title.textContent = title;
-        this.dialog.setAttribute('aria-label', title);
-        this.note.textContent = link.dataset.note || '';
-        this.openLink.href = link.href;
-
+        const thumb = link.querySelector('img');
+        const title = PdfViewer.cardTitle(link.closest('.publication-card'));
         // Starts as the image the card already shows, so there is something to
         // grow straight away; the largest one replaces it once loaded.
-        this.page.src = this.thumb.currentSrc || this.thumb.src;
+        const grown = this.show(link, {
+            origin: thumb,
+            src: thumb.currentSrc || thumb.src,
+            ratio: thumb.getAttribute('width') / thumb.getAttribute('height'),
+            title,
+            note: link.dataset.note || '',
+            openLabel: 'Open PDF in new tab',
+        });
         const full = new Image();
         full.src = link.dataset.full;
         full.decode().then(() => {
             if (this.link === link) this.page.src = full.src;
         }, () => {});
-
-        const from = this.thumb.getBoundingClientRect();
-        this.dialog.showModal();
-        document.documentElement.classList.add('has-pdf-viewer');
-        this.layout();
-        // The page leaves the card while it is enlarged.
-        this.thumb.style.visibility = 'hidden';
-        const grown = this.animate(from, false);
 
         if (this.canFrame && link.dataset.viewer) {
             const frame = document.createElement('iframe');
@@ -423,6 +428,57 @@ class PdfViewer {
         }
     }
 
+    // The image has to load first, for its proportions; one that can't be
+    // shown opens in a new tab as the link would have.
+    async openImage(link) {
+        const image = new Image();
+        image.src = link.href;
+        try {
+            await image.decode();
+        } catch {
+            window.open(link.href, '_blank', 'noopener');
+            return;
+        }
+        if (this.dialog.open) return;
+        const card = link.closest('.publication-card');
+        const label = link.textContent.replace(/\p{Extended_Pictographic}/gu, '').trim();
+        this.show(link, {
+            origin: link,
+            src: image.src,
+            ratio: image.naturalWidth / image.naturalHeight,
+            title: card ? PdfViewer.cardTitle(card) : label,
+            note: card ? label : '',
+            openLabel: 'Open image in new tab',
+        });
+    }
+
+    // Opens the viewer on `src`, growing it from `origin` (the card's page,
+    // which is hidden meanwhile, or the link itself). Resolves once grown.
+    show(link, { origin, src, ratio, title, note, openLabel }) {
+        this.link = link;
+        this.origin = origin;
+        this.ratio = ratio;
+        this.card = link.closest('.publication-card');
+        // The viewer takes the mouse off the card, which would undo its hover
+        // effects (and move it) while the page grows out of it.
+        this.held = [this.card, link].filter(element => element && element.matches(':hover'));
+        this.held.forEach(element => element.classList.add('is-previewing'));
+
+        this.title.textContent = title;
+        this.dialog.setAttribute('aria-label', title);
+        this.note.textContent = note;
+        this.openLink.textContent = openLabel;
+        this.openLink.href = link.href;
+        this.page.src = src;
+
+        const from = origin.getBoundingClientRect();
+        this.dialog.showModal();
+        document.documentElement.classList.add('has-pdf-viewer');
+        this.layout();
+        if (origin !== link) origin.style.visibility = 'hidden';
+        return this.animate(from, false);
+    }
+
     async close({ animate = true } = {}) {
         if (!this.dialog.open || this.closing) return;
         this.closing = true;
@@ -434,13 +490,13 @@ class PdfViewer {
         this.dialog.getAnimations({ subtree: true }).forEach(animation => animation.finish());
 
         if (animate) {
-            const to = this.thumb.getBoundingClientRect();
+            const to = this.origin.getBoundingClientRect();
             const onScreen = to.width > 0 && to.bottom > 0 && to.top < window.innerHeight;
             await this.animate(onScreen ? to : null, true);
         }
 
-        this.thumb.style.visibility = '';
-        this.card.classList.remove('is-previewing');
+        this.origin.style.visibility = '';
+        this.held.forEach(element => element.classList.remove('is-previewing'));
         this.dialog.close();
         document.documentElement.classList.remove('has-pdf-viewer');
         this.dialog.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
@@ -467,9 +523,9 @@ class PdfViewer {
         });
     }
 
-    // Moves the page between the card (`card`, a rect) and its place in the
-    // viewer while the rest fades in or out. Without a rect (the card is off
-    // screen) or with reduced motion, everything just fades.
+    // Moves the page between where it came from (`card`, a rect) and its
+    // place in the viewer while the rest fades in or out. Without a rect (it
+    // is off screen) or with reduced motion, everything just fades.
     animate(card, closing) {
         const timing = { duration: 380, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)', fill: 'both' };
         const order = frames => (closing ? [...frames].reverse() : frames);

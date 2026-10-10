@@ -990,7 +990,7 @@ html {
 }
 
 .publication-preview:hover img,
-.publication-card.is-previewing .publication-preview img {
+.publication-preview.is-previewing img {
     transform: scale(1.04);
 }
 
