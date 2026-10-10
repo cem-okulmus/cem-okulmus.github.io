@@ -35,7 +35,7 @@ type: Conference
 location: Cork, Ireland
 dates: 2026-09-01 to 2026-09-03
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
-pdf: assets/TIME26__OBDA_over_Interval_based_Temporal_Data.pdf
+pdf: assets/papers/time26.pdf
 tags: Temporal OBDA, Query languages
 slides: assets/talk/time26_talk_slides.pdf
 tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2&mdash;that has 
