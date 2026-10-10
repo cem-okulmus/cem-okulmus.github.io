@@ -360,6 +360,10 @@ class PdfViewer {
         this.page = part('page');
 
         part('close').addEventListener('click', () => this.close());
+        // The link still opens its new tab; the viewer is done with once the
+        // PDF is open there. No animation: this tab is about to be hidden,
+        // which pauses animations, so it would only play on coming back.
+        this.openLink.addEventListener('click', () => this.close({ animate: false }));
         // Escape
         this.dialog.addEventListener('cancel', event => {
             event.preventDefault();
@@ -419,7 +423,7 @@ class PdfViewer {
         }
     }
 
-    async close() {
+    async close({ animate = true } = {}) {
         if (!this.dialog.open || this.closing) return;
         this.closing = true;
         if (this.frame) {
@@ -429,9 +433,11 @@ class PdfViewer {
         // Lets an unfinished opening jump to its end before shrinking back.
         this.dialog.getAnimations({ subtree: true }).forEach(animation => animation.finish());
 
-        const to = this.thumb.getBoundingClientRect();
-        const onScreen = to.width > 0 && to.bottom > 0 && to.top < window.innerHeight;
-        await this.animate(onScreen ? to : null, true);
+        if (animate) {
+            const to = this.thumb.getBoundingClientRect();
+            const onScreen = to.width > 0 && to.bottom > 0 && to.top < window.innerHeight;
+            await this.animate(onScreen ? to : null, true);
+        }
 
         this.thumb.style.visibility = '';
         this.card.classList.remove('is-previewing');
