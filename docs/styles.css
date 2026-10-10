@@ -940,10 +940,36 @@ html {
     box-shadow: 0 8px 25px var(--color-shadow);
 }
 
-/* Briefly outlines a card reached via an in-page link (e.g. a reference to an
-   earlier paper from a TL;DR), so it's clear which card was meant. */
-.publication-card:target {
-    animation: publication-target-flash 2.5s ease-out;
+/* Briefly outlines and shakes a card reached via an in-page link (e.g. a
+   reference to an earlier paper from a TL;DR), so it's clear which card was
+   meant. :target covers opening the page at the card's URL. With
+   JavaScript, SmoothScroll in script.js plays it with .is-flashing instead,
+   for links within the page too, and turns off the :target rule
+   (.flash-by-script): the card stays the :target after its flash (links
+   within the page don't change it), which would keep the animations applied
+   and so stop .is-flashing from playing them again. */
+html:not(.flash-by-script) .publication-card:target,
+.publication-card.is-flashing {
+    animation:
+        publication-target-flash 2.5s ease-out,
+        publication-target-shake 0.7s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:not(.flash-by-script) .publication-card:target,
+    .publication-card.is-flashing {
+        animation: publication-target-flash 2.5s ease-out;
+    }
+}
+
+/* Side to side, each swing smaller than the last. */
+@keyframes publication-target-shake {
+    0%, 100% { transform: translateX(0); }
+    15% { transform: translateX(-10px); }
+    30% { transform: translateX(8px); }
+    45% { transform: translateX(-6px); }
+    60% { transform: translateX(4px); }
+    75% { transform: translateX(-2px); }
 }
 
 @keyframes publication-target-flash {

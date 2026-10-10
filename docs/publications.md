@@ -134,6 +134,7 @@ pdf: https://dl.acm.org/doi/pdf/10.1145/3638758
 preview: assets/papers/tods24.pdf
 
 ### [SHACL Validation under the Well-founded Semantics](https://doi.org/10.24963/kr.2024/52)
+id: kr24
 venue: 21st International Conference on Principles of Knowledge Representation and Reasoning (KR 2024)
 type: Conference
 location: Hanoi, Vietnam

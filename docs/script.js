@@ -136,6 +136,16 @@ class SmoothScroll {
     }
 
     init() {
+        // Takes over the flash of a card the page was opened at (from its
+        // :target rule, see .flash-by-script in styles.css), so the card can
+        // flash again when a link leads to it. Both rules start the same
+        // animations, so one that is already running just carries on. The
+        // card is found by the URL, as it may not be the :target yet.
+        const id = decodeURIComponent(window.location.hash.slice(1));
+        const target = id && document.getElementById(id);
+        if (target && target.matches('.publication-card')) this.flash(target, true);
+        document.documentElement.classList.add('flash-by-script');
+
         // Handle navigation link clicks
         const navLinks = document.querySelectorAll('a[href^="#"]');
         
@@ -162,16 +172,47 @@ class SmoothScroll {
                         navigationHighlight.highlightNavLink(sectionId);
                     }
                     
+                    const alreadyThere = Math.abs(targetPosition - window.pageYOffset) < 1;
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
+
                     // Update URL without triggering scroll
                     history.pushState(null, null, targetId);
+
+                    if (targetElement.matches('.publication-card')) {
+                        this.flash(targetElement, alreadyThere);
+                    }
                 }
             });
         });
+    }
+
+    // Outlines and shakes a card reached via a link, as :target does when the
+    // page is opened at the card's URL (pushState doesn't make it the
+    // :target). It starts once the scroll has stopped, so it isn't over
+    // before the card comes into view.
+    flash(card, now) {
+        card.classList.remove('is-flashing');
+        const start = () => {
+            void card.offsetWidth; // restarts the animation if it is still running
+            card.classList.add('is-flashing');
+        };
+        if (now) {
+            start();
+        } else if ('onscrollend' in window) {
+            window.addEventListener('scrollend', start, { once: true });
+        } else {
+            setTimeout(start, 600);
+        }
+        // The shake ends first; the class stays until the outline has faded.
+        const end = event => {
+            if (event.target !== card || event.animationName !== 'publication-target-flash') return;
+            card.classList.remove('is-flashing');
+            card.removeEventListener('animationend', end);
+        };
+        card.addEventListener('animationend', end);
     }
 }
 
