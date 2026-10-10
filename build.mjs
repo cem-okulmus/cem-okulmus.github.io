@@ -153,6 +153,51 @@ function renderAuthors(authors) {
         .join('');
 }
 
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+    'August', 'September', 'October', 'November', 'December'];
+
+// "2026-03-24" becomes { day: 24, month: 'March', year: 2026 }.
+function parseDate(text) {
+    const match = (text || '').trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) throw new Error(`Expected a YYYY-MM-DD date, got "${text}"`);
+    return { day: Number(match[3]), month: MONTHS[Number(match[2]) - 1], year: Number(match[1]) };
+}
+
+// "2026-11-07 to 2026-11-11" becomes "7–11 November 2026", leaving out the
+// month and year of the start where the end repeats them. A single date is
+// printed on its own.
+function formatDateRange(text) {
+    const [start, end] = text.split(/\s+to\s+/).map(parseDate);
+    if (!end) return `${start.day} ${start.month} ${start.year}`;
+    const endText = `${end.day} ${end.month} ${end.year}`;
+    if (start.year !== end.year) return `${start.day} ${start.month} ${start.year} – ${endText}`;
+    if (start.month !== end.month) return `${start.day} ${start.month} – ${endText}`;
+    return `${start.day}–${endText}`;
+}
+
+// The line between the authors and the tags: where and when a conference or
+// workshop paper was presented ("location:" and "dates:"), and when a journal
+// article was published ("published:"). A paper that is both gets both
+// sentences. Entries with none of these (preprints, the thesis) show their
+// year instead, which matters when the list is sorted by title and the year
+// headings are hidden.
+function renderPublicationDate(fields, year) {
+    const sentences = [];
+    if (fields.location || fields.dates) {
+        const accepted = isAccepted(fields);
+        const where = !fields.location ? ''
+            : /^online$/i.test(fields.location.trim()) ? ' online'
+            : ` in ${escapeHtml(fields.location.trim())}`;
+        const when = fields.dates ? ` on ${formatDateRange(fields.dates)}` : '';
+        const verb = accepted ? 'Will be presented' : 'Presented';
+        sentences.push(`${verb}${where}${where && when ? ',' : ''}${when}.`);
+    }
+    if (fields.published) {
+        sentences.push(`Published on ${formatDateRange(fields.published)}.`);
+    }
+    return sentences.length ? sentences.join(' ') : escapeHtml(year);
+}
+
 function renderPublicationCard(fields, year, tldrId) {
     // Built as an array and joined, rather than interpolated with blank
     // lines for absent fields: a whitespace-only line here would read to
@@ -221,7 +266,7 @@ function renderPublicationCard(fields, year, tldrId) {
             <h3 class="publication-title">${renderPublicationTitle(fields.title)}${statusHtml}</h3>
             ${venuesHtml}
             <div class="publication-authors">${renderAuthors(fields.authors)}</div>
-            ${descriptionHtml}<div class="publication-year">${year}</div>${rowsHtml}
+            ${descriptionHtml}<div class="publication-year">${renderPublicationDate(fields, year)}</div>${rowsHtml}
         </div>
     </div>${panelHtml}
 </div>`;

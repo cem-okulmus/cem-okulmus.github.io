@@ -123,7 +123,7 @@ function publicationNode(pub, marked) {
         ...(doi && { '@id': `https://doi.org/${doi}` }),
         name,
         author: authors,
-        datePublished: year,
+        datePublished: (fields.published || '').trim() || year,
         ...(link && { url: absolute(link) }),
         ...(doi && { identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: doi } }),
         ...(types.length && { genre: types }),
