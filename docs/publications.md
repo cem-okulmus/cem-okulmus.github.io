@@ -2,6 +2,20 @@
 
 ## 2026
 
+
+### sheval: An RDF data shapes evaluation tool and test-suite for recursive shapes
+accepted: true
+venue: 2nd International Workshop on Data Management for Knowledge Graphs (DMKG26)
+type: Workshop
+location: Bari, Italy
+dates: 2026-10-25
+colocation: the 25th International Semantic Web Conference (ISWC 2026)
+authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, José Emilio Labra Gayo, Wim Martens, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
+tags: SHACL, ShEx, Graph schemas
+arxiv: https://doi.org/10.48550/arXiv.2609.05944
+code: https://github.com/cogsl/sheval
+
+
 ### Rewriting Ontology-Mediated Property Graph Queries into GQL
 accepted: true
 venue: 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)
@@ -32,6 +46,7 @@ venue: 33rd International Symposium on Temporal Representation and Reasoning (TI
 type: Conference
 location: Cork, Ireland
 dates: 2026-09-01 to 2026-09-03
+colocation: the 37th International Conference on Principles of Diagnosis and Resilient Systems (DX'26)
 authors: Julien Corman, Roman Kontchakov and Cem Okulmus
 pdf: https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf
 tags: Temporal OBDA, Query languages
@@ -48,6 +63,7 @@ venue: 39th International Workshop on Description Logics (DL 2026)
 type: Workshop
 location: Lisbon, Portugal
 dates: 2026-07-17 to 2026-07-19
+colocation: the 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026), as part of the Federated Logic Conference (FLoC 2026)
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz, Anni-Yasmin Turhan
 tags: Learnability, Description logics
 pdf: https://ceur-ws.org/Vol-4230/dl-paper19.pdf
@@ -57,6 +73,7 @@ venue: 23rd International Conference on Principles of Knowledge Representation a
 type: Conference
 location: Lisbon, Portugal
 dates: 2026-07-20 to 2026-07-23
+colocation: the other conferences of the Federated Logic Conference (FLoC 2026)
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Fabio Mogavero, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
 tags: SHACL, ShEx, Graph schemas
 pdf: https://proceedings.kr.org/2026/1/kr2026-0001-ahmetaj-et-al.pdf
@@ -68,6 +85,7 @@ venue: 28th International Workshop on Design, Optimization, Languages and Analyt
 type: Workshop
 location: Tampere, Finland
 dates: 2026-03-24
+colocation: the 29th International Conference on Extending Database Technology and the 28th International Conference on Database Theory (EDBT/ICDT 2026)
 authors: Daniela Böhm, Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 tags: Query optimisation
 pdf: https://ceur-ws.org/Vol-4186/paper2.pdf
@@ -94,6 +112,7 @@ venue: 44th Symposium on Principles of Database Systems (PODS 25)
 type: Conference, Journal
 location: Berlin, Germany
 dates: 2025-06-22 to 2025-06-27
+colocation: the 2025 ACM SIGMOD International Conference on Management of Data (SIGMOD 2025)
 published: 2025-06-09
 authors: Matthias Lanzinger, Cem Okulmus, Reinhard Pichler, Alexander Selzer, Georg Gottlob
 tags: Hypergraph decompositions, Query optimisation
@@ -165,6 +184,7 @@ venue: 9th International Workshop on Process Querying, Manipulation, and Intelli
 type: Workshop
 location: Kongens Lyngby, Denmark
 dates: 2024-10-14
+colocation: the 6th International Conference on Process Mining (ICPM 2024)
 authors: Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich
 tags: Process querying, Query languages
 pdf: https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf
@@ -193,6 +213,7 @@ venue: 36th International Workshop on Description Logics (DL 2023)
 type: Workshop
 location: Rhodes, Greece
 dates: 2023-09-02 to 2023-09-04
+colocation: the 20th International Conference on Principles of Knowledge Representation and Reasoning (KR 2023) and the 21st International Workshop on Non-Monotonic Reasoning (NMR 2023)
 authors: Nikola Dragovic, Cem Okulmus, Magdalena Ortiz
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
 pdf: https://ceur-ws.org/Vol-3515/paper-9.pdf
@@ -241,6 +262,7 @@ venue: 41st Symposium on Principles of Database Systems (PODS 22)
 type: Conference
 location: Philadelphia, USA
 dates: 2022-06-12 to 2022-06-17
+colocation: the 2022 ACM SIGMOD International Conference on Management of Data (SIGMOD 2022)
 authors: Georg Gottlob, Matthias Lanzinger, Cem Okulmus, Reinhard Pichler
 tags: Hypergraph decompositions, Parallel algorithms
 pdf: https://dl.acm.org/doi/pdf/10.1145/3517804.3524153
