@@ -4,6 +4,8 @@
 // comes from the same fields as the publication cards, so the two can't drift
 // apart; only the details about the person below are kept by hand.
 
+import { pdfLink } from './previews.mjs';
+
 const SITE = 'https://cem-okulmus.cv/';
 
 export const PERSON = {
@@ -140,8 +142,9 @@ function publicationNode(pub, marked) {
         if (parts.length) node.isPartOf = parts.length === 1 ? parts[0] : parts;
     }
 
-    if (fields.pdf) {
-        node.encoding = { '@type': 'MediaObject', encodingFormat: 'application/pdf', contentUrl: absolute(fields.pdf) };
+    const pdf = pdfLink(fields);
+    if (pdf) {
+        node.encoding = { '@type': 'MediaObject', encodingFormat: 'application/pdf', contentUrl: absolute(pdf) };
     }
     const arxiv = arxivFrom(fields.arxiv) || arxivFrom(fields.pdf);
     if (arxiv) node.sameAs = arxiv;

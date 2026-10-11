@@ -10,7 +10,6 @@ location: Rome, Italy
 dates: 2026-11-07 to 2026-11-11
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
-pdf: https://arxiv.org/pdf/2608.20092
 arxiv: https://doi.org/10.48550/arXiv.2608.20092
 code: https://gitlab.com/austrian-neurocloud/software/owl2cypher
 tldr: This is our latest published work on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
@@ -23,7 +22,6 @@ location: Bari, Italy
 dates: 2026-10-25 to 2026-10-29
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 tags: SHACL, Graph schemas, Learnability, Description logics
-pdf: https://arxiv.org/pdf/2607.27934
 arxiv: https://doi.org/10.48550/arXiv.2607.27934
 tldr: Shape Learning refers to the process of generating parts of a SHACL schema (the so-called shapes), in this case from labelled examples. The goal is to find a _fitting_ shape, in the sense that it includes all positively-labelled examples and none of the negatively-labelled ones.    
 	In this work, we provide the first algorithm for learning such fitting shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*.  
@@ -110,7 +108,6 @@ location: Portorož, Slovenia
 dates: 2025-06-01 to 2025-06-05
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus, Magdalena Ortiz
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
-pdf: https://arxiv.org/pdf/2405.18181
 arxiv: https://doi.org/10.48550/arXiv.2405.18181
 
 ### [Query Rewriting for Nested Navigational Queries over Property Graphs](https://ceur-ws.org/Vol-4091/paper40.pdf)
@@ -161,7 +158,6 @@ location: Kraków, Poland
 dates: 2024-09-01 to 2024-09-06
 authors: Timotheus Kampik, Cem Okulmus
 tags: Process querying, Query languages, Complexity
-pdf: https://arxiv.org/pdf/2310.14939
 arxiv: https://arxiv.org/abs/2310.14939
 
 ### [One Language to Rule Them All: Behavioural Querying of Process Data Using SQL](https://doi.org/10.1007/978-3-031-82225-4_2)
@@ -181,7 +177,7 @@ type: Preprint
 published: 2023-03-05
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler, Alexander Selzer
 tags: Hypergraph decompositions, Query optimisation
-pdf: https://arxiv.org/pdf/2303.02723
+arxiv: https://arxiv.org/abs/2303.02723
 
 ### [Incremental Updates of Generalized Hypertree Decompositions](https://dl.acm.org/doi/10.1145/3578266)
 venue: Volume 27, ACM Journal of Experimental Algorithmics (JEA)
@@ -272,7 +268,6 @@ location: Online
 dates: 2020-09-21 to 2020-09-24
 authors: Georg Gottlob, Matthias Lanzinger, Davide Mario Longo, Cem Okulmus, Reinhard Pichler
 tags: Hypergraph decompositions, Constraint satisfaction
-pdf: https://arxiv.org/pdf/2012.14762
 arxiv: https://arxiv.org/abs/2012.14762
 
 ## 2019

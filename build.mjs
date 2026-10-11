@@ -7,7 +7,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { marked } from 'marked';
-import { PREVIEW_WIDTHS, finishPreviews, preparePreview } from './previews.mjs';
+import { PREVIEW_WIDTHS, finishPreviews, pdfLink, preparePreview } from './previews.mjs';
 import { PERSON, structuredDataScript } from './structured-data.mjs';
 
 const SRC = 'docs';
@@ -222,9 +222,10 @@ function publicationSortDate(fields) {
 // JavaScript, clicking it opens the in-page viewer instead (script.js), which
 // reads what to show from the data attributes: the PDF to show in a frame, if
 // it can be, the largest image, and a note when the viewer's PDF is not the
-// one the card links to (e.g. the arXiv version of an ACM paper).
+// one the card links to (e.g. the arXiv version of an ACM paper), or when the
+// card has no "pdf:" and so links to the arXiv version itself.
 function renderPreview(fields, preview) {
-    const href = fields.pdf || preview?.source;
+    const href = pdfLink(fields) || preview?.source;
     if (!preview) {
         const label = href ? `<a href="${href}" class="publication-preview-missing">PDF</a>` : '';
         return `<div class="publication-image publication-image-missing">${label}</div>`;
@@ -254,8 +255,10 @@ function renderPublicationCard(fields, year, tldrId, preview) {
     // Topic tags and the links/actions (arXiv, code, slides, "More Info") go in
     // separate rows, so the links aren't mistaken for more topics.
     const topicTags = [...renderVenueTags(fields.type), ...renderTopicTags(fields.tags)];
+    const pdf = pdfLink(fields);
+    const pdfTitle = fields.pdf ? '' : ' title="arXiv version"';
     const links = [
-        fields.pdf && `<a href="${fields.pdf}" class="tag tag-pdf">PDF</a>`,
+        pdf && `<a href="${pdf}" class="tag tag-pdf"${pdfTitle}>PDF</a>`,
         fields.arxiv && `<a href="${fields.arxiv}" class="tag tag-arxiv">arXiv</a>`,
         fields.code && `<a href="${fields.code}" class="tag tag-code">Source Code</a>`,
         fields.slides && `<a href="${fields.slides}" class="tag tag-workshop">Talk Slides</a>`,

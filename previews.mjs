@@ -31,9 +31,16 @@ export const PREVIEW_WIDTHS = [400, 800, 1600];
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {};
 const used = new Set();
 
-function arxivPdf(url) {
+export function arxivPdf(url) {
     const match = (url || '').match(/(?:arxiv\.org\/(?:abs|pdf)\/|10\.48550\/arXiv\.)([\w.\/-]+?)(?:v\d+)?$/i);
     return match ? `https://arxiv.org/pdf/${match[1]}` : null;
+}
+
+// The PDF a card links to: "pdf:" (the published version) if given, else the
+// arXiv version named by "arxiv:", so a paper on arXiv needs no "pdf:" line
+// until it is published.
+export function pdfLink(fields) {
+    return (fields.pdf || '').trim() || arxivPdf(fields.arxiv);
 }
 
 function sources(fields) {

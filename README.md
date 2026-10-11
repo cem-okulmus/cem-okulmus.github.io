@@ -25,6 +25,10 @@ build only renders previews that are missing, which needs `pdftoppm`
 (poppler-utils) and ImageMagick's `magick`; commit the new images together
 with the `publications.md` entry, so the deploy workflow never has to.
 
+A paper with `arxiv:` but no `pdf:` links its PDF button and preview to the
+arXiv PDF (marked as the arXiv version); add `pdf:` once the published version
+is out and both switch to it.
+
 If a paper's `pdf:` link can't be downloaded (ACM serves scripts a bot check),
 the arXiv version from `arxiv:` is used instead. Otherwise, download the PDF
 yourself and point `preview:` at it (a path relative to `docs/`, or a URL).
