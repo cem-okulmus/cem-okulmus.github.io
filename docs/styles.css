@@ -1559,6 +1559,14 @@ button.publication-author:focus-visible {
     transform: none;
 }
 
+/* Line the text up with the title and links rather than the page preview
+   (which is hidden on narrow screens, see .publication-image). */
+@media (min-width: 769px) {
+    .publication-main:has(> .publication-image) + .publication-tldr-panel .publication-tldr-content {
+        margin-left: calc(130px + 1.5rem);
+    }
+}
+
 .prose .publication-tldr-content > * {
     margin-top: 0;
     margin-bottom: 0.75rem;
@@ -1694,14 +1702,19 @@ button.publication-author:focus-visible {
 }
 
 .publication-tag-group {
+    --tag-group-indent: 6rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
+    padding-left: var(--tag-group-indent);
 }
 
+/* The label is pulled into the group's left padding, so tags that wrap onto
+   further lines line up with the first tag rather than with the label. */
 .publication-tag-group-label {
-    flex: 0 0 5.5rem;
+    flex: 0 0 calc(var(--tag-group-indent) - 0.5rem);
+    margin-left: calc(-1 * var(--tag-group-indent));
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -1728,6 +1741,15 @@ button.publication-author:focus-visible {
 @media (max-width: 640px) {
     .publication-sort {
         flex: 1 1 100%;
+    }
+
+    /* Too narrow to spare the indent: the label gets a line of its own. */
+    .publication-tag-group {
+        --tag-group-indent: 0rem;
+    }
+
+    .publication-tag-group-label {
+        flex-basis: 100%;
     }
 
     .publication-sort select {
