@@ -1239,6 +1239,16 @@ html.has-pdf-viewer {
     width: fit-content;
 }
 
+/* "Co-located with ..." on its own line inside the venue badge, lighter
+   than the venue itself. */
+.publication-colocation {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: color-mix(in srgb, var(--color-accent) 75%, white);
+}
+
 .publication-authors {
     font-size: 0.875rem;
     color: var(--color-global-text);

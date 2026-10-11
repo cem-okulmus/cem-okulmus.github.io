@@ -181,10 +181,8 @@ function formatDateRange(text) {
 // The line between the authors and the tags: where and when a conference or
 // workshop paper was presented ("location:" and "dates:"), and when a journal
 // article was published ("published:"; for a preprint, when its first
-// version went online). A paper that is both gets both sentences, and
-// "colocation:" adds one after the first saying what it was co-located with.
-// A one-off entry like the thesis can instead give the whole line as
-// "dateline:".
+// version went online). A paper that is both gets both sentences. A one-off
+// entry like the thesis can instead give the whole line as "dateline:".
 // Entries with none of these show their year instead, which matters when the
 // list is sorted by title and the year headings are hidden.
 function renderPublicationDate(fields, year) {
@@ -198,10 +196,6 @@ function renderPublicationDate(fields, year) {
         const when = fields.dates ? ` on ${formatDateRange(fields.dates)}` : '';
         const verb = accepted ? 'Will be presented' : 'Presented';
         sentences.push(`${verb}${where}${where && when ? ',' : ''}${when}.`);
-    }
-    // Markdown, so the event can be a link.
-    if (fields.colocation) {
-        sentences.push(`Co-located with ${marked.parseInline(fields.colocation.trim().replace(/\.$/, ''))}.`);
     }
     if (fields.published) {
         const preprint = /\bPreprint\b/i.test(fields.type || '');
@@ -283,12 +277,18 @@ function renderPublicationCard(fields, year, tldrId, preview) {
 
     // A paper that appeared in two places (e.g. a PODS paper also published
     // in PACMMOD) lists each on its own indented line under "venue:"; each
-    // line gets its own badge.
+    // line gets its own badge. "colocation:" (Markdown, so it can be a link)
+    // names the event the first venue was co-located with, shown below it in
+    // the same badge.
     const accepted = isAccepted(fields);
     const venueLines = (fields.venue || '').split('\n').map(line => line.trim()).filter(Boolean);
+    const colocation = (fields.colocation || '').trim().replace(/\.$/, '');
     const venueHtml = (line, index) => {
         const prefix = accepted && index === 0 ? '<strong>To be presented at the</strong> ' : '';
-        return `<div class="publication-venue">${prefix}${marked.parseInline(line)}</div>`;
+        const colocationHtml = colocation && index === 0
+            ? `<span class="publication-colocation">Co-located with ${marked.parseInline(colocation)}</span>`
+            : '';
+        return `<div class="publication-venue">${prefix}${marked.parseInline(line)}${colocationHtml}</div>`;
     };
     const venuesHtml = venueLines.length > 1
         ? `<div class="publication-venues">${venueLines.map(venueHtml).join('')}</div>`
