@@ -10,7 +10,7 @@ type: Workshop
 location: Bari, Italy
 dates: 2026-10-25
 colocation: the 25th International Semantic Web Conference (ISWC 2026)
-authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders, José Emilio Labra Gayo, Wim Martens, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
+authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders,Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
 tags: SHACL, ShEx, Graph schemas
 arxiv: https://doi.org/10.48550/arXiv.2609.05944
 code: https://github.com/cogsl/sheval
