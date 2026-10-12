@@ -322,8 +322,12 @@ document.addEventListener('click', (e) => {
     panel.classList.toggle('is-open', !isOpen);
 });
 
+// Math symbols (rendered by Temml) that NFKD leaves alone, mapped to the
+// keyboard characters people would type for them.
+const MATH_OPERATORS = { '∗': '*', '−': '-', '∣': '|', '∼': '~' };
+
 // Search text is compared after folding: lowercase, accents dropped and
-// compatibility forms unified (so "el" also finds "ℰℒ"). Folding is done per
+// compatibility forms unified (so "el*" also finds "ℰℒ∗"). Folding is done per
 // character and keeps where each folded character came from, so matches can be
 // mapped back onto the original text for highlighting.
 function foldWithMap(text) {
@@ -332,7 +336,7 @@ function foldWithMap(text) {
     const ends = [];
     let offset = 0;
     for (const ch of text) {
-        const f = ch.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
+        const f = (MATH_OPERATORS[ch] ?? ch).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
         for (let k = 0; k < f.length; k++) {
             starts.push(offset);
             ends.push(offset + ch.length);
@@ -935,21 +939,31 @@ class PublicationFilter {
         this.items.forEach(item => {
             if (item.card.hidden) return;
             item.searchFields.forEach(field => {
+                // A field's text nodes are searched as one text, as for
+                // filtering, since a match can span several (in a formula,
+                // each symbol is its own node). Each folded character keeps
+                // the node and offsets it came from.
+                let folded = '';
+                const starts = [];
+                const ends = [];
                 const walker = document.createTreeWalker(field, NodeFilter.SHOW_TEXT);
                 let node;
                 while ((node = walker.nextNode())) {
-                    const { folded, starts, ends } = foldWithMap(node.data);
-                    terms.forEach(term => {
-                        let i = folded.indexOf(term);
-                        while (i !== -1) {
-                            const range = document.createRange();
-                            range.setStart(node, starts[i]);
-                            range.setEnd(node, ends[i + term.length - 1]);
-                            ranges.push(range);
-                            i = folded.indexOf(term, i + term.length);
-                        }
-                    });
+                    const map = foldWithMap(node.data);
+                    folded += map.folded;
+                    map.starts.forEach(offset => starts.push([node, offset]));
+                    map.ends.forEach(offset => ends.push([node, offset]));
                 }
+                terms.forEach(term => {
+                    let i = folded.indexOf(term);
+                    while (i !== -1) {
+                        const range = document.createRange();
+                        range.setStart(...starts[i]);
+                        range.setEnd(...ends[i + term.length - 1]);
+                        ranges.push(range);
+                        i = folded.indexOf(term, i + term.length);
+                    }
+                });
             });
         });
         CSS.highlights.set('publication-search', new Highlight(...ranges));

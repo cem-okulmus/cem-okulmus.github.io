@@ -7,6 +7,7 @@
 import { cpSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { marked } from 'marked';
+import temml from 'temml';
 import { PREVIEW_WIDTHS, finishPreviews, pdfLink, preparePreview } from './previews.mjs';
 import { PERSON, structuredDataScript } from './structured-data.mjs';
 
@@ -27,6 +28,40 @@ marked.use({
             return `<a href="${href}"${titleAttr}${targetAttr}>${text}</a>`;
         }
     }
+});
+
+// LaTeX math, rendered to MathML by Temml so browsers display it natively
+// (styled by assets/temml/Temml-Local.css, copied over below). Works anywhere
+// Markdown is rendered, including publication titles and "tldr:" fields:
+// $...$ is inline math, $$...$$ display math (on lines of its own, or inline).
+// As in Pandoc, an opening $ must not be followed by a space and a closing $
+// must not follow a space or precede a digit, so "$5 and $10" stays text;
+// \$ is a literal dollar sign. Invalid LaTeX fails the build.
+const renderMath = (tex, displayMode) => temml.renderToString(tex, { displayMode, throwOnError: true });
+const INLINE_MATH = /^(\$\$?)(?!\s)((?:\\[\s\S]|[^\\$])+?)(?<!\s)\1(?!\d)/;
+marked.use({
+    extensions: [
+        {
+            name: 'blockMath',
+            level: 'block',
+            start: src => src.match(/^\$\$/m)?.index,
+            tokenizer(src) {
+                const match = src.match(/^\$\$\n?([\s\S]+?)\n?\$\$[ \t]*(?:\n+|$)/);
+                if (match) return { type: 'blockMath', raw: match[0], tex: match[1].trim() };
+            },
+            renderer: token => `${renderMath(token.tex, true)}\n`,
+        },
+        {
+            name: 'inlineMath',
+            level: 'inline',
+            start: src => src.match(/(?<!\\)\$/)?.index,
+            tokenizer(src) {
+                const match = src.match(INLINE_MATH);
+                if (match) return { type: 'inlineMath', raw: match[0], tex: match[2], display: match[1] === '$$' };
+            },
+            renderer: token => renderMath(token.tex, token.display),
+        },
+    ],
 });
 
 // The renderer above only sees Markdown links; this also covers <a> tags
@@ -412,6 +447,11 @@ cpSync(SRC, OUT, {
             && rel !== join('assets', 'previews', 'previews.json');
     },
 });
+// Temml's stylesheet (using the reader's installed math fonts) and the one
+// font it ships, for \mathscr.
+for (const file of ['Temml-Local.css', 'Temml.woff2']) {
+    cpSync(join('node_modules', 'temml', 'dist', file), join(OUT, 'assets', 'temml', file));
+}
 
 const rendered = [];
 const index = readFileSync(join(SRC, 'index.html'), 'utf8')

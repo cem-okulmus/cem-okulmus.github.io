@@ -58,7 +58,7 @@ tldr: We present a syntactic extension of SPARQL&mdash;built ontop of SPARQL 1.2
 	
 	This language will serve as the front-end language of a temporal extension of the Ontology-Based Data-Access system ONTOP, which is part of our on-going work.
 
-### [Reaching for the Stars in ℰℒ Concept Learning](https://ceur-ws.org/Vol-4230/dl-paper19.pdf)
+### [Reaching for the Stars in $\mathcal{EL}^*$ Concept Learning](https://ceur-ws.org/Vol-4230/dl-paper19.pdf)
 venue: 39th International Workshop on Description Logics (DL 2026)
 type: Workshop
 location: Lisbon, Portugal

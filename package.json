@@ -10,6 +10,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "marked": "15.0.12"
+    "marked": "15.0.12",
+    "temml": "0.13.5"
   }
 }
