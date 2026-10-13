@@ -45,7 +45,7 @@
       <span class="timeline-dates">Oct 2015 – Jun 2018</span>
    <span class="timeline-desc">Master Thesis: <a href="https://doi.org/10.34726/hss.2018.52030">"Implementing and Comparing Quantifier Fuzzification Mechanisms"</a></span>
     </div>
-    <div class="timeline-meta">Vienna, AT</div>
+    <div class="timeline-meta">Vienna, Austria</div>
   </div>
 
 
@@ -56,6 +56,6 @@
       <span class="timeline-role">Bachelor of Computer Science</span>
       <span class="timeline-dates">Oct 2012 – Apr 2015</span>
     </div>
-     <div class="timeline-meta">Innsbruck, AT</div>
+     <div class="timeline-meta">Innsbruck, Austria</div>
   </div>
 </div>
