@@ -187,6 +187,7 @@ colocation: the 6th International Conference on Process Mining (ICPM 2024)
 authors: Jakob Brand, Timotheus Kampik, Cem Okulmus, Matthias Weidlich
 tags: Process querying, Query languages
 pdf: https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf
+preview: assets/papers/pqmi24.pdf
 
 ## 2023
 
@@ -246,6 +247,7 @@ published: 2022-06-03
 authors: Georg Gottlob, Cem Okulmus, Reinhard Pichler
 tags: Hypergraph decompositions, Constraint satisfaction, Parallel algorithms
 pdf: https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf
+preview: assets/papers/constraints22.pdf
 
 ### [Parallel Computation of Structural Decompositions](https://doi.org/10.34726/hss.2023.108704)
 venue: PhD Thesis, Technische Universität Wien

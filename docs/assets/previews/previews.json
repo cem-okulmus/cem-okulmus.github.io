@@ -29,6 +29,12 @@
     "width": 1600,
     "height": 2263
   },
+  "31744611cb66": {
+    "source": "assets/papers/constraints22.pdf",
+    "viewer": "assets/papers/constraints22.pdf",
+    "width": 1600,
+    "height": 2426
+  },
   "3d1c0bc05e83": {
     "source": "https://arxiv.org/pdf/2609.05944",
     "viewer": "https://arxiv.org/pdf/2609.05944",
@@ -40,6 +46,12 @@
     "viewer": "https://arxiv.org/pdf/2502.01295",
     "width": 1600,
     "height": 2071
+  },
+  "4ff3a39e46e3": {
+    "source": "assets/papers/pqmi24.pdf",
+    "viewer": "assets/papers/pqmi24.pdf",
+    "width": 1600,
+    "height": 2426
   },
   "535bef5c2380": {
     "source": "https://ceur-ws.org/Vol-4186/paper2.pdf",
@@ -101,12 +113,6 @@
     "width": 1600,
     "height": 2071
   },
-  "b6c847bb8d85": {
-    "source": "https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf",
-    "viewer": "https://link.springer.com/content/pdf/10.1007/s10601-022-09332-1.pdf",
-    "width": 1600,
-    "height": 2426
-  },
   "bb35736371e6": {
     "source": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
     "viewer": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
@@ -118,12 +124,6 @@
     "viewer": "assets/papers/tods24.pdf",
     "width": 1600,
     "height": 2371
-  },
-  "c91bcbf17868": {
-    "source": "https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf",
-    "viewer": "https://link.springer.com/content/pdf/10.1007/978-3-031-82225-4_2.pdf",
-    "width": 1600,
-    "height": 2426
   },
   "c99f5393ebda": {
     "source": "https://arxiv.org/pdf/2405.18181",

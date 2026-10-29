@@ -32,3 +32,8 @@ is out and both switch to it.
 If a paper's `pdf:` link can't be downloaded (ACM serves scripts a bot check),
 the arXiv version from `arxiv:` is used instead. Otherwise, download the PDF
 yourself and point `preview:` at it (a path relative to `docs/`, or a URL).
+
+Clicking a preview shows the PDF in the page, which hosts like Springer and ACM
+forbid; for those the arXiv version is shown, if there is one. An open-access
+paper (e.g. CC BY) can instead be copied to `docs/assets/papers/` and named in
+`preview:`, so the published version is shown from this site.

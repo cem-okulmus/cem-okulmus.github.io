@@ -14,7 +14,8 @@
 //
 // The same source is what the in-page PDF viewer (script.js) shows, if it
 // can: a PDF on this site, or one whose host allows it to be shown in a frame
-// on another site.
+// on another site. Where it can't (Springer, ACM), the viewer shows the arXiv
+// version instead, if there is one.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -135,7 +136,7 @@ export async function preparePreview(fields) {
     const entry = manifest[key];
     return {
         ...entry,
-        viewer: entry.viewer && framableHost(entry.viewer) ? entry.viewer : null,
+        viewer: entry.viewer && framableHost(entry.viewer) ? entry.viewer : arxivPdf(fields.arxiv),
         src: width => relative(SRC, join(DIR, `${key}-${width}.png`)),
     };
 }
