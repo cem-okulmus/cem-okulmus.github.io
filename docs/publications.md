@@ -13,6 +13,7 @@ authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders,Maxime Jakubowski, José E
 tags: SHACL, ShEx, Graph schemas
 arxiv: https://doi.org/10.48550/arXiv.2609.05944
 code: https://github.com/cogsl/sheval
+tldr: This tool was created as part of our work on recursive SHACL (see [KR 2026](#kr26)). It aims to easily allow a user to cross-compare SHACL validation of recursive schemas for different SHACL validation engines and also contains a small scale test-suite that aims to test how a validation engines compares to the semantics we analyse in that [paper](#kr26).
 
 
 ### Rewriting Ontology-Mediated Property Graph Queries into GQL
@@ -68,6 +69,7 @@ tags: Learnability, Description logics
 pdf: https://ceur-ws.org/Vol-4230/dl-paper19.pdf
 
 ### [Common Foundations for Recursive Shape Languages](https://doi.org/10.24963/kr.2026/1)
+id:kr26
 venue: 23rd International Conference on Principles of Knowledge Representation and Reasoning (KR 2026)
 type: Conference
 location: Lisbon, Portugal
