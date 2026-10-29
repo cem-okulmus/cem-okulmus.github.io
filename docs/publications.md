@@ -4,7 +4,6 @@
 
 
 ### sheval: An RDF data shapes evaluation tool and test-suite for recursive shapes
-accepted: true
 venue: 2nd International Workshop on Data Management for Knowledge Graphs (DMKG26)
 type: Workshop
 location: Bari, Italy
@@ -28,14 +27,14 @@ arxiv: https://doi.org/10.48550/arXiv.2608.20092
 code: https://gitlab.com/austrian-neurocloud/software/owl2cypher
 tldr: This is our latest published work on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
 
-### Shapes from Examples: Foundations of Shape Learning in Recursive SHACL
-accepted: true
+### [Shapes from Examples: Foundations of Shape Learning in Recursive SHACL](https://doi.org/10.1007/978-3-032-42015-2_19)
 venue: 25th International Semantic Web Conference (ISWC 2026)
 type: Conference
 location: Bari, Italy
 dates: 2026-10-25 to 2026-10-29
 authors: Bente Gortworst, Cem Okulmus, Magdalena Ortiz and Anni-Yasmin Turhan
 tags: SHACL, Graph schemas, Learnability, Description logics
+pdf: https://link.springer.com/content/pdf/10.1007/978-3-032-42015-2_19.pdf
 arxiv: https://doi.org/10.48550/arXiv.2607.27934
 tldr: Shape Learning refers to the process of generating parts of a SHACL schema (the so-called shapes), in this case from labelled examples. The goal is to find a _fitting_ shape, in the sense that it includes all positively-labelled examples and none of the negatively-labelled ones.    
 	In this work, we provide the first algorithm for learning such fitting shapes for a given fragment of SHACL, computing not only arbitrary fittings, but also the *most specific fittings*.  
