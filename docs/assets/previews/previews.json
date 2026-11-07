@@ -107,12 +107,6 @@
     "width": 1600,
     "height": 2071
   },
-  "b409d6788a52": {
-    "source": "https://arxiv.org/pdf/2608.20092",
-    "viewer": "https://arxiv.org/pdf/2608.20092",
-    "width": 1600,
-    "height": 2071
-  },
   "bb35736371e6": {
     "source": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
     "viewer": "https://drops.dagstuhl.de/storage/01oasics/oasics-vol146-time2026/OASIcs.TIME.2026.6/OASIcs.TIME.2026.6.pdf",
@@ -158,6 +152,12 @@
   "f10f36ecb4bd": {
     "source": "https://arxiv.org/pdf/2310.14939",
     "viewer": "https://arxiv.org/pdf/2310.14939",
+    "width": 1600,
+    "height": 2071
+  },
+  "f4608333dc7a": {
+    "source": "https://arxiv.org/pdf/2608.20092",
+    "viewer": "https://arxiv.org/pdf/2608.20092",
     "width": 1600,
     "height": 2071
   }

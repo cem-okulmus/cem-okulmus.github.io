@@ -24,6 +24,7 @@ location: Rome, Italy
 dates: 2026-11-07 to 2026-11-11
 authors: Bianca Löhnert, Nikolaus Augsten, Cem Okulmus and Magdalena Ortiz
 tags: Graph queries, Ontology-mediated querying, Query rewriting, Description logics
+pdf: https://dl.acm.org/doi/pdf/10.1145/3799682.3841030
 arxiv: https://doi.org/10.48550/arXiv.2608.20092
 code: https://gitlab.com/austrian-neurocloud/software/owl2cypher
 tldr: This is our latest published work on the topic of bringing Ontology-Based Data-Access to the world of graph data bases. Compared to our previous paper (see [ESWC 2025](#eswc25)), we consider a much richer set of navigational queries as the input of rewriting, and in the output language we fully exploit the expressive power of GQL, the recently standardised graph query language.
