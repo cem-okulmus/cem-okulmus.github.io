@@ -17,7 +17,6 @@ tldr: This tool was created as part of our work on recursive SHACL (see [KR 2026
 
 
 ### [Rewriting Ontology-Mediated Property Graph Queries into GQL](https://doi.org/10.1145/3799682.3841030)
-accepted: true
 venue: 35th International ACM Conference on Information and Knowledge Management (CIKM 2026)
 type: Conference
 location: Rome, Italy
