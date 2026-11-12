@@ -3,7 +3,7 @@
 ## 2026
 
 
-### sheval: An RDF data shapes evaluation tool and test-suite for recursive shapes
+### [sheval: An RDF data shapes evaluation tool and test-suite for recursive shapes](https://doi.org/10.83095/ceurws_04322_013)
 venue: 2nd International Workshop on Data Management for Knowledge Graphs (DMKG26)
 type: Workshop
 location: Bari, Italy
@@ -11,6 +11,7 @@ dates: 2026-10-25
 colocation: the 25th International Semantic Web Conference (ISWC 2026)
 authors: Shqiponja Ahmetaj, Iovka Boneva, Jan Hidders,Maxime Jakubowski, José Emilio Labra Gayo, Wim Martens, Filip Murlak, Cem Okulmus, Ognjen Savković, Mantas Šimkus, Dominik Tomaszuk
 tags: SHACL, ShEx, Graph schemas
+pdf: https://ceur-ws.org/Vol-4322/paper_21.pdf
 arxiv: https://doi.org/10.48550/arXiv.2609.05944
 code: https://github.com/cogsl/sheval
 tldr: This tool was created as part of our work on recursive SHACL (see [KR 2026](#kr26)). It aims to easily allow a user to cross-compare SHACL validation of recursive schemas for different SHACL validation engines and also contains a small scale test-suite that aims to test how a validation engines compares to the semantics we analyse in that [paper](#kr26).

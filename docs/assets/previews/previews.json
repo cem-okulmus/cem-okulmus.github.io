@@ -35,12 +35,6 @@
     "width": 1600,
     "height": 2426
   },
-  "3d1c0bc05e83": {
-    "source": "https://arxiv.org/pdf/2609.05944",
-    "viewer": "https://arxiv.org/pdf/2609.05944",
-    "width": 1600,
-    "height": 2263
-  },
   "47a84a73ac97": {
     "source": "https://arxiv.org/pdf/2502.01295",
     "viewer": "https://arxiv.org/pdf/2502.01295",
@@ -68,6 +62,12 @@
   "618fea123aeb": {
     "source": "https://ceur-ws.org/Vol-4230/dl-paper19.pdf",
     "viewer": "https://ceur-ws.org/Vol-4230/dl-paper19.pdf",
+    "width": 1600,
+    "height": 2263
+  },
+  "6feddb0a63c9": {
+    "source": "https://ceur-ws.org/Vol-4322/paper_21.pdf",
+    "viewer": "https://ceur-ws.org/Vol-4322/paper_21.pdf",
     "width": 1600,
     "height": 2263
   },
